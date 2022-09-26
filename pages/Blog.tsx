@@ -22,6 +22,14 @@ export const ProjectMenu: NextPage = () => {
               <li>Classing Holomorphic Complex Functions</li>
               <li>How Is e Irrational?</li>
               <li>The Fairness of Allocating To a Prime Number of People</li>
+              {/** 
+               * How To Make a Developer Blog (Like This)
+               * How To Setup Prisma and PlanetScale SQL databases
+               * How To Setup an independent GraphQL server
+               * How To Get Auth For Your App
+               * Automating Business Decisions with Game Theory and Microeconomics
+               * 
+               */}
           </ul>
         </div>
         </main>
