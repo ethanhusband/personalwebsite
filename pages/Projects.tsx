@@ -23,6 +23,7 @@ export const ProjectMenu: NextPage = () => {
             <li>Dynamic Load Balancing (EV chargers)</li>
             <li>2048 Bot</li>
             <li>EVUp Charge</li>
+            <li>A Basic Checkers Bot in C</li>
         </ul>
       </div>
       </main>
