@@ -28,7 +28,7 @@ export const ProjectMenu: NextPage = () => {
                * How To Setup an independent GraphQL server
                * How To Get Auth For Your App
                * Automating Business Decisions with Game Theory and Microeconomics
-               * 
+               * Understanding the Riemann Zeta conjecture (prime number proof, all zeros in [0,1])
                */}
           </ul>
         </div>
