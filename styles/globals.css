@@ -29,10 +29,46 @@ a {
   }
 }
 
-.text-primary {
-  color: #2fdce1
+.text-secondary {
+  color: #2fdce1;
 }
 
-.border-primary {
-  border-color: #2fdce1
+.border-secondary {
+  border-color: #2fdce1;
+}
+
+.bg-primary {
+  background-color: #333;
+}
+
+.bg-secondary {
+  background-color: #2fdce1;
+}
+
+.white-shadow {
+  filter: drop-shadow(0 0 0.5rem white);
+}
+
+
+.blue-shadow {
+  filter: drop-shadow(0 0 0.1rem #2fdce1);
+}
+
+.blue-shadow:hover {
+  filter: drop-shadow(0 0 0.2rem #2fdce1);
+}
+
+.button-hover {
+  border-radius: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+  background-color: black;
+  filter: drop-shadow(0 0 0.15rem #2fdce1);
+}
+
+.button-hover:hover {
+  background-color: #333;
+  filter: drop-shadow(0 0 0.15rem #2fdce1);
 }
