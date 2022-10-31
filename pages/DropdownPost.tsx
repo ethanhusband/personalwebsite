@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { FaAngleDown } from 'react-icons/fa'
+import Image from 'next/image'
 
 export const DropdownPost = ({ name, imgUrl, children }: any) => {
   const [content, updateContent] = useState(false)
@@ -19,7 +20,7 @@ export const DropdownPost = ({ name, imgUrl, children }: any) => {
       onClick={() => updateContent(!content)}
     >
       <div className="flex flex-row">
-        <img src={imgUrl}></img>
+        <Image src={imgUrl} alt="" />
         <div className="text-2xl">{name}</div>
         <FaAngleDown
           className="ml-auto mr-4 my-auto"

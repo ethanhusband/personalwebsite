@@ -19,7 +19,7 @@ export const SitePage = ({ children }: any) => {
 export const NavBar = () => {
   return (
     <div className="z-50 fixed top-0 right-0 left-0 bg-black mx-auto rounded-b-3xl fixedAWSD border-secondary border-b white-shadow">
-      <ul className="text-secondary font-semibold px-8 py-5 flex flex-row gap-x-12 justify-center">
+      <ul className="text-secondary font-semibold px-8 py-5 flex flex-row gap-x-8 justify-center">
         <Link href="/Blog">
           <li className="button-hover">Blog</li>
         </Link>
