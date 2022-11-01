@@ -4,9 +4,8 @@ import { SitePage } from './SiteHeader'
 
 export const ProjectMenu: NextPage = () => {
   return (
-    <div>
       <SitePage>
-        <div className="gap-y-6 flex flex-col px-24 py-12">
+        <div className="gap-y-6 flex flex-col px-24 py-12 mb-8">
           <DropdownPost name="Twitter Follower Data Analysis" />
           <DropdownPost name="This Website" />
           <DropdownPost name="Dynamic Load Balancing for EV chargers" />
@@ -15,7 +14,6 @@ export const ProjectMenu: NextPage = () => {
           <DropdownPost name="A Basic Checkers Bot in C" />
         </div>
       </SitePage>
-    </div>
   )
 }
 

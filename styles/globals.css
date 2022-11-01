@@ -49,7 +49,6 @@ a {
   filter: drop-shadow(0 0 0.5rem white);
 }
 
-
 .blue-shadow {
   filter: drop-shadow(0 0 0.1rem #2fdce1);
 }
@@ -59,16 +58,54 @@ a {
 }
 
 .button-hover {
-  border-radius: 2rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  padding-top: 0.6rem;
-  padding-bottom: 0.6rem;
   background-color: black;
   filter: drop-shadow(0 0 0.15rem #2fdce1);
 }
 
 .button-hover:hover {
   background-color: #333;
-  filter: drop-shadow(0 0 0.15rem #2fdce1);
+  filter: drop-shadow(0 0 0.2rem #2fdce1);
+}
+
+.button-hover:active {
+  background-color: black;
+  filter: drop-shadow(0 0 0.5rem #2fdce1);
+}
+
+.max-w-200px {
+  max-width: 200px;
+}
+
+.max-w-250px {
+  max-width: 250px;
+}
+
+.bg-mandelbrot {
+  background-image: url('../assets/mandelbrot/mandelbrot5.PNG');
+  background-size: 100%;
+  background-repeat: repeat-y;
+  background-position: 50% 50%;
+}
+
+.centered-button {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.explore-effects {
+  background-color: rgba(47, 220, 225, 0.9);
+  filter: drop-shadow(0 0 0.1rem #2fdce1);
+  
+}
+
+.explore-effects:hover {
+  background-color: rgba(47, 220, 225, 0.5);
+  filter: drop-shadow(0 0 0.2rem #2fdce1);
+}
+
+.explore-effects:active {
+  background-color: rgba(47, 220, 225, 0.9);
+  filter: drop-shadow(0 0 0.5rem #2fdce1);
 }
