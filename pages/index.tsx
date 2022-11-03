@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import SitePage, { NavBar } from './SiteHeader'
+import SitePage, { NavBar } from './components/SitePage'
 import React, { useRef, useEffect } from 'react'
 import Link from 'next/link'
 
@@ -16,7 +16,7 @@ const ExploreButton = () => {
   return (
     <div className="centered-button">
       <Link href="/Blog">
-      <div className="flex flex-row justify-center px-12 py-5 explore-effects self-center rounded-lg border border-black">
+      <div className="flex flex-row justify-center px-12 py-5 explore-effects self-center rounded-lg border-black">
         <p className="text-primary text-center text-2xl">Explore</p>
       </div>
       </Link>

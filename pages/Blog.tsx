@@ -1,6 +1,6 @@
 import { NextPage } from 'next'
-import DropdownPost from './DropdownPost'
-import { SitePage } from './SiteHeader'
+import PostSummary from './components/PostSummary'
+import { SitePage } from './components/SitePage'
 
 export const BlogMenu: NextPage = () => {
   return (
@@ -8,7 +8,13 @@ export const BlogMenu: NextPage = () => {
       <div className="px-24 py-12">
         <ul>
           <li>
-            <DropdownPost name="How Group Theory Can Speed Up Hashing Algorithms"></DropdownPost>
+            <PostSummary
+              title="How Group Theory Can Speed Up Hashing Algorithms"
+              imgUrl=""
+              link=""
+              children={undefined}
+              isPageHeader={false}
+            />
           </li>
           {/** 
               <li>How Quantum Computers Mark Solutions</li>

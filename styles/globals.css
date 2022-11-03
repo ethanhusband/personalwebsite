@@ -49,6 +49,11 @@ a {
   filter: drop-shadow(0 0 0.5rem white);
 }
 
+.post-shadow {
+  filter: drop-shadow(0 0 0.2rem white);
+}
+
+
 .blue-shadow {
   filter: drop-shadow(0 0 0.1rem #2fdce1);
 }
@@ -68,7 +73,7 @@ a {
 }
 
 .button-hover:active {
-  background-color: black;
+  background-color: #333;
   filter: drop-shadow(0 0 0.5rem #2fdce1);
 }
 
@@ -97,7 +102,6 @@ a {
 .explore-effects {
   background-color: rgba(47, 220, 225, 0.9);
   filter: drop-shadow(0 0 0.1rem #2fdce1);
-  
 }
 
 .explore-effects:hover {

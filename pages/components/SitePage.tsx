@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import Head from 'next/head'
 import useMediaQuery from '@mui/material/useMediaQuery'
-import { FaBars } from 'react-icons/fa'
 
 export const SitePage = ({ children }: any) => {
   return (
@@ -21,10 +20,8 @@ export const SitePage = ({ children }: any) => {
 }
 
 export const NavBar = () => {
-  const menu = useMediaQuery('(max-width:330px)')
-  console.log('Menu is', menu)
   const buttonClass = `button-hover w-1/4 py-1.5 max-w-200px rounded-2xl text-center ${
-    menu ? 'text-xs' : 'text-base'
+    useMediaQuery('(max-width:330px)') ? 'text-xs' : 'text-base'
   }`
 
   var navbar = (
