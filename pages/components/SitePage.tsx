@@ -19,6 +19,8 @@ export const SitePage = ({ children }: any) => {
   )
 }
 
+
+// Should make this highlight whichever page/subpage is currently active
 export const NavBar = () => {
   const buttonClass = `button-hover w-1/4 py-1.5 max-w-200px rounded-2xl text-center ${
     useMediaQuery('(max-width:330px)') ? 'text-xs' : 'text-base'

@@ -8,12 +8,14 @@ export const PostSummary = ({
   title,
   imgUrl,
   link,
+  desc,
   isPageHeader = true,
   children,
 }: {
   title: string
   imgUrl: string
   link: string
+  desc: string
   isPageHeader: boolean
   children: JSX.Element | undefined
 }) => {
@@ -22,7 +24,7 @@ export const PostSummary = ({
     <FaAngleRight
       className="ml-auto mr-4 my-auto"
       size={35}
-      color="rgb(55 65 81)"
+      color="rgb(228 228 231)"
     />
   )
 
@@ -38,17 +40,26 @@ export const PostSummary = ({
       <FaAngleDown
         className="ml-auto mr-4 my-auto"
         size={35}
-        color="rgb(55 65 81)"
+        color="rgb(228 228 231)"
       />
     )
   }
 
   return (
-    <div className="flex flex-col p-5 rounded-lg w-auto bg-zinc-200 red-shadow border-black border post-shadow">
+    <div className="flex flex-col p-5 rounded-lg w-auto bg-zinc-700 post-shadow">
       <Link href={link}>
         <div className="flex flex-row">
-          <Image src={imgUrl} alt="" />
-          <div className="text-2xl">{title}</div>
+          <Image
+            className="max-h-16"
+            src={imgUrl}
+            alt=""
+            width={150}
+            height={50}
+          />
+          <div className="ml-4 w-4/5">
+            <div className="text-2xl">{title}</div>
+            <div className="mt-1 text-base text-gray-400">{desc}</div>
+          </div>
           {angleButton}
         </div>
       </Link>

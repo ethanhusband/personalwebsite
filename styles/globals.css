@@ -33,6 +33,10 @@ a {
   color: #2fdce1;
 }
 
+.text-primary {
+  color: #333;
+}
+
 .border-secondary {
   border-color: #2fdce1;
 }
@@ -50,7 +54,11 @@ a {
 }
 
 .post-shadow {
-  filter: drop-shadow(0 0 0.2rem white);
+  filter: drop-shadow(0 0 0.2rem rgb(228 228 231));
+}
+
+.post-shadow:hover {
+  filter: drop-shadow(0 0 0.2rem #2fdce1);
 }
 
 
@@ -86,7 +94,7 @@ a {
 }
 
 .bg-mandelbrot {
-  background-image: url('../assets/mandelbrot/mandelbrot5.PNG');
+  background-image: url('../public/assets/mandelbrot/mandelbrot5.PNG');
   background-size: 100%;
   background-repeat: repeat-y;
   background-position: 50% 50%;
@@ -100,16 +108,18 @@ a {
 }
 
 .explore-effects {
-  background-color: rgba(47, 220, 225, 0.9);
-  filter: drop-shadow(0 0 0.1rem #2fdce1);
+  background-color: rgba(47, 220, 225, 1);
+  color: black
 }
 
 .explore-effects:hover {
-  background-color: rgba(47, 220, 225, 0.5);
+  background-color: rgba(47, 220, 225, 1);
   filter: drop-shadow(0 0 0.2rem #2fdce1);
+  color: white
 }
 
 .explore-effects:active {
-  background-color: rgba(47, 220, 225, 0.9);
+  background-color: rgba(47, 220, 225, 1);
   filter: drop-shadow(0 0 0.5rem #2fdce1);
+  color: white
 }
