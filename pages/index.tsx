@@ -5,18 +5,16 @@ import Link from 'next/link'
 
 const Home: NextPage = () => {
   // To accomodate background image, this component does not use SitePage
-  return (
-      <ExploreButton />
-  )
+  return <ExploreButton />
 }
 
 const ExploreButton = () => {
   return (
     <div className="centered-button">
       <Link href="/Blog">
-      <div className="flex flex-row justify-center px-12 py-4 explore-effects self-center rounded-lg border-2 border-black">
-        <p className="text-center text-2xl">Explore</p>
-      </div>
+        <div className="flex flex-row justify-center px-12 py-4 explore-effects self-center rounded-lg border-2 border-black">
+          <p className="text-center text-2xl font-light">Explore</p>
+        </div>
       </Link>
     </div>
   )

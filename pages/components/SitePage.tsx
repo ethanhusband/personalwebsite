@@ -19,25 +19,26 @@ export const SitePage = ({ children }: any) => {
   )
 }
 
-
 // Should make this highlight whichever page/subpage is currently active
 export const NavBar = () => {
-  const buttonClass = `button-hover w-1/4 py-1.5 max-w-200px rounded-2xl text-center ${
-    useMediaQuery('(max-width:330px)') ? 'text-xs' : 'text-base'
+  const buttonClass = `button-hover w-1/4 py-2 w-auto max-w-200px rounded-2xl text-center ${
+    useMediaQuery('(max-width:375px)') ? 'text-sm' : 'text-base'
   }`
 
   var navbar = (
-    <ul className="text-secondary font-semibold px-4 py-6 flex flex-row gap-x-3 justify-center">
-      <Link href="/Blog">
-        <li className={buttonClass}>Blog</li>
+    <ul className="text-secondary font-semibold px-4 py-6 flex flex-row gap-x-4 justify-center">
+      <Link href="/Blog" className={buttonClass}>
+        <li>Blog</li>
       </Link>
-      <Link href="/Projects">
-        <li className={buttonClass}>Projects</li>
+      <Link href="/Projects" className={buttonClass}>
+        <li>Projects</li>
       </Link>
-      <Link href="/About">
-        <li className={buttonClass}>About</li>
+      <Link href="/About" className={buttonClass}>
+        <li>About</li>
       </Link>
-      <li className={buttonClass}>CV</li>
+      <Link href="/" className={buttonClass}>
+        <li>CV</li>
+      </Link>
     </ul>
   )
 

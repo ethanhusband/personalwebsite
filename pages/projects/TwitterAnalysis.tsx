@@ -12,11 +12,11 @@ export const TwitterAnalysis = (context: any) => {
 export const TwitterSummary = ({ children }: any) => {
   return (
     <PostSummary
-      title="Twitter Popularity Data Analysis"
+      title="Twitter Popularity Analysis"
       imgUrl="/assets/twitter-analysis/residual_plot.png"
       isPageHeader={false}
       link="/TwitterAnalysis"
-      desc="A basic Python data analysis report using Pandas and Scikit-Learn. Analysing features such as language, engagement, coherence in contrast with the popularity (number of followers) of a user, using techniques such as Pearson Correlation, Mutual Information and Regression Analysis."
+      desc="A basic Python data analysis report using Pandas and Scikit-Learn. Analysing the popularity (number of followers) of a user in contrast to features such as user interactivity, coherence and other language features. Techniques include Pearson Correlation, Mutual Information and Regression Analysis."
     >
       {children}
     </PostSummary>

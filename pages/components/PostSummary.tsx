@@ -50,13 +50,14 @@ export const PostSummary = ({
       <Link href={link}>
         <div className="flex flex-row">
           <Image
-            className="max-h-16"
+            className="rounded my-auto border border-black"
             src={imgUrl}
             alt=""
-            width={150}
-            height={50}
+            width={120}
+            height={100}
+            quality={100}
           />
-          <div className="ml-4 w-4/5">
+          <div className="ml-4 w-3/4">
             <div className="text-2xl">{title}</div>
             <div className="mt-1 text-base text-gray-400">{desc}</div>
           </div>

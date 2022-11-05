@@ -1,45 +1,20 @@
 import { NextPage } from 'next'
-import PostSummary from './components/PostSummary'
-import { SitePage } from './components/SitePage'
+import { CheckersBotSummary } from './projects/CheckersBot'
+import { EVUpChargeSummary } from './projects/EVUpCharge'
+import { Py2048BotSummary } from './projects/Py2048Bot'
+import { ReactMandelbrotSummary } from './projects/ReactMandelbrot'
+import { ThisWebsiteSummary } from './projects/ThisWebsite'
 import { TwitterSummary } from './projects/TwitterAnalysis'
 
 export const ProjectMenu: NextPage = () => {
   return (
     <div className="gap-y-6 flex flex-col px-24 py-12 mb-8">
+      <ReactMandelbrotSummary />
       <TwitterSummary />
-      <PostSummary
-        title="This Website"
-        imgUrl=""
-        desc=""
-        isPageHeader={false}
-        link=""
-        children={undefined}
-      />
-
-      <PostSummary
-        title="2048 Bot"
-        isPageHeader={false}
-        imgUrl=""
-        link=""
-        desc=""
-        children={undefined}
-      />
-      <PostSummary
-        title="EVUp Charge"
-        isPageHeader={false}
-        imgUrl=""
-        link=""
-        desc=""
-        children={undefined}
-      />
-      <PostSummary
-        title="A Basic Checkers Bot in C"
-        isPageHeader={false}
-        imgUrl=""
-        link=""
-        desc=""
-        children={undefined}
-      />
+      <ThisWebsiteSummary />
+      <Py2048BotSummary />
+      <EVUpChargeSummary />
+      <CheckersBotSummary />
     </div>
   )
 }
