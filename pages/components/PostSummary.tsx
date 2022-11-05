@@ -1,6 +1,7 @@
 import { FaAngleRight, FaAngleDown } from 'react-icons/fa'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useMediaQuery } from '@mui/material'
 
 // This component is used as a summary for each page, but is reused as the header for the corresponding page
 
@@ -32,7 +33,7 @@ export const PostSummary = ({
   if (isPageHeader) {
     postContents = (
       <div>
-        <hr className="my-4 border-black rounded-2xl" />
+        <hr className="mt-4 mb-2 border-black border" />
         <div className="p-4">{children}</div>
       </div>
     )
@@ -45,21 +46,48 @@ export const PostSummary = ({
     )
   }
 
+  // Conditions for responsiveness
+  var titleStyle = 'text-2xl'
+  var showDesc = true
+  var imgWidth = 120
+  var imgHeight = isPageHeader ? 65 : 100
+  if (!useMediaQuery('(min-width:550px)')) {
+    titleStyle = 'text-xl'
+    showDesc = false || isPageHeader
+  }
+  if (useMediaQuery('(max-width:410px)')) {
+    titleStyle = 'text-lg'
+    imgWidth = 100
+  }
+  if (useMediaQuery('(max-width:380px)')) {
+    titleStyle = 'text-base'
+    imgWidth = 80
+  }
+  if (useMediaQuery('(max-width:300px)')) {
+    titleStyle = 'text-base'
+    imgWidth = 50
+  }
+  imgWidth = isPageHeader ? 65 : imgWidth
+
   return (
-    <div className="flex flex-col p-5 rounded-lg w-auto bg-zinc-700 post-shadow">
+    <div className="py-4 px-2 min-h-100px flex flex-col w-full max-w-1000px self-center rounded-lg bg-zinc-700 post-shadow">
       <Link href={link}>
-        <div className="flex flex-row">
+        <div className="flex flex-row h-full">
           <Image
-            className="rounded my-auto border border-black"
+            className="rounded my-auto ml-3 "
             src={imgUrl}
-            alt=""
-            width={120}
-            height={100}
+            alt={title}
+            width={imgWidth}
+            height={imgHeight}
             quality={100}
           />
-          <div className="ml-4 w-3/4">
-            <div className="text-2xl">{title}</div>
-            <div className="mt-1 text-base text-gray-400">{desc}</div>
+          <div className="ml-4 flex flex-col align-center w-3/4">
+            <div className={titleStyle}>{title}</div>
+            {showDesc ? (
+              <div className="mt-1 text-base text-gray-400">{desc}</div>
+            ) : (
+              <div className="mt-1 text-base text-gray-400">See More</div>
+            )}
           </div>
           {angleButton}
         </div>

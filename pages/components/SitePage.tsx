@@ -13,7 +13,7 @@ export const SitePage = ({ children }: any) => {
 
       <div className="w-screen bg-mandelbrot h-screen cursor-crosshair">
         <NavBar />
-        <div className="px-24 py-20">{children}</div>
+        <div className="py-32 px-4 mb-8">{children}</div>
       </div>
     </div>
   )
@@ -21,7 +21,7 @@ export const SitePage = ({ children }: any) => {
 
 // Should make this highlight whichever page/subpage is currently active
 export const NavBar = () => {
-  const buttonClass = `button-hover w-1/4 py-2 w-auto max-w-200px rounded-2xl text-center ${
+  const buttonClass = `button-hover w-1/4 py-2 max-w-200px rounded-2xl text-center ${
     useMediaQuery('(max-width:375px)') ? 'text-sm' : 'text-base'
   }`
 

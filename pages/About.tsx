@@ -1,22 +1,30 @@
-import SitePage from './components/SitePage'
 import PostSummary from './components/PostSummary'
 
 const About = () => {
+  // For some reason, passing that outer div abstractly to all props doesn't apply the style correctly
+  // Hence it is done manually for each one. A frustrating nextjs flaw.
   return (
-    <div className="w-full mt-16 h-auto rounded-lg">
+    <div className="gap-y-6 flex flex-col">
       <PostSummary
-        imgUrl=""
+        imgUrl="/assets/logoshadow.png"
         link="/About"
         title="About"
         desc="Ethan Husband"
         isPageHeader={true}
       >
-        <div>
+        <div className="flex flex-col gap-y-4">
           <div>
             This site comprises my cabinet of projects and ideas in my time as a
             Softare Developer and Mathematics Student.
           </div>
-          <div className="mt-4">Contact: eth.husband@gmail.com</div>
+          <div>
+            I am currently employed as the lead developer at EVUp Charge, a
+            startup targetted at facilitating services provided by OCPP electric
+            vehicle smart chargers. I am also studying Computer Science and Pure
+            Mathematics full time at the University of Melbourne, with the
+            intention of doing a Masters degree at ETH Zurich.
+          </div>
+          <div>Contact: eth.husband@gmail.com</div>
         </div>
       </PostSummary>
     </div>

@@ -8,7 +8,7 @@ import { TwitterSummary } from './projects/TwitterAnalysis'
 
 export const ProjectMenu: NextPage = () => {
   return (
-    <div className="gap-y-6 flex flex-col px-24 py-12 mb-8">
+    <div className="gap-y-6 flex flex-col">
       <ReactMandelbrotSummary />
       <TwitterSummary />
       <ThisWebsiteSummary />
