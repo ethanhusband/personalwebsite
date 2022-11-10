@@ -93,8 +93,8 @@ a {
   width: 120px;
 }
 
-.min-h-100px {
-  min-height: 100px;
+.min-h-50px {
+  min-height: 50px;
 }
 
 .max-w-1000px {
@@ -139,4 +139,12 @@ a {
   background-color: rgba(47, 220, 225, 1);
   filter: drop-shadow(0 0 0.5rem #2fdce1);
   color: white
+}
+
+.post-title {
+  color: rgb(243 244 246)
+}
+
+.post-title:hover {
+  color: #2fdce1
 }

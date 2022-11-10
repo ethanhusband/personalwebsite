@@ -1,12 +1,11 @@
 import PostSummary from './components/PostSummary'
 
 const About = () => {
-  // For some reason, passing that outer div abstractly to all props doesn't apply the style correctly
+  // For some reason, passing that outer div (with flex col) abstractly to all props doesn't apply the style correctly
   // Hence it is done manually for each one. A frustrating nextjs flaw.
   return (
     <div className="gap-y-6 flex flex-col">
       <PostSummary
-        imgUrl="/assets/logoshadow.png"
         link="/About"
         title="About"
         desc="Ethan Husband"

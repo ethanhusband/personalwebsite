@@ -9,7 +9,6 @@ export const BlogMenu: NextPage = () => {
         <li>
           <PostSummary
             title="How Group Theory Can Speed Up Hashing Algorithms"
-            imgUrl=""
             link=""
             desc=""
             children={undefined}
@@ -17,7 +16,6 @@ export const BlogMenu: NextPage = () => {
           />
           <PostSummary
             title="Dynamic Load Balancing for EV chargers"
-            imgUrl=""
             isPageHeader={false}
             link=""
             desc=""
