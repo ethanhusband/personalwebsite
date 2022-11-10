@@ -1,4 +1,5 @@
 import { NextPage } from 'next'
+import { EVChargerDLBSummary } from './articles/EVChargerDLB'
 import PostSummary from './components/PostSummary'
 import { SitePage } from './components/SitePage'
 
@@ -14,13 +15,7 @@ export const BlogMenu: NextPage = () => {
             children={undefined}
             isPageHeader={false}
           />
-          <PostSummary
-            title="Dynamic Load Balancing for EV chargers"
-            isPageHeader={false}
-            link=""
-            desc=""
-            children={undefined}
-          />
+          <EVChargerDLBSummary />
         </li>
         {/** 
               <li>How Quantum Computers Mark Solutions</li>
