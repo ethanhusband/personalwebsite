@@ -18,7 +18,8 @@
     "prettier": "^2.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.6.0"
+    "react-icons": "^4.6.0",
+    "react-latex": "^2.0.0"
   },
   "devDependencies": {
     "@types/node": "18.7.18",

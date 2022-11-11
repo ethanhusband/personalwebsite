@@ -31,7 +31,7 @@ export const PostSummary = ({
   if (isPageHeader) {
     postContents = (
       <div>
-        <hr className="mt-4 mx-3 border-secondary border-0.5 hover:border-secondary" />
+        <hr className="mt-4 mx-3 border-black border" />
         <div className="p-4 text-gray-100 text-base">{children}</div>
       </div>
     )

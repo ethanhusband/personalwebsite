@@ -116,6 +116,10 @@ a {
   background-position: 50% 75%;
 }
 
+.border-p {
+  border-color: purple
+}
+
 .centered-button {
   position: fixed;
   top: 50%;
