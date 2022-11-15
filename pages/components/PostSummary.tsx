@@ -1,5 +1,4 @@
 import { FaAngleRight, FaAngleDown } from 'react-icons/fa'
-import Image from 'next/image'
 import Link from 'next/link'
 import { useMediaQuery } from '@mui/material'
 
@@ -61,7 +60,7 @@ export const PostSummary = ({
   titleStyle += ' text-secondary'
 
   return (
-    <div className="py-4 px-2 min-50px flex flex-col w-full max-w-1000px self-center rounded-lg bg-zinc-700 post-shadow">
+    <div className="py-4 px-2 min-50px w-full max-w-1000px self-center rounded-lg bg-zinc-700 post-shadow">
       <Link href={link}>
         <div className="flex flex-row ">
           <div className="ml-4 flex flex-col justify-center w-full mr-2">

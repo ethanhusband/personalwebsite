@@ -18,10 +18,11 @@ const About = () => {
           </div>
           <div>
             I am currently employed as the lead developer at EVUp Charge, a
-            startup targetted at facilitating services provided by OCPP electric
-            vehicle smart chargers. I am also studying Computer Science and Pure
-            Mathematics full time at the University of Melbourne, with the
-            intention of doing a Masters degree at ETH Zurich.
+            startup targetted at facilitating services for OCPP electric vehicle
+            smart chargers. I am also studying a Bachelor of Science (Pure
+            Mathematics) and a concurrent diploma of Computer Science full time
+            at the University of Melbourne, with the intention of doing a
+            Masters degree at ETH Zurich (hopefully).
           </div>
           <div>Contact: eth.husband@gmail.com</div>
         </div>

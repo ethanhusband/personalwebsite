@@ -96,20 +96,37 @@ export const EVChargerDLB = () => {
             which have their own allocations. The ports themselves have a
             maximum capacity they can use to charge a car, and on top of that,
             the devices themselves usually have a circuit amperage which must
-            not be exceeded.
+            not be exceeded. We see a solution to this is more involved than
+            mere division.
           </div>
           <h1 className="text-2xl underline text-secondary">
             Modelling the problem
           </h1>
           <div>
-            What DLB aims to do is allocate each active charging port an amount
-            of amperage that is i) as equal as possible ii) as maximal as. The
-            restrictions on the problem are i) each charger has a maximal
-            circuit amperage ii) each port (of which the charger usually has a
-            couple) also has a maximal circuit amperage and iii) the grid has a
-            ceiling on how much amperage your property can use. At first, the
-            solution seems simple. We can just create a big tree of all the
-            connections from each port to the grid,
+            What every model needs is a set of assumptions from which it can
+            build. The assumptions used for this model (which, are unlikely to
+            generalise to all cases, but they are sufficient for the sake of
+            this discussion) is that firstly, we aim to allocate each active
+            charging port an amount of amperage that is i) as equal as possible
+            ii) as maximal as possible. Then the corresponding restrictions on
+            that aim are i) each charger/device has a maximal circuit amperage
+            ii) each port (of which the charger usually has a couple, but we
+            will generalise that there are n ports) also has a maximal circuit
+            amperage and lastly iii) each phase of the grid has an equal ceiling
+            on how much amperage your property can use. At first, the solution
+            seems simple.
+          </div>
+          <div>
+            With this, my immediate idea is that we must find a way to represent
+            a given DLB setup graphically, for the sake of getting a better
+            intuition and interpretation of the problem. The obvious initial
+            choice is to represent this as a tree, since it does appear we have
+            these 'layers' of dependency (ports depend on devices, devices
+            depend on phases, vise versa). As an example, consider a Location A
+            with 3 chargers, a 3 phase device with 2 ports, a single phase
+            device with 1 port (connected to the first phase) and a single phase
+            device with 2 ports (connected to phase 2). That example would be
+            represented like this:
           </div>
         </div>
       </PostSummary>
@@ -124,7 +141,7 @@ export const EVChargerDLBSummary = () => {
       isPageHeader={false}
       children={undefined}
       link="articles/EVChargerDLB"
-      desc="An software based solution to balance amperage distribution across a set of OCPP chargers, without exceeding a given grid capacity."
+      desc="A generalisable model to balance amperage distribution across a set of OCPP chargers, without exceeding a given grid capacity."
     />
   )
 }
