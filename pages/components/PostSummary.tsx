@@ -2,7 +2,10 @@ import { FaAngleRight, FaAngleDown } from 'react-icons/fa'
 import Link from 'next/link'
 import { useMediaQuery } from '@mui/material'
 
-// This component is used as a summary for each page, but is reused as the header for the corresponding page
+// This component is used as a summary for each page, but is reused as the header and background for the corresponding page
+// If using as a summary, specify children = {undefined} AND isPageHeader = {false}
+// Otherwise if used as a header, wrap the article with it.
+// Title, link and description props are relatively self-explanatory.
 
 export const PostSummary = ({
   title,
@@ -60,7 +63,7 @@ export const PostSummary = ({
   titleStyle += ' text-secondary'
 
   return (
-    <div className="py-4 px-2 min-50px w-full max-w-1000px self-center rounded-lg bg-zinc-700 post-shadow">
+    <div className="py-4 px-2 min-50px w-full max-w-900px self-center rounded-lg bg-zinc-700 post-shadow">
       <Link href={link}>
         <div className="flex flex-row ">
           <div className="ml-4 flex flex-col justify-center w-full mr-2">

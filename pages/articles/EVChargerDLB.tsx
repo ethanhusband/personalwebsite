@@ -24,6 +24,7 @@ export const EVChargerDLB = () => {
             reaching the{' '}
             <Link
               className="text-secondary"
+              target="_blank"
               href="https://www.energymonitor.ai/sectors/automotive/electric-vehicle-tipping-point"
             >
               'tipping point'
@@ -33,6 +34,7 @@ export const EVChargerDLB = () => {
             infrastructure can be found{' '}
             <Link
               className="text-secondary"
+              target="_blank"
               href="youtube.com/watch?v=pLcqJ2DclEg"
             >
               here
@@ -44,6 +46,7 @@ export const EVChargerDLB = () => {
             problems, in particular via{' '}
             <Link
               className="text-secondary"
+              target="_blank"
               href="https://charge.evup.com.au/ecommerce/"
             >
               EVUp Charge
@@ -57,6 +60,7 @@ export const EVChargerDLB = () => {
             load management for charging stations (see{' '}
             <Link
               className="text-secondary"
+              target="_blank"
               href="https://www.evup.com.au/ev-charging-station-load-management"
             >
               BalanceUp
@@ -64,58 +68,54 @@ export const EVChargerDLB = () => {
             ), which is what brought me to this problem.
           </div>
           <h1 className="text-2xl underline text-secondary">
-            Load Management/Balancing
+            What is Load Management/Balancing?
           </h1>
           <div>
             One of the key problems faced in the process of expanding EV
             charging infrastructure, is the power load strained on the grid in
             doing so. Since electric vehicle chargers draw extensive amounts of
-            power from the grid, most properties with multiple chargers
-            installed are likely to draw more power from the grid than their
-            local power company has allocated them, resulting in power outages
-            (when the load drawn by the property exceeds what it is allocated,
-            tripping the{' '}
-            <Link
-              className="text-secondary"
-              href="https://en.wikipedia.org/wiki/Circuit_breaker"
-            >
-              circuit breaker
-            </Link>
-            ).
+            power, most properties with multiple chargers installed are likely
+            to draw more power from the grid than their local power company has
+            allocated them, resulting in power outages (when the load drawn by
+            the property exceeds what it is allocated, tripping the circuit
+            breaker).
           </div>
           <div>
             This is particularly relevant for properties which intend on having
-            chargers setup, but aren't primed to be a charging station, which is
-            the case for many of the clients of EVUp - apartments, parking lots,
-            city councils. Dynamic Load Management, also known as Dynamic Load
-            Balancing, DLB or DLM, is the localised solution to this problem. It
-            ensures a group of chargers won't exceed the allocated amperage of
-            the property, while also ensuring each charger is fairly distributed
-            an equal amount of amperage.
+            chargers installed, but don't have their electrical infrastructure
+            primed to be a charging station, which is the case for many places
+            currently looking to install chargers - apartments, parking lots,
+            city councils etc. Dynamic Load Management, also known as Dynamic
+            Load Balancing, DLB or DLM, is the localised solution to this
+            problem. It connects a group of chargers to a software which ensures
+            they won't exceed the allocated amperage of the property, while also
+            ensuring each charger is fairly distributed the most even amount of
+            amperage possible. When a charger starts or stops being used, it
+            will dynamically set each charger to draw an ideal amount of
+            amperage based on their use and activity.
           </div>
           <div>
             A lot of people (including myself at first glance, being formerly
-            unfamiliar with the workings of industrial circuits) initially
-            assume the solution is as straight forward as taking the property
-            amperage, dividing it by the number of active chargers, assigning
-            that to each charger, and moving on. Basic division. However{' '}
+            unfamiliar with the workings of circuits) initially assume the
+            solution is as straight forward as taking the property amperage,
+            dividing it by the number of active chargers, assigning that to each
+            charger, and moving on. Basic division, yielding an evenly
+            distributed allocation. However{' '}
             <span className="underline">2 major limitations</span> are faced
             that convolute the problem significantly. Believe it or not,
             considering these limitations makes the solution much more
-            complicated than division.
+            complicated than mere division.
           </div>
           <div>
             Before exploring these, I should also add that while load management
             typically concerns balancing wattage (W) drawn by devices, we will{' '}
-            <span className="underline">
-              assume that the chargers are in parallel
-            </span>
-            ,{' '}
             <Link
               className="text-secondary"
+              target="_blank"
               href="https://www.allaboutcircuits.com/textbook/direct-current/chpt-5/simple-parallel-circuits/"
             >
-              such that they have the same voltage (V)
+              assume that the chargers are in parallel, such that they have the
+              same voltage (V)
             </Link>{' '}
             . Since W = I*V (known as Ohm's Law, where I = amperage), an equal
             voltage enables us to simply work in terms of amps. Note this is
@@ -124,6 +124,7 @@ export const EVChargerDLB = () => {
             circuit. This is also convenient as{' '}
             <Link
               className="text-secondary"
+              target="_blank"
               href="https://www.openchargealliance.org/protocols/ocpp-16/"
             >
               OCPP
@@ -131,6 +132,7 @@ export const EVChargerDLB = () => {
             , the standard which enables us to set each charger power limits,
             also allows setting amperage limits instead.
           </div>
+          <h1 className="text-lg underline text-secondary">Problem 1</h1>
           <div>
             Moving on, the first limitation is the mixing of three phase and
             single phase devices at a single location. Single phase electricity
@@ -155,6 +157,7 @@ export const EVChargerDLB = () => {
             voltage for the moment, and simply move on with the knowledge that a{' '}
             <Link
               className="text-secondary"
+              target="_blank"
               href="https://www.quora.com/A-3-phase-machine-takes-a-100-ampere-current-Each-phase-takes-how-much-ampere"
             >
               3 phase device looking to draw 100A will draw 100A from each phase
@@ -166,6 +169,7 @@ export const EVChargerDLB = () => {
             a holistic grid (at least, when any single phase chargers are also
             involved, otherwise it becomes the same).
           </div>
+          <h1 className="text-lg underline text-secondary">Problem 2</h1>
           <div>
             Another limitation emerges when considering devices and ports.
             Often, each charger will have a couple of ports, which have their
@@ -190,6 +194,7 @@ export const EVChargerDLB = () => {
             build. The model should have a set of aims, and also a set of
             restrictions/assumptions.
           </div>
+          <h1 className="text-lg underline text-secondary">Assumptions</h1>
           <div>
             We aim to:
             <ul className=" ml-6">
@@ -236,6 +241,9 @@ export const EVChargerDLB = () => {
             since it does appear we have these 'layers' of dependency (ports
             depend on devices, devices depend on phases, vise versa).
           </div>
+          <h1 className="text-lg underline text-secondary">
+            Example: Location A
+          </h1>
           <div>
             As an example, consider a Location A with 60 amps supplied from the
             grid and 3 chargers:
@@ -283,15 +291,27 @@ export const EVChargerDLB = () => {
           </h1>
           <div>
             We now need to use this tree structure to figure out what the
-            optimal allocation is. It should obviously involve allocating 0 amps
-            to innactive chargers, but then allocating the most evenly
-            distributed and maximal amount of amperage to every other charger.
+            optimal allocation is, or rather, an algorithm that does so. It
+            should obviously involve allocating 0 amps to innactive chargers,
+            but then allocating the most evenly distributed and maximal amount
+            of amperage to every other charger. I will demonstrate 2 algorithms.
+            The first of which is somewhat of a loose brute force approach that
+            happens to be decently efficient for a particular scenario, but
+            often inoptimal. The other is an optimised approach which I find
+            rather beautiful, and frankly, is the reason I decided to write this
+            article.
           </div>
+          <h1 className="text-lg underline text-secondary">
+            The Quick and Dirty Fix
+          </h1>
           <div>
             Surprisingly, there is a fairly primitive algorithm that works
-            exceptionally well for locations with devices that have large
-            capacities in proportion to grid allocation. It simply involves
-            <ol className="list-decimal ml-6">
+            exceptionally well <span className="underline">exclusively</span>{' '}
+            for locations with devices that have large circuit capacities in
+            proportion to the grid allocation. It simply involves:
+          </div>
+          <div>
+            <ol className="list-decimal ml-5">
               <li>
                 Finding the phase with the most active connectors attached to it
               </li>
@@ -304,12 +324,92 @@ export const EVChargerDLB = () => {
               </li>
             </ol>
           </div>
-          <div>This works because</div>
+          <div>ANIMATION</div>
           <div>
-            However, it can result in large amounts of unallocated amperage if
-            the device and connector capacity is far lower than what it was
-            allocated, then we would have to reiterate using amount allocated
-            that wasn't used, etc - getting quite messy to be optimal.
+            This works because if we target the phase with the most active
+            connectors (and each phase has the same amperage), dividing it's
+            supply by the number of active connectors will certainly set out to
+            allocate an amperage which won't exceed that phase. But because that
+            phase has the most active connections, it certainly won't exceed the
+            others too. So immediately, this algorithm respects the grid
+            capacity. Since we minimum of that and the capacities of the branch
+            a connector is on, we respect the capacities of everything.
+          </div>
+          <div>
+            However, when we, for example, receive from the initial calculation
+            to ideally allocate say 30A to each active connector, but two
+            connectors can only be set to 22A, we have this leftover unusued 16A
+            to give to the other active connectors. So we have to do some sort
+            of 'extra pass' to donate this. But what if in reallocating that, we
+            again allocate past some capacity and have leftover? We end up in
+            this loop where we don't necessarily know at what step it would
+            terminate.
+          </div>
+          <div>
+            Iterating our way out of this mess until the allocation works would
+            be bad practice in my opinion, we ideally want to gaurantee that the
+            balanced load can be calculated in a deterministic amount of time -
+            especially in the setting of big asynchronous software. Maybe you
+            think writing some while loop that terminates eventually is fine. In
+            a lot of settings it probably is, which is why this algorithm can be
+            viable, but personally I'd rather something cleaner.
+          </div>
+          <div>ANIMATION</div>
+          <div>
+            We see this approach can result in large amounts of unallocated
+            amperage if the device and connector capacity is far lower than what
+            we initially attempted to allocate. Which is why I say it only works
+            well if device and connector capacities happen to be quite high, as
+            then it will be less likely there is unallocated amounts remaining.
+            That solution would be perfect if there was no device and connector
+            maximums, but there is. Luckily, we can find a cleaner approach.
+          </div>
+          <h1 className="text-lg underline text-secondary">
+            The Tree Tipping Algorithm
+          </h1>
+          <div>
+            The algorithm I wanted to share was one that strongly utilises the
+            fact we represent this as a tree. When staring at the tree
+            structure, a thought occurred to me that if each connector were a
+            bucket, with it's volume equal to the maximum amperage it can safely
+            be set, then pouring water from the top would evenly distribute
+            across these buckets. If any of them overflowed, they just flow into
+            one of the adjascent buckets. See below:
+          </div>
+          <div>ANIMATION</div>
+          <div>
+            In nature a tree will propagate water from it's roots, and have
+            water pour down evenly from it's canopy. The reason I call this tree
+            tipping is because in the first pass, we will traverse from the
+            connectors to the phases to determine allocations, things are
+            naturally flowing towards the top - the propagation step. After that
+            all we have to do is let the water (amperage) be tipped into the top
+            and flow into
+          </div>
+          <div>
+            What this step requires is that for each device, we create a vector
+            of what amperage each connector is asking for. We then normalise it
+            to have a sum equal to the device's max amperage. This way we find
+            an allocation which does not exceed the capacity of the parent node,
+            and is in perfect proportion to what amperage each connector is
+            asking for.
+          </div>
+          <div>ANIMATION</div>
+          <div>
+            Now what's perfect about this is that connectors bear the same
+            relationship to devices as devices do to the phase nodes, so we can
+            just repeat that step recursively, for the whole tree. That is,
+            after creating our device vector, we propagate to each phase the
+            amperage each device is asking for, and normalise the sum to be
+            equal to the grid amperage. See the whole propagation step visually
+            below.
+          </div>
+          <div>IMAGE</div>
+          <div>
+            After this we simply let the tree do it's work, 'tipping' the
+            amperage from the phases through the tree, having the water flow
+            from the canopy (to continue our analogy). This needs to be done for
+            each phase independently
           </div>
         </div>
       </PostSummary>
