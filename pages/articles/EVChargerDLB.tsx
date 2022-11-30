@@ -282,9 +282,14 @@ export const EVChargerDLB = () => {
             className="mx-auto"
           />
           <div>
-            With this method of representing a location, therefore granting a
-            data structure (the tree) with which we can represent a location, we
-            can finally move on to solving this model of the problem.
+            Note that this representation{' '}
+            <span className="underline">does not</span> intend to or adequately
+            represent the circuitry of the system, but rather the dependencies
+            and restrictions on amperage in allocating a safe amount -
+            essentially all the pieces relevant to the DLM problem. With this
+            method of representing a location, therefore granting a data
+            structure (the tree) for a location, we can finally move on to
+            solving the problem.
           </div>
           <h1 className="text-2xl underline text-secondary">
             Solving The Model
@@ -383,8 +388,9 @@ export const EVChargerDLB = () => {
             tipping is because in the first pass, we will traverse from the
             connectors to the phases to determine allocations, things are
             naturally flowing towards the top - the propagation step. After that
-            all we have to do is let the water (amperage) be tipped into the top
-            and flow into
+            all we have to do is let the water (amperage) be 'tipped' into the
+            top and flow eventually into the connectors, determining their
+            safely optimal allocation.
           </div>
           <div>
             What this step requires is that for each device, we create a vector
@@ -408,8 +414,13 @@ export const EVChargerDLB = () => {
           <div>
             After this we simply let the tree do it's work, 'tipping' the
             amperage from the phases through the tree, having the water flow
-            from the canopy (to continue our analogy). This needs to be done for
-            each phase independently
+            from the canopy (to continue our analogy). To do this across all
+            phases, we could either A - do this for each phase seperately, or B
+            - combine the phases and use the minimum allocation for each device.
+            The problem with the first option is unnecessary complexity, the
+            problem with the second is that we need to also record what
+            allocation is for what connector, rather than just inferring them by
+            their array position.
           </div>
         </div>
       </PostSummary>
@@ -424,7 +435,7 @@ export const EVChargerDLBSummary = () => {
       isPageHeader={false}
       children={undefined}
       link="articles/EVChargerDLB"
-      desc="A generalisable model to balance amperage distribution across a set of OCPP chargers, without exceeding a given grid capacity."
+      desc="A generalisable model to balance amperage distribution across a set of electric vehicle chargers, without exceeding a given grid capacity."
     />
   )
 }
