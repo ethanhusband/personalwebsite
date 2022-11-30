@@ -49,8 +49,12 @@ a {
   background-color: #2fdce1;
 }
 
-.white-shadow {
+.nav-shadow {
   filter: drop-shadow(0 0 0.5rem white);
+}
+
+.nav-shadow:hover {
+  filter: drop-shadow(0 0 0.5rem #2fdce1);
 }
 
 .post-shadow {
