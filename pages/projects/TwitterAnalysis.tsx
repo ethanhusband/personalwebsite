@@ -2,6 +2,7 @@ import PostSummary from '../components/PostSummary'
 import Link from 'next/link'
 import Image from 'next/image'
 
+
 export const TwitterAnalysis = (context: any) => {
   return (
     <div className="flex flex-col ">
@@ -50,12 +51,14 @@ export const TwitterAnalysis = (context: any) => {
               width={200}
               height={200}
               alt="Basic Features Correlation Matrix"
+              className="border-2 border-black"
             />
             <Image
               src="/assets/twitter-analysis/correlationCohere.png"
               width={300}
               height={200}
               alt="Coherence Correlation Matrix"
+              className="border-2 border-black"
             />
           </div>
           <div>
