@@ -10,7 +10,7 @@ export const CheckersBot = () => {
         title="Checkers Bot"
         isPageHeader={true}
         link="/CheckersBot"
-        desc="Assignment - DD/MM/YY"
+        desc="Assignment - 21/10/2021"
       >
         <div className="flex flex-col justify-center gap-y-4">
           <div>
