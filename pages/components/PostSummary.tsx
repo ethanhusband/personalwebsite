@@ -1,9 +1,11 @@
-import { FaAngleRight, FaAngleDown } from 'react-icons/fa'
+import { FaAngleRight, FaAngleDown, FaBolt } from 'react-icons/fa'
 import Link from 'next/link'
 import { useMediaQuery } from '@mui/material'
+import { Tooltip } from '@nextui-org/react'
+import { useState } from 'react'
 
 // This component is used as a summary for each page, but is reused as the header and background for the corresponding page
-// If using as a summary, specify children = {undefined} AND isPageHeader = {false}
+// If using as a summary, must specify children = {undefined} AND isPageHeader = {false}
 // Otherwise if used as a header, wrap the article with it.
 // Title, link and description props are relatively self-explanatory.
 
@@ -12,20 +14,18 @@ export const PostSummary = ({
   link,
   desc,
   isPageHeader = true,
+  active = false,
   children,
-}: {
-  title: string
-  link: string
-  desc: string
-  isPageHeader: boolean
-  children: JSX.Element | undefined
-}) => {
+}: any) => {
+  const [hover, updateHover] = useState(false)
   var postContents = null
+  const angleColor = hover ? '#2fdce1' : 'rgb(228 228 231)'
+
   var angleButton = (
     <FaAngleRight
       className="ml-auto mr-4 my-auto"
       size={35}
-      color="rgb(228 228 231)"
+      color={angleColor}
     />
   )
 
@@ -41,7 +41,7 @@ export const PostSummary = ({
       <FaAngleDown
         className="ml-auto mr-4 my-auto"
         size={35}
-        color="rgb(228 228 231)"
+        color={angleColor}
       />
     )
   }
@@ -63,11 +63,18 @@ export const PostSummary = ({
   titleStyle += ' text-secondary'
 
   return (
-    <div className="py-4 px-2 min-50px w-full max-w-900px self-center rounded-lg bg-zinc-700 post-shadow">
+    <div
+      className="py-4 px-2 min-50px w-full max-w-900px self-center rounded-lg bg-zinc-700 post-shadow"
+      onMouseOver={() => updateHover(true)}
+      onMouseOut={() => updateHover(false)}
+    >
       <Link href={link}>
         <div className="flex flex-row ">
           <div className="ml-4 flex flex-col justify-center w-full mr-2">
-            <div className={titleStyle}>{title}</div>
+            <div className="flex flex-row">
+              <div className={titleStyle}>{title}</div>
+              {active && <ActiveTooltip id={title} />}
+            </div>
             <div className="mt-0.5 text-base text-zinc-400">{desc}</div>
           </div>
           {angleButton}
@@ -75,6 +82,17 @@ export const PostSummary = ({
       </Link>
       {postContents}
     </div>
+  )
+}
+
+export const ActiveTooltip = ({ size = 22 }: any) => {
+  return (
+    <Tooltip
+      className="my-auto ml-2"
+      content={'This project is currently active'}
+    >
+      <FaBolt color="white" size={size} />
+    </Tooltip>
   )
 }
 

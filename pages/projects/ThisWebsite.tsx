@@ -5,7 +5,6 @@ export const ThisWebsite = () => {
     <div className="flex flex-col">
       <PostSummary
         title="This Website"
-        isPageHeader={true}
         link="/EVUpCharge"
         desc="Personal Project - DD/MM/YY"
       >
@@ -25,6 +24,7 @@ export const ThisWebsiteSummary = () => {
   return (
     <PostSummary
       title="This Website"
+      active
       isPageHeader={false}
       children={undefined}
       link="projects/ThisWebsite"

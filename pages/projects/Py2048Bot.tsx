@@ -4,7 +4,6 @@ export const Py2048Bot = () => {
   return (
     <PostSummary
       title="2048 Bot"
-      isPageHeader={true}
       link="/Py2048Bot"
       desc="Personal Project - DD/MM/YY"
     >

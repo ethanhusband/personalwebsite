@@ -5,7 +5,6 @@ export const ReactMandelbrot = () => {
     <div className="flex flex-col">
       <PostSummary
         title="React Mandelbrot Set Renderer"
-        isPageHeader={true}
         link="projects/ReactMandelbrot"
         desc="Personal Project - DD/MM/YY"
       >

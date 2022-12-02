@@ -7,7 +7,6 @@ export const EVChargerDLB = () => {
     <div className="flex flex-col">
       <PostSummary
         title="Dynamic Load Management for EV Chargers"
-        isPageHeader={true}
         link="/articles/EVChargerDLB"
         desc="Ethan Husband - DD/MM/YY"
       >

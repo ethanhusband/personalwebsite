@@ -8,7 +8,6 @@ export const CheckersBot = () => {
     <div className="flex flex-col">
       <PostSummary
         title="Checkers Bot"
-        isPageHeader={true}
         link="/CheckersBot"
         desc="Assignment - 21/10/2021"
       >

@@ -9,11 +9,11 @@ import { TwitterSummary } from './projects/TwitterAnalysis'
 export const ProjectMenu: NextPage = () => {
   return (
     <div className="gap-y-6 flex flex-col">
+      <EVUpChargeSummary />
       <ThisWebsiteSummary />
       <ReactMandelbrotSummary />
       <TwitterSummary />
       <Py2048BotSummary />
-      <EVUpChargeSummary />
       <CheckersBotSummary />
     </div>
   )

@@ -8,7 +8,6 @@ export const TwitterAnalysis = (context: any) => {
     <div className="flex flex-col ">
       <PostSummary
         title="Twitter Popularity Analysis"
-        isPageHeader={true}
         link="/TwitterAnalysis"
         desc="Assignment - 17/10/2022"
       >
