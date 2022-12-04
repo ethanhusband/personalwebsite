@@ -43,7 +43,7 @@ export const NavBar = () => {
   )
 
   return (
-    <div className="z-50 fixed top-0 right-0 left-0 bg-black mx-auto rounded-b-3xl fixedAWSD border-secondary border-b nav-shadow">
+    <div className="z-50 fixed top-0 right-0 left-0 bg-black mx-auto rounded-b-3xl fixedAWSD nav-border">
       {navbar}
     </div>
   )

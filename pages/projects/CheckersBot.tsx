@@ -55,6 +55,7 @@ export const CheckersBot = () => {
             <Link
               href="https://en.wikipedia.org/wiki/Minimax"
               className="text-secondary"
+              target="_blank"
             >
               minimax decision tree
             </Link>{' '}
@@ -63,6 +64,7 @@ export const CheckersBot = () => {
             <Link
               href="https://en.wikipedia.org/wiki/Zero-sum_game"
               className="text-secondary"
+              target="_blank"
             >
               zero-sum games
             </Link>{' '}
@@ -173,6 +175,7 @@ export const CheckersBot = () => {
             submitted as a single file, so the source code at{' '}
             <Link
               className="text-secondary"
+              target="_blank"
               href="https://github.com/ethanhusband/checkers-bot/blob/main/checkersbot.c"
             >
               this github repository

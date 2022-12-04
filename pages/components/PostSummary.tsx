@@ -29,7 +29,7 @@ export const PostSummary = ({
     />
   )
 
-  // Need to feed through the content when this element is just the header of a page
+  // Need to feed through the content when this element is just the header/wrapper of a page
   if (isPageHeader) {
     postContents = (
       <div>

@@ -2,7 +2,6 @@ import PostSummary from '../components/PostSummary'
 import Link from 'next/link'
 import Image from 'next/image'
 
-
 export const TwitterAnalysis = (context: any) => {
   return (
     <div className="flex flex-col ">
@@ -65,6 +64,7 @@ export const TwitterAnalysis = (context: any) => {
             data used in the report, can be found here:{' '}
             <Link
               className="text-secondary"
+              target="_blank"
               href="https://github.com/ethanhusband/follower-analysis.git"
             >
               https://github.com/ethanhusband/follower-analysis.git
