@@ -175,13 +175,13 @@ a {
     filter: drop-shadow(0 0 0.4rem #2fdce1);
   }
   to {
-    filter: drop-shadow(0 0 0.6rem #2fdce1);
+    filter: drop-shadow(0 0 0.7rem #2fdce1);
   }
 }
 
 @keyframes blue-unluminate {
   from {
-    filter: drop-shadow(0 0 0.6rem #2fdce1);
+    filter: drop-shadow(0 0 0.7rem #2fdce1);
   }
   to {
     filter: drop-shadow(0 0 0.4rem #2fdce1);

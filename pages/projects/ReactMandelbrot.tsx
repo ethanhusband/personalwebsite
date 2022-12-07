@@ -9,11 +9,13 @@ export const ReactMandelbrot = () => {
         desc="Personal Project - DD/MM/YY"
       >
         <div>
-          While somewhat of an ironic project given this is something React is
-          clearly not optimised for, this provides a means for React developers
-          to easily render a decent quality Mandelbrot set image without the
-          need for learning more up-to-the-task libraries like OpenGL or Pillow
+          While somewhat of an ironic project given this is the type of
+          rendering React is clearly not optimised for, this provides a means
+          for React developers to easily render a decent quality Mandelbrot set
+          image without the need for learning more up-to-the-task libraries like
+          OpenGL or Pillow
         </div>
+        <div>The </div>
       </PostSummary>
     </div>
   )
