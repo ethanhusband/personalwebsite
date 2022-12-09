@@ -77,12 +77,12 @@ a {
 
 .button-hover:hover {
   background-color: #333;
-  filter: drop-shadow(0 0 0.2rem #2fdce1);
+  filter: drop-shadow(0 0 0.2rem #32f6fd);
 }
 
 .button-hover:active {
   background-color: #333;
-  filter: drop-shadow(0 0 0.5rem #2fdce1);
+  animation: button-luminate 0.1s ease-in-out forwards alternate;
 }
 
 .max-w-200px {
@@ -175,15 +175,24 @@ a {
     filter: drop-shadow(0 0 0.4rem #2fdce1);
   }
   to {
-    filter: drop-shadow(0 0 0.7rem #2fdce1);
+    filter: drop-shadow(0 0 0.7rem #25f8ff);
   }
 }
 
 @keyframes blue-unluminate {
   from {
-    filter: drop-shadow(0 0 0.7rem #2fdce1);
+    filter: drop-shadow(0 0 0.7rem #25f8ff);
   }
   to {
     filter: drop-shadow(0 0 0.4rem #2fdce1);
+  }
+}
+
+@keyframes button-luminate {
+  from {
+    filter: drop-shadow(0 0 0.2rem #2fdce1);
+  }
+  to {
+    filter: drop-shadow(0 0 0.5rem #25f8ff);
   }
 }
