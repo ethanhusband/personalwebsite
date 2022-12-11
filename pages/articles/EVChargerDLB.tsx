@@ -4,14 +4,14 @@ import Image from 'next/image'
 
 export const EVChargerDLB = () => {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col ">
       <PostSummary
         title="Dynamic Load Management for EV Chargers"
         link="/articles/EVChargerDLB"
         desc="Ethan Husband - DD/MM/YY"
       >
         <div className="flex flex-col gap-y-4">
-          <h1 className="text-2xl underline text-secondary">
+          <h1 className="text-2xl underline text-secondary ">
             Context: The Charging Problem
           </h1>
           <div>
@@ -66,32 +66,222 @@ export const EVChargerDLB = () => {
             </Link>
             ), which is what brought me to this problem.
           </div>
+          <h1 className="text-2xl underline text-secondary ">Preliminaries</h1>
+          <div>
+            Firstly, some preliminary knowledge around circuits, AC vs DC power
+            and Single Phase vs Three phase power are required to elaborate. For
+            those familiar, skip this section. What I will explain first here
+            are the entry level details of electricity, starting with circuits
+            and we'll build our way up from there. I, and many, often prefer to
+            think of a circuit as water flowing through pipework, known as the{' '}
+            <Link
+              className="text-secondary"
+              target="_blank"
+              href="https://en.wikipedia.org/wiki/Hydraulic_analogy"
+            >
+              Hydraulic Analogy
+            </Link>
+            . I'm going to descibribe these concepts solely using the analogy,
+            as it will be sufficient for what we're doing, and ends up being
+            incredibly powerful in terms of conceptualising a solution.
+          </div>
+          <div>
+            Firstly,{' '}
+            <Link
+              className="text-secondary"
+              target="_blank"
+              href="https://en.wikipedia.org/wiki/Ampere"
+            >
+              amperage
+            </Link>{' '}
+            is the unit which describes the rate at which electrical charge (or
+            electrons) flow through a circuit. We can think of this as the
+            volume of water flowing though pipework. Meanwhile,{' '}
+            <Link
+              className="text-secondary"
+              target="_blank"
+              href="https://en.wikipedia.org/wiki/Voltage"
+            >
+              voltage
+            </Link>{' '}
+            describes the difference in electrical potential between two points.
+            We can think of voltage as the difference in water pressure between
+            two points of the pipework. I found the illustration below to be
+            particularly helpful.
+          </div>
+          <Image
+            src="/assets/dlb/water-analogy-1.png"
+            alt=""
+            width={500}
+            height={200}
+            className="mx-auto border-2 border-black rounded"
+          />
+          <div>
+            Finally,{' '}
+            <Link
+              className="text-secondary"
+              target="_blank"
+              href="https://en.wikipedia.org/wiki/Watt"
+            >
+              wattage
+            </Link>
+            , or power, is simply the result of multiplying amperage and
+            voltage. In the context of the Hydraulic Analogy, I like to think of
+            it as the amount multiplied by the rate, therefore being useful as
+            the measure of total electrical power (water) being delivered.
+            Wattage generally is used to describe the rate at which something is
+            receiving electricity, particularly in the context of charging a
+            car.
+          </div>
+          <div>
+            There are two more final terms to introduce regarding circuits which
+            are series and parellel. A circuit connected in series can be
+            thought of as pipework consisting of a single pipe, while circuits
+            running in parallel can be thought of as a pipe which splits into
+            different branches.
+          </div>
+          <Image
+            src="/assets/dlb/series-parallel.png"
+            alt=""
+            width={500}
+            height={200}
+            className="mx-auto border-2 border-black rounded"
+          />
+          <div>
+            With this, there are also two forms that power can be delivered in,
+            AC or DC. AC power is equivalent to water quickly oscillating back
+            and forth in a pipe, while DC is equivalent to water being
+            constantly pushed through a pipe (more intuitively). When I first
+            heard this I thought, how are devices powered by AC power not
+            constantly switching on and off then? Well AC power is significantly
+            faster than DC (so much so that it is used in all industrial grids),
+            and this change in direction is often so fast it does not matter.
+            See{' '}
+            <Link
+              className="text-secondary"
+              target="_blank"
+              href="https://www.nde-ed.org/Physics/Electricity/alternatingcurrent.xhtml"
+            >
+              this resource here
+            </Link>{' '}
+            for a great short explanation.
+          </div>
+          <Image
+            src="/assets/dlb/ac-dc.png"
+            alt=""
+            width={500}
+            height={200}
+            className="mx-auto border-2 border-black rounded"
+          />
+          <div>
+            One final but important concept worth noting is that circuits which
+            use AC power may use{' '}
+            <Link
+              className="text-secondary"
+              target="_blank"
+              href="https://www.fluke.com/en-us/learn/blog/power-quality/single-phase-vs-three-phase-power"
+            >
+              Single Phase or Three Phase power
+            </Link>
+            . Single phase electricity is the delivery of simple AC power as we
+            know it, so at a rate which alternates and follows a single sine
+            wave (hence the term alternating current or AC power, and the
+            analogy of water oscillating in a pipe). The problem with this is
+            that half the time, the current is travelling away from the
+            direction you want it to go, which is inefficient. All industrial
+            electrical grids (that deliver power to your home) account for this
+            by using standard 3 phase power, where instead of one alternating
+            current (AC), it cleverly delivers 3 alternating currents at the
+            same time which are shifted 120° as to be evenly spaced and deliver
+            3 times the power. See below:
+          </div>
+
+          <Image
+            src="/assets/dlb/3phase1phase.gif"
+            alt=""
+            width={600}
+            height={300}
+            className="mx-auto border-2 border-black rounded"
+          />
+          <div>
+            To accomodate this all buildings will have electricity coming in
+            across 3 phases, known as L1, L2 and L3. Note we have been
+            discussing this problem in terms of amperage, but the display shows
+            how the phases supply voltage, which might seem to obfuscate the
+            problem with a new variable, but just ignore it and know the same
+            graph applies for amperage. As an example of how amperage is
+            delivered to a 3 phase a home device, a{' '}
+            <Link
+              className="text-secondary"
+              target="_blank"
+              href="https://www.quora.com/A-3-phase-machine-takes-a-100-ampere-current-Each-phase-takes-how-much-ampere"
+            >
+              3 phase device looking to draw 100A will draw 100A from each L1,
+              L2 and L3
+            </Link>
+            .
+          </div>
+          <div>
+            That concludes the overview of electrical circuits needed. As for
+            electric vehicle chargers themselves, all you really need to know is
+            that they are a device often with many ports to charge from, and can
+            come in AC or DC (exactly like an plug in your wall really).
+          </div>
+          <div>
+            For those unfamiliar with all these concepts, it can be a lot to
+            take in, coming from someone who didn't really know any of this
+            before confronting the problem. It might be worth a reread or
+            checking out the associated links if anything is still unclear, but
+            any further nitpicking details regarding electricity shouldn't be
+            necessary to know, just the general overview provided.
+          </div>
           <h1 className="text-2xl underline text-secondary">
             What is Load Management/Balancing?
           </h1>
           <div>
             One of the key problems faced in the process of expanding EV
-            charging infrastructure, is the power load strained on the grid in
-            doing so. Since electric vehicle chargers draw extensive amounts of
-            power, most properties with multiple chargers installed are likely
-            to draw more power from the grid than their local power company has
-            allocated them, resulting in power outages (when the load drawn by
-            the property exceeds what it is allocated, tripping the circuit
-            breaker).
+            charging infrastructure, is the power load strained on{' '}
+            <Link
+              href="https://en.wikipedia.org/wiki/Electrical_grid"
+              className="text-secondary"
+            >
+              the electical grid
+            </Link>{' '}
+            and your the local property in doing so. With our constantly growing
+            dependence on electricity, the stability of the grid is important
+            for just about everything you can think of. As a result, power
+            companies will often only allocate some specified amount of amperage
+            to each property. Since electric vehicle chargers draw extensive
+            amounts of power, most properties with multiple chargers installed
+            are likely to draw more amperage from the grid than their local
+            power company has allocated them. As a result, electric vehicle
+            chargers frequently cause power outages (when the load drawn by the
+            property exceeds what it is allocated, tripping the local{' '}
+            <Link
+              href="https://en.wikipedia.org/wiki/Circuit_breaker"
+              className="text-secondary"
+            >
+              circuit breaker
+            </Link>{' '}
+            - which I'm sure we've all experienced before) which can be
+            obviously problematic for a variety of reasons.
           </div>
           <div>
             This is particularly relevant for properties which intend on having
             chargers installed, but don't have their electrical infrastructure
             primed to be a charging station, which is the case for many places
-            currently looking to install chargers - apartments, parking lots,
-            city councils etc. Dynamic Load Management, also known as Dynamic
-            Load Balancing, DLB or DLM, is the localised solution to this
-            problem. It connects a group of chargers to a software which ensures
-            they won't exceed the allocated amperage of the property, while also
-            ensuring each charger is fairly distributed the most even amount of
-            amperage possible. When a charger starts or stops being used, it
-            will dynamically set each charger to draw an ideal amount of
-            amperage based on their use and activity.
+            looking at installing many chargers - apartments, parking lots, city
+            councils etc. Dynamic Load Management, also known as Dynamic Load
+            Balancing, DLB or DLM, is the localised solution to this problem. It
+            connects a group of chargers to a software which ensures they won't
+            exceed the allocated <span className="underline">amperage</span> of
+            the property, as to be safe. Meanwhile, also ensuring each charger
+            is fairly allocated the most evenly distributed amount of{' '}
+            <span className="underline">wattage</span> possible, as to guarantee
+            they all provide a fairly equal amount of power to those charging.
+            When a charger starts or stops being used, it will dynamically set
+            each charger to draw an ideal amount of power based on their use and
+            activity.
           </div>
           <div>
             A lot of people (including myself at first glance, being formerly
@@ -100,98 +290,71 @@ export const EVChargerDLB = () => {
             dividing it by the number of active chargers, assigning that to each
             charger, and moving on. Basic division, yielding an evenly
             distributed allocation. However{' '}
-            <span className="underline">2 major limitations</span> are faced
+            <span className="underline">3 major limitations</span> are faced
             that convolute the problem significantly. Believe it or not,
             considering these limitations makes the solution much more
             complicated than mere division.
           </div>
+          <h1 className="text-lg underline text-secondary">Problem 1</h1>
           <div>
-            Before exploring these, I should also add that while load management
-            typically concerns balancing wattage (W) drawn by devices, we will{' '}
+            The first limitation is the mixing of three phase and single phase
+            devices (at a location with 3 phase power). When allocating amperage
+            to devices, we have to consider whether the allocation exceeds
+            capacity of <span className="underline">any</span> of the 3 phases,
+            rather than a single source (at least, when any single phase
+            chargers are also involved, otherwise it becomes the same).
+          </div>
+          <h1 className="text-lg underline text-secondary">Problem 2</h1>
+          <div>
+            Another limitation emerges when considering devices and ports.
+            Often, each charger will have a couple of ports, which get allocated
+            some amperage. The ports themselves have a maximum amperage they can
+            safely use to charge a car, and on top of that, the devices
+            themselves usually have a maximum circuit amperage which too must
+            not be exceeded. We see a solution to this is more involved than
+            mere division, as we need to respect all involved capacities.
+          </div>
+          <h1 className="text-lg underline text-secondary">Problem 3</h1>
+          <div>
+            The final limitation to consider is that we are trying to get
+            balanced distribution of wattage, not amperage, such that everyone
+            charging has the most similar charge rate achievable, thus being
+            fair. Remember wattage is amperage times voltage (W=I*V). The good
+            thing is that in local property circuits, almost always devices are
+            connected in parallel. Now if we think about this in terms of our
+            water analogy, this was like splitting the pipework in two. In such
+            a case, the volume (amperage) will split, but the pressure (voltage)
+            would stay the same, therefore{' '}
             <Link
               className="text-secondary"
               target="_blank"
               href="https://www.allaboutcircuits.com/textbook/direct-current/chpt-5/simple-parallel-circuits/"
             >
-              assume that the chargers are in parallel, such that they have the
-              same voltage (V)
-            </Link>{' '}
-            . Since W = I*V (known as Ohm's Law, where I = amperage), an equal
-            voltage enables us to simply work in terms of amps. Note this is
-            likely to be the case, as almost all home circuits are run in
-            parallel to prevent one broken/off appliance disrupting the whole
-            circuit. This is also convenient as{' '}
-            <Link
-              className="text-secondary"
-              target="_blank"
-              href="https://www.openchargealliance.org/protocols/ocpp-16/"
-            >
-              OCPP
+              we may assume that the chargers have the same voltage (V)
             </Link>
-            , the standard which enables us to set each charger power limits,
-            also allows setting amperage limits instead.
-          </div>
-          <h1 className="text-lg underline text-secondary">Problem 1</h1>
-          <div>
-            Moving on, the first limitation is the mixing of three phase and
-            single phase devices at a single location. Single phase electricity
-            typically involves voltage being delivered at a rate which follows a
-            single sine wave (hence the term alternating current or AC power).
-            The voltage oscillates from positive to negative, and in turn the
-            direction of the current also periodically changes. However most
-            industrial electrical grids use standard 3 phase power, where
-            instead of one alternating current (AC), it delivers 3 alternating
-            currents which are shifted 120° as to be evenly spaced and deliver 3
-            times the power. See below:
-            <Image
-              src="/assets/dlb/3phase1phase.gif"
-              alt=""
-              width={600}
-              height={300}
-              className="mx-auto my-4"
-            />
-            Note we have been discussing this problem in terms of amperage, but
-            the display shows how the phases supply voltage, which might seem to
-            obfuscate the problem with a new variable. But we can still ignore
-            voltage for the moment, and simply move on with the knowledge that a{' '}
-            <Link
-              className="text-secondary"
-              target="_blank"
-              href="https://www.quora.com/A-3-phase-machine-takes-a-100-ampere-current-Each-phase-takes-how-much-ampere"
-            >
-              3 phase device looking to draw 100A will draw 100A from each phase
-            </Link>
-            , as an example of how amperage distribution across 3 phases works .
-            This means that when allocating amperage to devices, we have to
-            consider whether the allocation exceeds capacity of{' '}
-            <span className="underline">any</span> of the 3 phases, rather than
-            a holistic grid (at least, when any single phase chargers are also
-            involved, otherwise it becomes the same).
-          </div>
-          <h1 className="text-lg underline text-secondary">Problem 2</h1>
-          <div>
-            Another limitation emerges when considering devices and ports.
-            Often, each charger will have a couple of ports, which have their
-            own allocations. The ports themselves have a maximum capacity they
-            can use to charge a car, and on top of that, the devices themselves
-            usually have a circuit amperage which must not be exceeded. We see a
-            solution to this is more involved than mere division, as we need to
-            respect all involved capacities.
+            . Hence at the device level, all we really need to think about is
+            how we distribute amperage. However, within a device itself things
+            get more complicated. Electric vehicle chargers can be AC or DC, and
+            DC devices after converting the AC power they are given to DC, often
+            apply a large voltage to provide more power to the car. So we need
+            to account for the voltage they apply in terms of balancing the
+            wattage of active connectors.
           </div>
           <div>
-            One may also be considering the factor of DC and AC chargers
-            currently used to charge EV's, and whether mixing these necessitates
-            any other considerations. Since DC chargers convert AC power to DC
-            inside the charger,
+            Thus we see that to even consider solving these load management
+            problems we always need the property circuit breaker amperage,
+            property voltage and property devices - including what phases they
+            are attached to, what their maximum amperage is as well as their
+            connectors and connector maximum amperages.
           </div>
           <h1 className="text-2xl underline text-secondary">
             Modelling the problem
           </h1>
           <div>
-            To create a model of the problem, and therefore find a solution,
-            what every model needs is a set of assumptions from which it can
-            build. The model should have a set of aims, and also a set of
-            restrictions/assumptions.
+            Personally, I think there's a lot to think about in terms of
+            approaching this. Firstly, we should list set of aims, and also a
+            set of restrictions/assumptions, so the outline of what we're trying
+            to do can all be in one place.
           </div>
           <h1 className="text-lg underline text-secondary">Assumptions</h1>
           <div>
@@ -199,27 +362,22 @@ export const EVChargerDLB = () => {
             <ul className=" ml-6">
               <li>
                 a) Allocate each active charging port the most evenly
-                distributed amount of amperage
+                distributed amount of power
               </li>
               <li>
-                b) Allocate each active charging port a maximal amount of
-                amperage
+                b) Allocate each active charging port a maximal amount of power
               </li>
+              <li>c) Respect all amperage capacities</li>
             </ul>
           </div>
           <div>
             Then the corresponding restrictions/assumptions on that aim are:
             <ul className="ml-6">
-              <li>
-                i) Chargers and ports within chargers are connected in parallel,
-                such that we may work exclusively in amperage
-              </li>
-              <li>
-                ii) Each device has a maximal circuit amperage to not be exceed
-              </li>
+              <li>i) Devices are connected in parallel</li>
+              <li>ii) Each device has a maximal circuit amperage</li>
               <li>
                 iii) Each port of a device also has a seperate maximal circuit
-                amperage to not be exceeded
+                amperage
               </li>
               <li>
                 iv) Each AC phase from the grid supplies an equal amperage
@@ -232,13 +390,16 @@ export const EVChargerDLB = () => {
             </ul>
           </div>
           <div>
-            Certainly, this is a lot to consider, and could not be satisfied by
-            any naive approach. With this, my immediate idea is that we must
-            also find a way to represent a given DLB setup in this model, for
-            the sake of getting a better intuition and interpretation of the
-            problem. The obvious initial choice is to represent this as a tree,
-            since it does appear we have these 'layers' of dependency (ports
-            depend on devices, devices depend on phases, vise versa).
+            Certainly, this is still a lot to consider, and could not be
+            satisfied by any naive approach. Thinking about each phase, device,
+            connector and constraint at the same time is most likely too
+            straining on short-term memory to make any real progress trying to
+            solve, at least I find. With this, my immediate idea is that we must
+            find a way to represent a given DLB setup, for the sake of getting a
+            better intuition and interpretation of the problem. The obvious
+            initial choice is to represent this as a tree, since it does appear
+            we have these 'layers' of dependency (ports depend on devices,
+            devices depend on phases, vise versa).
           </div>
           <h1 className="text-lg underline text-secondary">
             Example: Location A
@@ -263,15 +424,15 @@ export const EVChargerDLB = () => {
             </ul>
           </div>
           <div>
-            One should acknowledge that it is practically unlikely a charger
+            One should acknowledge that it is, in practice, unlikely a charger
             will have ports with different max amperages (in fact they usually
             have the same max as the device). But we need to extend our model to
             all cases to ensure it will generalise well in the caprice of the
             real world. Nonetheless, describing Location A in the way we just
             have is in itself an example of why we need to represent this
-            somehow else, writing it out is clearly far too verbose. Noting that
-            phases 1, 2 and 3 are usually referred to as L1, L2, L3, that
-            example could easily be represented by the following diagram:
+            somehow else, writing it out is clearly far too verbose. We can
+            instead model that example easily by representing it with the
+            following diagram:
           </div>
           <Image
             src="/assets/dlb/locationA-1.png"
@@ -369,21 +530,40 @@ export const EVChargerDLB = () => {
             maximums, but there is. Luckily, we can find a cleaner approach.
           </div>
           <h1 className="text-lg underline text-secondary">
-            The Tree Tipping Algorithm
+            The Trickling Algorithm
           </h1>
           <div>
+            While this algorithm can be explained quite easily to programmers or
+            computer scientists, I want to explain it in a way that too
+            demonstrates the discrete thinking involved in coming up with such a
+            method, as to be accessible to all. One of my main goals of this
+            website is to illustrate a truth I've discovered that complex
+            solutions to problems can be arrived at by anyone - just by thinking
+            about the problem in a simpler, more accessible way, rather than
+            trying to solve it by searching for some complex, mentally straining
+            stroke of brilliance.
+          </div>
+          <div>
             The algorithm I wanted to share was one that strongly utilises the
-            fact we represent this as a tree. When staring at the tree
-            structure, a thought occurred to me that if each connector were a
-            bucket, with it's volume equal to the maximum amperage it can safely
-            be set, then pouring water from the top would evenly distribute
-            across these buckets. If any of them overflowed, they just flow into
-            one of the adjascent buckets. See below:
+            fact we represent these scenarios as a tree. When staring at the
+            tree structure, a somewhat tangential thought occurred to me that if
+            a real tree had a perfectly rounded canopy, water would trickle down
+            the top in a perfectly even manner each. Now that would yield an
+            even distribution, kind of like we want here.
+          </div>
+          <div>
+            connector were a bucket, with it's volume equal to the maximum
+            amperage it can safely receive, then pouring water from the top
+            would evenly distribute across these buckets - that is naturally
+            what it does assuming the slope is the same in all directions.
+            Furthermore, if sibling connectors
           </div>
           <div>ANIMATION</div>
           <div>
-            In nature a tree will propagate water from it's roots, and have
-            water pour down evenly from it's canopy. The reason I call this tree
+            We have the intuition of a solution, we just have to formalise it
+            now, so that it is programmable. Our program will need to know In
+            nature a tree will propagate water from it's roots, and have water
+            pour down evenly from it's canopy. The reason I call this tree
             tipping is because in the first pass, we will traverse from the
             connectors to the phases to determine allocations, things are
             naturally flowing towards the top - the propagation step. After that
@@ -413,13 +593,20 @@ export const EVChargerDLB = () => {
           <div>
             After this we simply let the tree do it's work, 'tipping' the
             amperage from the phases through the tree, having the water flow
-            from the canopy (to continue our analogy). To do this across all
-            phases, we could either A - do this for each phase seperately, or B
-            - combine the phases and use the minimum allocation for each device.
-            The problem with the first option is unnecessary complexity, the
-            problem with the second is that we need to also record what
-            allocation is for what connector, rather than just inferring them by
-            their array position.
+            from the canopy (to continue our analogy) through to the bottom
+            layer. Since each phase was passed a 0
+          </div>
+          <div>
+            For those wondering, we can set the amperage drawn by each connector{' '}
+            <Link
+              className="text-secondary"
+              target="_blank"
+              href="https://www.openchargealliance.org/protocols/ocpp-16/"
+            >
+              OCPP
+            </Link>
+            , the standard which enables EV smart charger communications abide
+            by.
           </div>
         </div>
       </PostSummary>

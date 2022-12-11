@@ -3,7 +3,7 @@ import PostSummary from './components/PostSummary'
 
 const About = () => {
   // For some reason, passing that outer div (with flex col) abstractly to all props doesn't apply the style correctly
-  // Hence it is done manually for each one. A frustrating nextjs flaw.
+  // Hence it is done manually for each one. A frustrating flaw.
   return (
     <div className="gap-y-6 flex flex-col">
       <PostSummary
@@ -14,20 +14,33 @@ const About = () => {
       >
         <div className="flex flex-col gap-y-4">
           <div>
-            This site comprises my cabinet of projects and ideas mostly
-            pertaining to Software Engineering, Computer Science and
-            Mathematics.
+            This site is an effort to share the some of the fascinating ideas
+            and problems I've encountered at a level of detail I wish to make
+            accessible to all, generally pertaining (but not limited) to
+            Software Engineering and Abstract Math. It includes articles
+            regarding ideas I've found intriguing or remarkable and wish to
+            share, as well as overviews of projects I've engaged in - with
+            explanations of how they all work.
           </div>
           <div>
-            I am currently working as the lead developer at{' '}
+            I sincerely hope to show through these articles that clever
+            solutions to real problems can be achieved by anyone, by breaking
+            down the thinking steps involved and providing thorough
+            explanations - to convey the more abstract notion I subscribe to that
+            we are all are far less cognitively limited than we often might
+            concede.
+          </div>
+          <div>
+            I am currently employed as the lead developer at{' '}
             <Link href="/projects/EVUpCharge" className="text-secondary">
               EVUp Charge
             </Link>
-            , a startup targetted at facilitating a variety of services for
-            electric vehicle smart chargers in Australia. I am also studying a
-            Bachelor of Science (Pure Mathematics) and a concurrent diploma of
-            Computer Science full time at the University of Melbourne, with the
-            intention of doing a Masters degree at ETH Zurich.
+            , an Australian company targetted at facilitating a variety of
+            services for electric vehicle smart chargers across the country. I
+            am also studying a Bachelor of Science (Pure Mathematics) and a
+            concurrent diploma of Computer Science full time at the University
+            of Melbourne, with the intention of doing a Masters degree at ETH
+            Zurich.
           </div>
           <div>Contact: eth.husband@gmail.com</div>
         </div>

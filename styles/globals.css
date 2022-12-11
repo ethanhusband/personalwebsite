@@ -7,7 +7,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Arial, sans-serif;
 }
 
 a {
@@ -50,15 +50,15 @@ a {
 }
 
 .post-shadow {
-  filter: drop-shadow(0 0 0.2rem rgb(228 228 231));
+  filter: drop-shadow(0 0 0.15rem rgb(228 228 231));
 }
 
 .post-shadow:hover {
-  filter: drop-shadow(0 0 0.2rem #2fdce1);
+  filter: drop-shadow(0 0 0.25rem #2fdce1);
 }
 
 .post-shadow:active {
-  filter: drop-shadow(0 0 0.3rem #2fdce1);
+  filter: drop-shadow(0 0 0.4rem #2fdce1);
 }
 
 
@@ -130,20 +130,15 @@ a {
 }
 
 .explore-effects {
-  background-color: rgba(47, 220, 225, 1);
-  color: black
+  animation: explore-unluminate 0.3s ease-in-out forwards alternate;
 }
 
 .explore-effects:hover {
-  background-color: black;
-  filter: drop-shadow(0 0 0.2rem #2fdce1);
-  color: #2fdce1
+  animation: explore-luminate 0.3s ease-in-out forwards alternate;
 }
 
 .explore-effects:active {
-  background-color: black;
-  filter: drop-shadow(0 0 0.5rem #2fdce1);
-  color: #2fdce1
+  color: #25f8ff
 }
 
 .post-title {
@@ -170,6 +165,23 @@ a {
   animation: blue-luminate 0.25s ease-in-out forwards alternate;
 }
 
+.font-arial {
+  font-family: Arial, sans-serif
+}
+
+.font-helvetica {
+  font-family: Helvetica, sans-serif
+}
+
+.font-roboto {
+  font-family: Roboto, sans-serif
+}
+
+.py-30 {
+  padding-top: 7.5rem;
+  padding-bottom: 7.5rem;
+}
+
 @keyframes blue-luminate {
   from {
     filter: drop-shadow(0 0 0.4rem #2fdce1);
@@ -194,5 +206,31 @@ a {
   }
   to {
     filter: drop-shadow(0 0 0.5rem #25f8ff);
+  }
+}
+
+@keyframes explore-luminate {
+  from {
+    filter: drop-shadow(0 0 0.1rem #2fdce1);
+    background-color: rgba(47, 220, 225, 1);
+    color: black
+  }
+  to {
+    filter: drop-shadow(0 0 0.8rem #25f8ff);
+    background-color: black;
+    color: #2fdce1
+  }
+}
+
+@keyframes explore-unluminate {
+  from {
+    filter: drop-shadow(0 0 0.8rem #25f8ff);
+    background-color: black;
+    color: #2fdce1
+  }
+  to {
+    filter: drop-shadow(0 0 0.1rem #2fdce1);
+    background-color: rgba(47, 220, 225, 1);
+    color: black
   }
 }

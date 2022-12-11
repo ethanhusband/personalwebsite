@@ -34,7 +34,9 @@ export const PostSummary = ({
     postContents = (
       <div>
         <hr className="mt-4 mx-3 border-black border" />
-        <div className="p-4 text-gray-100 text-base">{children}</div>
+        <div className="p-4 font-arial text-zinc-300 text-base tracking-wide">
+          {children}
+        </div>
       </div>
     )
     angleButton = (
@@ -64,7 +66,7 @@ export const PostSummary = ({
 
   return (
     <div
-      className="py-4 px-2 min-50px w-full max-w-900px self-center rounded-lg bg-zinc-700 post-shadow"
+      className="py-4 px-2 border border-zinc-800 min-50px w-full max-w-900px self-center rounded-xl bg-zinc-700 post-shadow"
       onMouseOver={() => updateHover(true)}
       onMouseOut={() => updateHover(false)}
     >

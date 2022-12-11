@@ -3,6 +3,9 @@ import Head from 'next/head'
 import useMediaQuery from '@mui/material/useMediaQuery'
 
 export const SitePage = ({ children }: any) => {
+  // There is an annoying problem here that we cant apply a flex-col to the children of the element.
+  // The reason it doesn't apply properly is because any time we have the children exported as a function,
+  // that function needs to return it's items inside a single div, ruining how it is intended to apply.
   return (
     <div className="w-screen bg-mandelbrot h-full cursor-crosshair">
       <Head>
