@@ -20,6 +20,7 @@ export const PostSummary = ({
   const [hover, updateHover] = useState(false)
   var postContents = null
   const angleColor = hover ? '#2fdce1' : 'rgb(228 228 231)'
+  var borderWidth = ' border'
 
   var angleButton = (
     <FaAngleRight
@@ -31,6 +32,7 @@ export const PostSummary = ({
 
   // Need to feed through the content when this element is just the header/wrapper of a page
   if (isPageHeader) {
+    borderWidth = ' border-2'
     postContents = (
       <div>
         <hr className="mt-4 mx-3 border-black border" />
@@ -66,7 +68,10 @@ export const PostSummary = ({
 
   return (
     <div
-      className="py-4 px-2 border border-zinc-800 min-50px w-full max-w-900px self-center rounded-xl bg-zinc-700 post-shadow"
+      className={
+        'py-4 px-2 border border-zinc-800 min-50px w-full max-w-900px self-center rounded-xl bg-zinc-700 post-shadow' +
+        borderWidth
+      }
       onMouseOver={() => updateHover(true)}
       onMouseOut={() => updateHover(false)}
     >

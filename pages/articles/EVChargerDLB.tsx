@@ -41,6 +41,13 @@ export const EVChargerDLB = () => {
               </Link>
               .
             </div>
+            <Image
+              src="/assets/dlb/charging-station.jpg"
+              alt=""
+              width={550}
+              height={200}
+              className="mx-auto border border-black rounded"
+            />
             <div>
               My current place of work, EVUp, aims at providing solutions to
               these problems, in particular via{' '}
@@ -51,33 +58,44 @@ export const EVChargerDLB = () => {
               >
                 EVUp Charge
               </Link>
-              , which is a software I've contributed to since Feb 2022 and led
-              since Oct 2022, that provides deep functionality for OCPP smart
-              chargers while connecting drivers to their nearest charger. The
-              functionality includes monetisation of these chargers for venues
-              (or anyone who owns a charger, essentially) and providing
-              information about usage and other monitoring features. It also
-              offers dynamic load management for charging stations (see{' '}
+              . EVUp Charge is a software I've contributed to since Feb 2022 and
+              led since Oct 2022, that provides deep functionality for{' '}
+              <Link
+                className="text-secondary"
+                target="_blank"
+                href="https://www.openchargealliance.org/protocols/ocpp-16/"
+              >
+                OCPP
+              </Link>{' '}
+              electric vehicle chargers, while also connecting drivers to their
+              nearest charger. For those who own chargers, the software enables
+              monetisation, authorisation and various monitoring features for
+              each charger. It also offers{' '}
               <Link
                 className="text-secondary"
                 target="_blank"
                 href="https://www.evup.com.au/ev-charging-station-load-management"
               >
-                BalanceUp
-              </Link>
-              ), which is what brought me to this problem.
+                dynamic load management
+              </Link>{' '}
+              (I'll elaborate on the details of what that is soon) for charging
+              stations, which is what brought me to this problem.
             </div>
           </div>
           <h1 className="text-2xl underline text-secondary ">Preliminaries</h1>
           <div className="flex flex-col gap-y-4">
             <div>
-              Firstly, some preliminary knowledge around circuits, AC vs DC
-              power and Single Phase vs Three phase power are required to
-              elaborate. For those familiar, skip this section. What I will
-              explain first here are the entry level details of electricity,
-              starting with circuits and we'll build our way up from there. I,
-              and many, often prefer to think of a circuit as water flowing
-              through pipework, known as the{' '}
+              Firstly, some entry-level knowledge around electricity and
+              circuits I had to teach myself (and hopefully, I can teach you) to
+              understand the problem is necessary to elaborate. What I will
+              explain here are the short and simple details - hopefully I've
+              made the level of detail accessible for those unfamiliar, as I had
+              to do so for myself. For those familiar, skip this section.{' '}
+            </div>
+            <div>
+              I (and many) often find it easier to think of a circuit as water
+              flowing through pipework, instead of electrons flowing through
+              wires, known usefully as the{' '}
               <Link
                 className="text-secondary"
                 target="_blank"
@@ -85,7 +103,7 @@ export const EVChargerDLB = () => {
               >
                 Hydraulic Analogy
               </Link>
-              . I'm going to descibribe these concepts solely using the analogy,
+              . I'm going to describe these concepts solely using the analogy,
               as it will be sufficient for what we're doing, and ends up being
               incredibly powerful in terms of conceptualising a solution.
             </div>
@@ -100,7 +118,7 @@ export const EVChargerDLB = () => {
               </Link>{' '}
               is the unit which describes the rate at which electrical charge
               (or electrons) flow through a circuit. We can think of this as the
-              volume of water flowing though pipework. Meanwhile,{' '}
+              volume of water flowing though some pipework. Meanwhile,{' '}
               <Link
                 className="text-secondary"
                 target="_blank"
@@ -108,10 +126,11 @@ export const EVChargerDLB = () => {
               >
                 voltage
               </Link>{' '}
-              describes the difference in electrical potential between two
-              points. We can think of voltage as the difference in water
-              pressure between two points of the pipework. I found the
-              illustration below to be particularly helpful.
+              we can think of as the difference in water pressure between two
+              points of the pipework. What this actually corresponds to is the
+              difference in electrical potential (energy required to move
+              electrons) between two points. I found the illustration below to
+              be particularly helpful.
             </div>
             <Image
               src="/assets/dlb/water-analogy-1.png"
@@ -131,18 +150,19 @@ export const EVChargerDLB = () => {
               </Link>
               , or power, is simply the result of multiplying amperage and
               voltage. In the context of the Hydraulic Analogy, I like to think
-              of it as the amount multiplied by the rate, therefore being useful
-              as the measure of total electrical power (water) being delivered.
-              Wattage generally is used to describe the rate at which something
-              is receiving electricity, particularly in the context of charging
-              a car.
+              of it as the volume of water multiplied by the rate of flow,
+              therefore being useful as a measure of the amount of water being
+              delivered through the pipework over time. Bringing it back to
+              electricity, wattage generally is used to describe the rate at
+              which something is receiving electricity, particularly in the
+              context of charging a car.
             </div>
             <div>
-              There are two more final terms to introduce regarding circuits
-              which are series and parellel. A circuit connected in series can
-              be thought of as pipework consisting of a single pipe, while
-              circuits running in parallel can be thought of as a pipe which
-              splits into different branches.
+              There are two more key terms to introduce regarding circuits which
+              are series and parellel. A circuit connected in series can be
+              thought of as pipework consisting of a single pipe, while circuits
+              running in parallel can be thought of as a pipe which splits off
+              into different branches at some point.
             </div>
             <Image
               src="/assets/dlb/series-parallel.png"
@@ -188,18 +208,18 @@ export const EVChargerDLB = () => {
                 Single Phase or Three Phase power
               </Link>
               . Single phase electricity is the delivery of simple AC power as
-              we know it, so at a rate which alternates and follows a single
-              sine wave (hence the term alternating current or AC power, and the
-              analogy of water oscillating in a pipe). The problem with this is
-              that half the time, the current is travelling away from the
-              direction you want it to go, which is inefficient. All industrial
-              electrical grids (that deliver power to your home) account for
-              this by using standard 3 phase power, where instead of one
-              alternating current (AC), it cleverly delivers 3 alternating
-              currents at the same time which are shifted 120° as to be evenly
-              spaced and deliver 3 times the power. See below:
+              we know it so far, so it alternates direction and as a result,
+              voltage follows a single sine wave as the "high pressure" points
+              are always alternating (hence the term alternating current or AC
+              power, and the analogy of water oscillating in a pipe). The
+              problem with this is that half the time, the current is travelling
+              away from the direction you want it to go, which is inefficient.
+              All industrial electrical grids (that deliver power to your home)
+              account for this by using standard 3 phase power, where instead of
+              one alternating current, it cleverly delivers 3 alternating
+              currents simultaneously, but they are evenly spaced across time to
+              deliver 3 times the power. See below:
             </div>
-
             <Image
               src="/assets/dlb/3phase1phase.gif"
               alt=""
@@ -208,22 +228,24 @@ export const EVChargerDLB = () => {
               className="mx-auto border-2 border-black rounded"
             />
             <div>
-              To accomodate this all buildings will have electricity coming in
-              across 3 phases, known as L1, L2 and L3. Note we have been
-              discussing this problem in terms of amperage, but the display
-              shows how the phases supply voltage, which might seem to obfuscate
-              the problem with a new variable, but just ignore it and know the
-              same graph applies for amperage. As an example of how amperage is
-              delivered to a 3 phase a home device, a{' '}
+              As a result, many buildings will have electricity delivered in
+              across 3 phases, each phase being known as L1, L2 and L3. One
+              confusing question I first asked myself when I heard this, if a
+              device draws power from all 3 phases and overall needs 100 watts,
+              does it draw 100 watts from each or 33.3 watts from each? As it
+              happens, a{' '}
               <Link
                 className="text-secondary"
                 target="_blank"
                 href="https://www.quora.com/A-3-phase-machine-takes-a-100-ampere-current-Each-phase-takes-how-much-ampere"
               >
-                3 phase device looking to draw 100A will draw 100A from each L1,
-                L2 and L3
+                3 phase device looking to draw 100 watts will draw a maximum of
+                100 watts from each L1, L2 and L3
               </Link>
-              .
+              . This is because of how the phases are evenly spaced out to have
+              the least overlap possible (as seen in the graph above), never
+              delivering more than 100 watts to the device if 100 watts is
+              delivered at the peak of each phase.
             </div>
             <div>
               That concludes the overview of electrical circuits needed. As for
@@ -247,10 +269,11 @@ export const EVChargerDLB = () => {
           <div className="flex flex-col gap-y-4">
             <div>
               One of the key problems faced in the process of expanding EV
-              charging infrastructure, is the power load strained on{' '}
+              charging infrastructure, is the power strain on{' '}
               <Link
                 href="https://en.wikipedia.org/wiki/Electrical_grid"
                 className="text-secondary"
+                target="_blank"
               >
                 the electical grid
               </Link>{' '}

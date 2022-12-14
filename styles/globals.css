@@ -54,11 +54,11 @@ a {
 }
 
 .post-shadow:hover {
-  filter: drop-shadow(0 0 0.25rem #2fdce1);
+  filter: drop-shadow(0 0 0.2rem #2fdce1);
 }
 
 .post-shadow:active {
-  filter: drop-shadow(0 0 0.4rem #2fdce1);
+  animation: blue-luminate 0.5s ease-in-out forwards alternate;
 }
 
 
@@ -82,7 +82,7 @@ a {
 
 .button-hover:active {
   background-color: #333;
-  animation: button-luminate 0.1s ease-in-out forwards alternate;
+  animation: button-luminate 0.2s ease-in-out forwards alternate;
 }
 
 .max-w-200px {
