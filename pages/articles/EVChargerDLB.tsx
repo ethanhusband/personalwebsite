@@ -1,6 +1,7 @@
 import PostSummary from '../components/PostSummary'
 import Link from 'next/link'
 import Image from 'next/image'
+import { EditThis } from '../components/SectionToEdit'
 
 export const EVChargerDLB = () => {
   return (
@@ -83,14 +84,25 @@ export const EVChargerDLB = () => {
             </div>
           </div>
           <h1 className="text-2xl underline text-secondary ">Preliminaries</h1>
+
           <div className="flex flex-col gap-y-4">
             <div>
-              Firstly, some entry-level knowledge around electricity and
-              circuits I had to teach myself (and hopefully, I can teach you) to
-              understand the problem is necessary to elaborate. What I will
-              explain here are the short and simple details - hopefully I've
-              made the level of detail accessible for those unfamiliar, as I had
-              to do so for myself. For those familiar, skip this section.{' '}
+              To elaborate further on the problem, there are a few concepts I
+              have to explain first. I intend for these articles to be as
+              educational as they are informative, so these preliminary concepts
+              as well as the rest of the article are intended to be accessible
+              at any level of background knowledge.
+            </div>
+            <h1 className="text-lg underline text-secondary">
+              Electricity and Circuits
+            </h1>
+            <div>
+              Firstly, some entry-level details about electricity and circuits I
+              had to teach myself (and hopefully, I can teach you) to understand
+              the problem are necessary. What I will explain here are the short
+              and simple concepts - hopefully I've made the level accessible for
+              those unfamiliar, as I had to do so for myself. For those
+              familiar, skip this section.{' '}
             </div>
             <div>
               I (and many) often find it easier to think of a circuit as water
@@ -247,12 +259,33 @@ export const EVChargerDLB = () => {
               delivering more than 100 watts to the device if 100 watts is
               delivered at the peak of each phase.
             </div>
+            <h1 className="text-lg underline text-secondary">
+              Electric Vehicle Chargers
+            </h1>
             <div>
-              That concludes the overview of electrical circuits needed. As for
-              electric vehicle chargers themselves, all you really need to know
-              is that they are a device often with many ports to charge from,
-              and can come in AC or DC (exactly like an plug in your wall
-              really).
+              As for electric vehicle chargers themselves, all you really need
+              to know is that they are an outlet often with many ports to charge
+              from (exactly like an plug in your wall, really). Some chargers
+              use AC power, some use DC power. Since electrical power supplied
+              from the grid is delivered in AC (as mentioned), DC power chargers
+              will convert the AC power they receive into DC power inside them.
+              I don't claim to know how - it fortunately won't be relevant. AC
+              chargers can use a single phase or all 3 phases.
+            </div>
+            <div>
+              For those wondering, we can actually set the amperage drawn by
+              each connector from the grid. We do this using{' '}
+              <Link
+                className="text-secondary"
+                target="_blank"
+                href="https://www.openchargealliance.org/protocols/ocpp-16/"
+              >
+                OCPP
+              </Link>
+              , the standard which many EV smart charger communications abide
+              by. However, a disclaimer that whatever amperage we set with OCPP
+              will result the charger in drawing that amount from all connected
+              phases.
             </div>
             <div>
               For those unfamiliar with all these concepts, it can be a lot to
@@ -330,27 +363,14 @@ export const EVChargerDLB = () => {
             <h1 className="text-lg underline text-secondary">Problem 1</h1>
             <div>
               The first limitation is the mixing of three phase and single phase
-              devices (at a location with 3 phase power). When allocating
+              devices (assuming a location uses 3 phase power). When allocating
               amperage to devices, we have to consider whether the allocation
               exceeds capacity of <span className="underline">any</span> of the
-              3 phases, rather than a single source (at least, when any single
-              phase chargers are also involved, otherwise it becomes the same).{' '}
+              3 phases, rather than a single source. This is only a problem when
+              have single phase chargers on 3 phase power, otherwise it becomes
+              the same thing as a single source (can you think of why?).
             </div>
-            <div>
-              For those wondering, we can set the amperage drawn by each
-              connector using{' '}
-              <Link
-                className="text-secondary"
-                target="_blank"
-                href="https://www.openchargealliance.org/protocols/ocpp-16/"
-              >
-                OCPP
-              </Link>
-              , the standard which EV smart charger communications abide by.
-              However, this will result in drawing that amount from all 3
-              phases, which is why we need to ensure it is safe on all phases
-              and choose the minimum of the options.
-            </div>
+
             <h1 className="text-lg underline text-secondary">Problem 2</h1>
             <div>
               Another limitation emerges when considering devices and ports.
@@ -367,38 +387,45 @@ export const EVChargerDLB = () => {
               The final limitation to consider is that we are trying to get
               balanced distribution of wattage, not amperage, such that everyone
               charging has the most similar charge rate achievable, thus being
-              fair. Remember wattage is amperage times voltage (W=I*V). The good
-              thing is that in local property circuits, almost always devices
-              are connected in parallel. Now if we think about this in terms of
-              our water analogy, this was like splitting the pipework in two. In
-              such a case, the volume (amperage) will split, but the pressure
-              (voltage) would stay the same, therefore{' '}
+              fair. Remember wattage is amperage times voltage. The good thing
+              is that in local property circuits, almost always devices are
+              connected in parallel. Now if we think about this in terms of our
+              water analogy, this was like splitting the pipework in many
+              directions. In such a case, the volume (amperage) will split, but
+              the pressure (voltage) would stay the same, therefore{' '}
               <Link
                 className="text-secondary"
                 target="_blank"
                 href="https://www.allaboutcircuits.com/textbook/direct-current/chpt-5/simple-parallel-circuits/"
               >
-                we may assume that the chargers have the same voltage (V)
-              </Link>
-              . Hence at the device level, all we really need to think about is
-              how we distribute amperage. However, within a device itself things
-              get more complicated. Electric vehicle chargers can be AC or DC,
-              and DC devices after converting the AC power they are given to DC,
-              often apply a large voltage to provide more power to the car. So
-              we need to account for the voltage they apply in terms of
-              balancing the wattage of active connectors.
+                we may assume that the devices have the same voltage (V)
+              </Link>{' '}
+              since they are connected in parallel. Hence at the device level,
+              all we really need to think about is how we distribute amperage -
+              since all we would need to do afterwards is multiply them all by
+              the same number.
+            </div>
+            <div>
+              However, within the devices themselves things get more
+              complicated. Electric vehicle chargers can be AC or DC, and DC
+              devices will convert the AC power they are given. In this process,
+              DC fast chargers (or superchargers, as you might have heard of
+              them) often apply a very large voltage in order to provide more
+              power to the car. So we need to account for the voltage they apply
+              in terms of balancing the wattage of active connectors.
             </div>
 
             <div>
               So.. we have a lot to think about. Whenever I get faced with a
               problem like this, the first thing I like to think is what
               information do we need? To even consider solving these load
-              management problems we will always definitely need: the
-              properties' circuit breaker amperage, voltage and devices -
-              including what phases they are attached to, what their maximum
-              amperage is as well as their connectors and connector maximum
-              amperages. If the device is DC, we also need to know what voltage
-              it applies.
+              management problems we will always definitely need: the maximum
+              amperage to allocate to all the chargers (for example, the limit
+              set circuit breaker), the voltage of the local/home circuit and
+              the devices at the location - including what phases they are
+              attached to, what their maximum amperage is as well as their
+              connectors and connector maximum amperages. If the device is DC,
+              we also need to know what voltage it applies.
             </div>
           </div>
           <h1 className="text-2xl underline text-secondary">
@@ -406,11 +433,12 @@ export const EVChargerDLB = () => {
           </h1>
           <div className="flex flex-col gap-y-4">
             <div>
-              Personally, I think there's way too much to think about at the
-              moment in terms of approaching this, we need to break it down into
-              something more digestible. Firstly, we should list out our set of
-              aims, and also a set of restrictions/assumptions for this problem,
-              so the outline of what we're trying to do can all be in one place.
+              Personally, I think even with it listed out there's still far too
+              much to think about at the moment in terms of approaching this, we
+              need to break it down into something more digestible. Firstly, we
+              should list out our set of aims, and also a set of
+              restrictions/assumptions for this problem, so the outline of what
+              we're trying to do can all be in one place.
             </div>
             <h1 className="text-lg underline text-secondary">Assumptions</h1>
             <div>
@@ -428,16 +456,17 @@ export const EVChargerDLB = () => {
               </ul>
             </div>
             <div>
-              Then the corresponding restrictions/assumptions on that aim are:
+              Then the restrictions/assumptions we have are:
               <ul className="ml-6">
                 <li>i) Devices are connected in parallel</li>
                 <li>ii) Each device has a maximal circuit amperage</li>
                 <li>
-                  iii) Each port of a device also has a seperate maximal circuit
+                  iii) Each port of a device also has a seperate maximal
                   amperage
                 </li>
                 <li>
-                  iv) Each AC phase from the grid supplies an equal amperage
+                  iv) Each AC phase from the grid supplies an equal amperage to
+                  the location
                 </li>
                 <li>
                   v) There can be any number of devices. A device can have any
@@ -446,52 +475,58 @@ export const EVChargerDLB = () => {
                 <li>
                   vi) Every port can readily have it's maximum amperage set
                 </li>
+                <li>
+                  vii) Every property is delivered a charge of 240 volts, which
+                  is standard in most buildings. If this is not the case, you
+                  can very easily make a substitution.
+                </li>
               </ul>
             </div>
             <div>
               Certainly, this is still a lot to consider, and could not easily
-              be figured out by sitting there and thinking about it. Thinking
-              about each phase, device, connector and constraint at the same
-              time is most likely too straining on short-term memory to make any
-              real progress trying to solve, at least I find. With this, my
-              immediate idea is that we must find a way to represent a given DLB
-              setup, for the sake of getting a better intuition and
-              interpretation of the problem. The obvious initial choice is to
-              represent this as a tree, since it does appear we have these
-              'layers' of dependency (ports depend on devices, devices depend on
-              phases, vise versa).
+              be figured out by simply sitting and thinking about it long
+              enough. Thinking about each phase, device, connector and
+              constraint at the same time is most likely too straining on
+              short-term memory for most to make any real progress trying to
+              solve. With this, my immediate idea is that we must find a way to
+              represent a given DLB setup, for the sake of getting a better
+              intuition and interpretation of the problem. The obvious initial
+              choice is to represent this as a tree, since it does appear we
+              have these 'layers' of dependency (the allocation of a port
+              depends on the allocation of a device, devices depend on phases,
+              vise versa).
             </div>
             <h1 className="text-lg underline text-secondary">
               Example: Location A
             </h1>
             <div>
-              As an example, consider a Location A with 60 amps supplied from
-              the grid and 3 chargers:
+              As an example, consider a Location A which has 60 amps supplied by
+              the grid and 3 chargers which are:
               <ul className="list-disc ml-6">
                 <li>
-                  A 3 phase device with max amperage 32A, an active port with
+                  A 3 phase device with max amperage 32A. One active port with
                   max amperage 20A, another active port with max amperage 32A
                 </li>
                 <li>
-                  A single phase device connected to the second phase with max
-                  amperage 12A, 1 active port with max amperage 10A
+                  A single phase device (connected to L2) with max amperage 12A.
+                  One sole active port with max amperage 10A
                 </li>
                 <li>
-                  A single phase device connected to the third phase with max
-                  amperage 22A, an inactive port with max amperage 15A, an
-                  active port with max amperage 12A.
+                  A single phase device (connected to L3) with max amperage 22A,
+                  an inactive port with max amperage 15A, an active port with
+                  max amperage 12A.
                 </li>
               </ul>
             </div>
             <div>
-              One should acknowledge that it is, in practice, unlikely a charger
-              will have ports with different max amperages (in fact they usually
-              have the same max as the device). But we need to extend our model
-              to all cases to ensure it will generalise well in the caprice of
-              the real world. Nonetheless, describing Location A in the way we
-              just have is in itself an example of why we need to represent this
-              somehow else, writing it out is clearly far too verbose. We can
-              instead model that example easily by representing it with the
+              I should acknowledge that it is, in practice, unlikely a charger
+              will have ports with different max amperages (in fact, they
+              usually have the same max as the device). But we need to extend
+              our model to all cases to ensure it will generalise well in the
+              caprice of the real world. Nonetheless, describing Location A in
+              the way we just have is in itself an example of why we need to
+              represent this somehow else, writing it out is clearly verbose. We
+              can instead model that example easily by representing it with the
               following diagram:
             </div>
             <Image
@@ -518,15 +553,17 @@ export const EVChargerDLB = () => {
           <div className="flex flex-col gap-y-4">
             <div>
               We now need to use this tree structure to figure out what the
-              optimal allocation is, or rather, an algorithm that does so. It
-              should obviously involve allocating 0 amps to innactive chargers,
-              but then allocating the most evenly distributed and maximal amount
-              of power to every other charger. I will demonstrate 2 algorithms.
-              The first of which is somewhat of a loose brute force approach
-              that happens to be decently efficient for a particular scenario,
-              but often inoptimal. The other is an optimised approach which I
-              find rather beautiful, and frankly, is the reason I decided to
-              write this article.
+              optimal allocation is, or rather, an algorithm that does so.
+            </div>
+            <div>
+              As a starting point, the algorithm we derive should obviously
+              involve allocating 0 amps to innactive chargers, but then
+              allocating the most evenly distributed and maximal amount of power
+              to every other charger. The first approach I will show is somewhat
+              of a loose, brute force approach that happens to be decently
+              efficient for a most scenarios, but has a fatal security risk. The
+              other is an optimised approach which I find rather beautiful, and
+              frankly, is the reason I decided to write this article.
             </div>
             <div>
               A quick disclaimer that both the solutions I will provide will
@@ -539,90 +576,102 @@ export const EVChargerDLB = () => {
               The Quick and Dirty Fix
             </h1>
             <div>
-              Surprisingly, there is a fairly primitive algorithm that works
+              Surprisingly, there is a fairly primitive solution that works
               exceptionally well <span className="underline">exclusively</span>{' '}
-              for locations with devices that have large circuit capacities in
-              proportion to the grid allocation. It simply involves:
+              for locations where devices have large circuit capacities in
+              proportion to the grid allocation. It simply is as follows:
             </div>
             <div>
               <ol className="list-decimal ml-5">
                 <li>
-                  Finding the phase with the most active connectors attached to
-                  it
+                  Find the phase with the most active connectors attached to it
+                  - count how many there are
                 </li>
                 <li>
-                  Dividing the grid amperage by that number of active connectors
+                  Divide the grid amperage by that number of active connectors
                 </li>
                 <li>
-                  Setting each active connector to the minimum of {'{'} that
+                  Set each active connector to the minimum of {'{'} that
                   division result, it's port capacity, it's device capacity{' '}
                   {'}'}.
                 </li>
               </ol>
             </div>
-            <div>ANIMATION</div>
+            <EditThis>Include animation gif of algo on Location A</EditThis>
+            <EditThis>
+              <div>
+                This works because if we target the phase with the most active
+                connectors (and each phase provides the same amperage), dividing
+                the supplied amperage by the number of active connectors will
+                certainly set out to allocate a safe amperage to each connector.
+              </div>
+              <div>
+                But because that phase has the most active connections, it
+                certainly won't exceed the others too. So immediately, this
+                algorithm respects the grid capacity. Since we minimum of that
+                and the capacities of the branch a connector is on, we respect
+                the capacities of everything.
+              </div>
+            </EditThis>
             <div>
-              This works because if we target the phase with the most active
-              connectors (and each phase has the same amperage), dividing it's
-              supply by the number of active connectors will certainly set out
-              to allocate an amperage which won't exceed that phase. But because
-              that phase has the most active connections, it certainly won't
-              exceed the others too. So immediately, this algorithm respects the
-              grid capacity. Since we minimum of that and the capacities of the
-              branch a connector is on, we respect the capacities of everything.
+              However, the problem with this approach arises in the following
+              case. For example, consider the following location:
+            </div>
+            <EditThis>Include location diagram</EditThis>
+            <div>
+              From the initial step where we divide the phase supply, we will
+              try to allocate 30A to the three active connectors. But two of
+              those connectors can only be set to 22A, the other to 40A, we have
+              this leftover unusued 16A to give to the other active connector.
+              Ideally we would set them to draw 16A, 16A and 40A, and this
+              wouldn't exceed any capacities. However, going through our
+              algorithm, what we would end up setting it to is 16A, 16A and 30A
+              - not ideal as we are not delivering as much as we can to that 40A
+              connector. So we have to do some sort of 'extra pass' to donate
+              this.
             </div>
             <div>
-              However, when we, for example, receive from the initial
-              calculation to ideally allocate say 30A to each active connector,
-              but two connectors can only be set to 22A, we have this leftover
-              unusued 16A to give to the other active connectors. So we have to
-              do some sort of 'extra pass' to donate this. But what if in
-              reallocating that, we again allocate past some capacity and have
-              leftover? We end up in this loop where we don't necessarily know
-              at what step it would terminate.
+              But what if in this extra pass, we again allocate past some
+              capacity and have leftover? Remember we assumed that the location
+              could have any amount of devices and connectors. A location could
+              very easily be constructed such that this algorithm ends up in
+              this loop where we don't necessarily know at what step it would
+              terminate. For example, the following abstract location would
+              cause our algorithm to run for an arbitrarily long amount of time,
+              at least in theory. If you've got the time, try applying the steps
+              described to the following location to better see what the problem
+              is.
             </div>
+            <EditThis>Include abstract infinite runtime location</EditThis>
             <div>
-              Iterating our way out of this mess until the allocation works
-              would be bad practice in my opinion, we ideally want to gaurantee
-              that the balanced load can be calculated in a deterministic amount
-              of time - especially in the setting of big asynchronous software.
-              Maybe you think writing some while loop that terminates eventually
-              is fine. In a lot of settings it probably is, which is why this
-              algorithm can be viable, but personally I'd rather something
-              cleaner.
-            </div>
-            <div>ANIMATION</div>
-            <div>
-              We see this approach can result in large amounts of unallocated
-              amperage if the device and connector capacity is far lower than
-              what we initially attempted to allocate. Which is why I say it
-              only works well if device and connector capacities happen to be
-              quite high, as then it will be less likely there is unallocated
-              amounts remaining. That solution would be perfect if there was no
-              device and connector maximums, but there is. Luckily, we can find
-              a cleaner approach.
+              The reason we shouldn't use this algorithm is because it poses a
+              security risk, as someone could easily submit this edge-case
+              location to be processed and get our server stuck in an infinite
+              loop. We could potentially include a verification step to ensure
+              that they haven't submitted this kind of location, but at that
+              point it's starting to look like this solution just isn't very
+              elegant - particularly in contrast to what comes next. Ideally we
+              want to gaurantee that the balanced load can be calculated in a
+              deterministic amount of time - especially in the professional
+              setting of software.
             </div>
             <h1 className="text-lg underline text-secondary">
               The Trickling Algorithm
             </h1>
             <div>
               While this algorithm can be explained quite easily to programmers
-              or computer scientists, I want to explain it in a way that too
-              demonstrates the discrete thinking involved in coming up with such
-              a method, as to be accessible to all. One of my main goals of this
-              website is to illustrate a truth I've discovered that complex
-              solutions to problems can be arrived at by anybody - just by
-              thinking about the problem in a simpler, more accessible way,
-              rather than trying to solve it by searching for some complex,
-              mentally straining stroke of brilliance.
+              or computer scientists, like much of this article I want to
+              explain it in a way that demonstrates the discrete thinking
+              involved in coming up with such a method, as to be accessible to
+              all. One of my main goals of this website is to illustrate that
+              complex solutions to problems can be arrived at by anybody - just
+              by thinking about the problem in a simpler way with more
+              digestible steps, rather than trying to solve it by sitting and
+              waiting for some absurd stroke of brilliance.
             </div>
             <div>
-              The algorithm I wanted to share was one that strongly utilises the
-              fact we represent these scenarios as a tree. When staring at the
-              tree structure, a somewhat tangential thought occurred to me that
-              if a real tree had a perfectly rounded canopy, water would trickle
-              down the top in a perfectly even manner each. Now that would yield
-              an even distribution, kind of like we want here.
+              When I first started to understand truly what was involved in this
+              problem, it occurred to me that 
             </div>
             <div>
               connector were a bucket, with it's volume equal to the maximum
