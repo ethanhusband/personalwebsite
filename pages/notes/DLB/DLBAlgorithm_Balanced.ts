@@ -1,71 +1,18 @@
-/*        TYPES         */
+import { DLBGroup, DLBDevice, DLBPhase, Phases, PowerType } from "./DLBTypes"
 
-// Abstract type for devices and phases which manage the distribution of their child nodes.
-type Distributable<T> = {
-    distribution: number[] // // What amperage will be allocated to each child node. Should start empty
-    children: T[]
-}
-
-// Abstract type to append to other types such that they have an ID of themselves. Includes <T> such that this can be an enum.
-type SelfReferential<T> = {
-    id: T
-}
-
-// Abstract type for devices and connectors which can be set an amperage by their parent node.
-type Allocatable = {
-    max_amperage: number; // The maximum amperage capacity of the component
-    allocated_amperage: number; // The amperage capacity decided by the parent of the component
-}
-
-// The data type used to express a DLB group
-type DLBGroup = {
-    grid_amperage: number; // The amperage supplied by all grid phases to the group - same for all phases!
-    grid_voltage: number;
-    phases: Map<Phases, DLBPhase>; // The group phases, may have overlap in terms of devices but this is okay and intended.
-  };
-  
-// The data type to express each phase of a DLB group. 
-type DLBPhase = Distributable<DLBDevice> & SelfReferential<Phases>
-
-// The data type used to express a device in a DLB group
-type DLBDevice = Allocatable & Distributable<DLBConnector> & SelfReferential<string>
-
-// The data type used to express a connector in a DLB group. SelfReferential uses number to refer to respective connector number
-type DLBConnector = Allocatable & SelfReferential<number> & {
-    inactive: boolean; // Allocate 0 to inactive connectors
-    max_voltage: number; // The voltage applied between the charger and car, either set by the grid (usually 240V) or by a DC device
-    power_type: PowerType;
-    // This should be an ISO string, and needs to be present if the port is charging
-    charging_start_time?: string;
-  };
-
-// Possible power types used by devices
-enum PowerType {
-    AC_1_PHASE,
-    AC_3_PHASE,
-    DC,
-}
-
-// Possible phases a device might draw power from
-enum Phases {
-    L1,
-    L2,
-    L3
-}
-
-
-/*        FUNCTIONS         */
+/*        EVENLY ALLOCATED DLM         */
 
 /**
- * Apply the trickling algorithm to a given DLB group
+ * Apply the trickling algorithm to a given DLB group. Currently assumes both ports have same max amperage.
  * @param group 
  * @returns The DLB group with it's allocation set 
  */
 const BalanceGroup = (group: DLBGroup): DLBGroup => {
-    // We first need to construct the tree by understanding what amperage each port and device requires
-    ConstructTree(group)
+    // We first need to construct the distribution vectors of all devices - dictating how each device will distribute its provided amperage
+    ConstructDeviceDistributions(group)
 
-    // This step is what will give us an even distribution. For proportional dynamic load balancing, just remove it out.
+    // This step is necessary to determine how the phases will distribute their amperage across devices
+    // It is quite more involved than distributing in proportion to what amperage each device requests
     DistributeFairly(group)
 
     // Now that the device and phase nodes know what they are being asked for, they can readjust
@@ -81,17 +28,14 @@ const BalanceGroup = (group: DLBGroup): DLBGroup => {
  * Construct the distribution vector of all Distributable nodes in the DLBGroup tree
  * @param group The group to fill out the distribution vectors for
  */
-const ConstructTree = (group: DLBGroup) => {
+const ConstructDeviceDistributions = (group: DLBGroup) => {
     group.phases.forEach((value: DLBPhase, key: Phases, map: Map<Phases, DLBPhase>) => {
         // Construct the distribution for each device in the phase
         for (var child of value.children) {
-            ConstructDistribution(child.distribution, child.children, child.max_amperage, group.grid_voltage)
+          ConstructDistribution(child.distribution, child.children, child.max_amperage, group.grid_voltage)
         }
-        // Construct the distribution for the phase itself
-        ConstructDistribution(value.distribution, value.children, group.grid_amperage, group.grid_voltage)
     })
-    // Now all the distribution vectors in the group will be set appropriately
-    console.log("Constructed initial distribution:", group.phases)
+    // Now all the distribution vectors for the devices will be set appropriately
 }
 
 /**
@@ -99,9 +43,35 @@ const ConstructTree = (group: DLBGroup) => {
  * @param group 
  */
 const DistributeFairly = (group: DLBGroup) => {
+  // We want to consider A) how much amperage each device requests / can accept and B) what the fairest distribution is.
     group.phases.forEach((value: DLBPhase, key: Phases, map: Map<Phases, DLBPhase>) => {
-        var active = ActiveConnectorDistribution(value)
-        
+      // First, get the distribution of what each device can maximally accept.
+      var maximal: number[] = [];
+      value.children.forEach((value: DLBDevice) => {
+        // The sum of the distribution is what the device is requesting. Exceeding device maximums has already been accounted for.
+        maximal.push(Sum(value.distribution))
+      })
+      
+      // Next, get the distribution of active connectors as to determine what we ideally should give each device for a fair distribution.
+      value.distribution = ActiveConnectorDistribution(value);
+      var fairAmperagePerConnector = group.grid_amperage / Sum(value.distribution)
+      value.distribution = value.distribution.map((x) => x *= fairAmperagePerConnector)
+      console.log("Fair distribution for phase", value.id, "is", value.distribution)
+
+      // Now we need to reconcile the two. Try to give each device it's fair amount. If it cant accept it all - distribute that amongst the rest.
+      var totalDevices = value.children.length
+      for (var i = 0; i < totalDevices; i++) {
+        // Check if we have any leftover
+        if (maximal[i] < value.distribution[i]) {
+          const leftoverPerRemainingDevice = value.distribution[i] - maximal[i] / (totalDevices - i + 1)
+          value.distribution[i] = maximal[i]
+          // Adjust the rest of the fair distribution
+          for (var j = i; j < totalDevices; j++) {
+            value.distribution[j] += leftoverPerRemainingDevice
+          }
+        }
+      }
+      console.log("Adjusted fair distribution for phase", value.id, "is", value.distribution)
     })
 }
 
@@ -157,6 +127,11 @@ const ConstructDistribution = (distribution: number[], children: any[], capacity
     
 }
 
+/**
+ * Get the distribution of active connectors across devices on the phase
+ * @param phase 
+ * @returns An array which corresponds to how many active connectors each device on the phase has
+ */
 const ActiveConnectorDistribution = (phase: DLBPhase): number[] => {
     var active = []
     for (var device of phase.children) {
