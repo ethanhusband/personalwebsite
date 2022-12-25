@@ -7,7 +7,7 @@ export const EVChargerDLB = () => {
   return (
     <div className="flex flex-col ">
       <PostSummary
-        title="Dynamic Load Management for EV Chargers"
+        title="Dynamic Load Balancing for EV Chargers"
         link="/articles/EVChargerDLB"
         desc="Ethan Husband - DD/MM/YY"
       >
@@ -670,8 +670,41 @@ export const EVChargerDLB = () => {
               waiting for some absurd stroke of brilliance.
             </div>
             <div>
+              For the sake of those uninterested in the thought required to
+              derive this algorithm, I'll first explain the steps, then explain
+              afterwards how such a conclusion can be arrived at.
+            </div>
+            <ol className="list-decimal ml-5">
+              <li>
+                For each device, make a list of what amperage each of it's
+                connectors will maximally draw (set to 0 if the connector is not
+                being used)
+              </li>
+              <li>
+                Calculate the sum of that list. For each number in that list,
+                multiply it by (the devices max amperage / the sum of the list)
+              </li>
+              <li>
+                For each phase, make a list of each connected device's list sum
+              </li>
+              <li>
+                Again, calculate the sum of that list. For each number in that
+                list, multiply it by (the grid amperage / the sum of the list)
+              </li>
+              <li>For each phase, and each device it has </li>
+            </ol>
+            <div>
               When I first started to understand truly what was involved in this
-              problem, it occurred to me that 
+              problem, one of first things on my mind was where a "perfectly
+              even" distribution would occur in nature, to get an intuition for
+              such a thing. I think when understanding any algorithm, proof, or
+              anything rigorous, it is imperative to first gain an intuition for
+              what you are trying to do or prove before you actually turn it
+              into something concrete - kind of like understanding circuits via
+              the Hydraulic Analogy. My immediate idea was that water has this
+              behaviour of being "perfectly even" in distribution (or at least,
+              is close enough to convey the illusion of such) when trickling
+              from the top of a perfectly round object. Perhaps you've seen
             </div>
             <div>
               connector were a bucket, with it's volume equal to the maximum
