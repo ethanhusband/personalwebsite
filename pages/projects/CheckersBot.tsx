@@ -13,10 +13,16 @@ export const CheckersBot = () => {
       >
         <div className="flex flex-col justify-center gap-y-4">
           <div>
-            This is a simple AI written in C, designed to play checkers. It
-            accepts an input file detailing what pieces have moved where, and
-            computes the best move from there using a recursive minimax decision
-            tree.
+            <Link
+              className="text-secondary"
+              target="_blank"
+              href="https://github.com/ethanhusband/checkers-bot"
+            >
+              This is a simple AI written in C, designed to play checkers
+            </Link>
+            . It accepts an input file detailing what pieces have moved where,
+            and computes the best move from there using a recursive minimax
+            decision tree.
           </div>
           <div>
             What the program does is first it receives a position via an input

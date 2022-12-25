@@ -31,15 +31,56 @@ export const TwitterAnalysis = (context: any) => {
             Mutual Information and Regression Analysis.
           </div>
           <div>
-            An abstract data processing pipeline was programmed in such a way
-            that enables anyone to choose which section of a given dataset to
-            analyse using the described techniques. While it was not done so (as
-            this project is in the context of an assignment), this pipeline can
-            be readily modified to be used on any csv file where one wishes to
-            analyse a given column against other data in the set using Pearson
-            Correlation, Mutual Information and Regression Analysis. The
-            pipeline makes use of the mentioned libraries to do the appropriate
-            data manipulations and analyses.
+            For those unfamiliar, Pearson Correlation provides a measure of how
+            close a set of datapoints on a scatter plot is to a straight line,
+            therefore identifying the strength of the linear relationship
+            between two variables. It provides a value between -1 and 1 - where
+            -1 represents a perfectly negative linear relationship, 1 represents
+            a perfectly linear relationship.
+          </div>
+          <Image
+            src="/assets/twitter-analysis/pearsoncorrelation.avif"
+            width={400}
+            height={200}
+            alt=""
+            className="border-2 border-black mx-auto"
+          />
+          <div>
+            Mutual information on the other hand measures the amount of
+            information about X we gain by knowing Y, or more accurately, the
+            reduction in uncertainty about variable X if Y is known. The number
+            it provides is any number above zero, and usually needs to be
+            considered relatively. The usefulness comes in the fact that it will
+            identify any kind of relationship, not just linear.
+          </div>
+          <div>
+            Finally, regression analysis involves creating a linear (or
+            multilinear) model - that is, a model that assumes a linear
+            relationship between the input variables (X1, X2, ..., Xn) and the
+            single continuous output variable (y). More specifically, we create
+            model which assumes y can be calculated from a linear combination of
+            the input variables (X). The analysis then revolves around the
+            accuracy of this model, i.e. how well the input factors predict the
+            output factor via linear relationships.
+          </div>
+          <Image
+            src="/assets/twitter-analysis/regression.png"
+            width={400}
+            height={200}
+            alt=""
+            className="border-2 border-black mx-auto"
+          />
+          <div>
+            To do this, an abstract data processing pipeline was programmed in
+            such a way that enables anyone to choose which section of a given
+            dataset to analyse - using the described techniques. While it was
+            not done so (as this project is in the context of an assignment),
+            this pipeline can be readily modified to be used on any csv file
+            where one wishes to analyse a given column against other data in the
+            set using Pearson Correlation, Mutual Information and Regression
+            Analysis. While understood, the pipeline makes use of the mentioned
+            Python libraries to actually do the appropriate data manipulations
+            and analyses.
           </div>
           <div>
             Code aside, the report includes some interesting findings, the most
