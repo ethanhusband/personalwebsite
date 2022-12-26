@@ -1,6 +1,6 @@
-import Link from 'next/link'
 import Image from 'next/image'
 import PostSummary from '../components/PostSummary'
+import { SiteLink } from '../components/SiteLink'
 
 export const EVUpCharge = () => {
   return (
@@ -8,7 +8,7 @@ export const EVUpCharge = () => {
       <PostSummary
         title="EVUp Charge"
         link="/projects/EVUpCharge"
-        desc="Occupational - DD/MM/YY"
+        desc="Occupational - Active"
       >
         <div className="flex flex-col justify-center gap-y-4">
           <div>
@@ -27,8 +27,11 @@ export const EVUpCharge = () => {
             The software started as a simple website built in React, then
             evolved into a microservice architecture managed by Google Cloud
             Platform (GCP), with a GraphQL backend as well as microservices for
-            charging, payments and load management. Later came an app built with
-            React Native.
+            charging, payments and load management. Later came an{' '}
+            <SiteLink href="https://apps.apple.com/sg/app/upcharge/id1636227214">
+              app
+            </SiteLink>{' '}
+            built with React Native.
           </div>
           <div>
             While I cannot share any further details of the codebase, I can
@@ -40,6 +43,10 @@ export const EVUpCharge = () => {
             this, if that's what you came here looking for. With that in mind,
             these are the solutions offered by the software.
           </div>
+          <div>
+            <span className="text-secondary">Disclaimer:</span> Excuse the poor
+            image quality, I assure they look slicker when actually visited!
+          </div>
           <h1 className="text-2xl underline text-secondary">
             EVUp for Drivers
           </h1>
@@ -50,13 +57,9 @@ export const EVUpCharge = () => {
             to have chargers but are not connected to our software (offline
             locations) - similar to PlugShare, for those familiar. This can be
             seen at the{' '}
-            <Link
-              href="http://charge.evup.com.au/ecommerce"
-              className="text-secondary"
-              target="_blank"
-            >
+            <SiteLink href="http://charge.evup.com.au/ecommerce">
               EVUp ChargeMap
-            </Link>{' '}
+            </SiteLink>{' '}
             page. Similarly for the app, the ChargeMap is simply accessed at the
             landing page.
           </div>
@@ -67,7 +70,7 @@ export const EVUpCharge = () => {
               height={100}
               quality={100}
               alt="EVUp ChargeMap"
-              className="bg-white border-2 border-black mx-auto rounded-lg"
+              className="bg-white border border-black mx-auto rounded-lg"
             />
             <Image
               src="/assets/evup/appChargeMap.jpg"
@@ -75,7 +78,7 @@ export const EVUpCharge = () => {
               height={100}
               quality={100}
               alt="EVUp ChargeMap"
-              className="bg-white border-2 border-black mx-auto rounded-lg"
+              className="bg-white border border-black mx-auto rounded-lg"
             />
           </div>
           <div>
@@ -85,8 +88,8 @@ export const EVUpCharge = () => {
             as it is on the website, except that currently on the website
             charging is <span className="underline">prepaid</span> and on the
             app charging is <span className="underline">postpaid</span>. While
-            it was not my decision, I gather this is because prepaid charging is
-            likely less confusing for one time users on the web app.
+            it was not my decision, this is because prepaid charging is quicker
+            and likely to be less confusing for one time users on the web app.
           </div>
           <div>
             Moving on, from the ChargeMap one can navigate to a nearby location
@@ -95,13 +98,9 @@ export const EVUpCharge = () => {
             charging, finishing, preparing, available etc..). They can also see
             pricing details for charging and parking as well as useful
             information about the device itself such as it's{' '}
-            <Link
-              href="https://en.wikipedia.org/wiki/Charging_station#Standards"
-              className="text-secondary"
-              target="_blank"
-            >
+            <SiteLink href="https://en.wikipedia.org/wiki/Charging_station#Standards">
               Plug Type
-            </Link>
+            </SiteLink>
             , Charging Rate and Model. For offline locations, we simply include
             the device details. To infer this missing data, integration of
             charging locations and their details from 3rd party sites is a major
@@ -109,15 +108,77 @@ export const EVUpCharge = () => {
             result in a boom in locations and therefore usability of the
             software for drivers.
           </div>
-          <div>*** IMAGE OF UI HERE</div>
-          <div>
-            If a charger is currently being used, you can also see live details
-            about the session in progress, such as kWh consumed, the type of
-            session in progress, and the live charging rate of the device. For
-            mobile users who started the session, they can monitor their session
-            easily from a drawer which will fix itself on the ChargeMap page.
+          <div className="flex flex-row justify-center gap-x-12">
+            <Image
+              src="/assets/evup/locationdrawer.png"
+              width={200}
+              height={100}
+              quality={100}
+              alt=""
+              className="bg-white border-2 border-black rounded-lg"
+            />
+            <Image
+              src="/assets/evup/chargenow.png"
+              width={200}
+              height={100}
+              quality={100}
+              alt=""
+              className="bg-white border-2 border-black rounded-lg"
+            />
           </div>
-          <div>*** IMAGE OF UI HERE</div>
+          <div>
+            If a charger is currently being used, any user can also see live
+            details about the session in progress, such as kWh consumed, the
+            type of session in progress, and the live charging rate of the
+            device. For mobile users who started the session, they can monitor
+            their session easily from a drawer which will fix itself on the
+            ChargeMap page.
+          </div>
+          <div>
+            These sessions also have robust underlying measures to ensure
+            drivers get the best service possible, in particular smart
+            disconnection handling (among other internal optimisations). Have
+            you ever experienced the sheer panic of trying to cancel a Lime
+            scooter or Uber when your internet drops out? You're often forced to
+            concede that you might waste a significant amount of money that
+            night.
+          </div>
+          <div>
+            Well with EVUp, when a device disconnects from our servers (which
+            currently seems to be a significant bottleneck of OCPP technology)
+            all payments dynamically stop applying, and pick up where you left
+            off if a reconnection occurs. If not, the sessions will always end
+            30 mins after the disconnection, ensuring you never get charged more
+            than what you receive. In contrast, it also supports the application
+            of Idle Fees, which start applying once our servers register a
+            vehicle is full.
+          </div>
+          <div className="flex flex-row justify-center gap-x-12">
+            <Image
+              src="/assets/evup/session.png"
+              width={200}
+              height={100}
+              quality={100}
+              alt=""
+              className="bg-white border-2 border-black rounded-lg"
+            />
+            <Image
+              src="/assets/evup/erroredsession.png"
+              width={200}
+              height={100}
+              quality={100}
+              alt=""
+              className="bg-white border-2 border-black rounded-lg"
+            />
+            <Image
+              src="/assets/evup/parkingsession.png"
+              width={200}
+              height={100}
+              quality={100}
+              alt=""
+              className="bg-white border-2 border-black rounded-lg"
+            />
+          </div>
           <div>
             Drivers also have access to a menu which contains their Session
             History, Card Details, Profile Information and a link to the EVUp
@@ -129,23 +190,117 @@ export const EVUpCharge = () => {
             minutes setting up account details etc, only to use the software for
             5 or 10 minutes.
           </div>
+          <div className="flex flex-row justify-center gap-x-12">
+            <Image
+              src="/assets/evup/usermenu.png"
+              width={200}
+              height={100}
+              quality={100}
+              alt=""
+              className="bg-white border-2 border-black rounded-lg"
+            />
+            <Image
+              src="/assets/evup/wallet.png"
+              width={200}
+              height={100}
+              quality={100}
+              alt=""
+              className="bg-white border-2 border-black rounded-lg"
+            />
+            <Image
+              src="/assets/evup/parkingsession.png"
+              width={200}
+              height={100}
+              quality={100}
+              alt=""
+              className="bg-white border-2 border-black rounded-lg"
+            />
+          </div>
+          <h1 className="mt-2 text-2xl underline text-secondary">
+            EVUp for Charger Owners
+          </h1>
           <div>
-            Currently planned additions include:
-            <ul className="list-disc">
+            EVUp for Charger Owners enables owners of any electric vehicle
+            charger (compatible with OCPP 1.6-J) to easily connect to EVUp and
+            create their own charging station. They can monitor as well as
+            monetise and balance devices they connect with - priming their
+            chargers to be usable by the public. All they have to do is create
+            an admin account at{' '}
+            <SiteLink href="https://charge.evup.com.au/admin-signup">
+              this link
+            </SiteLink>
+            . This side of the software requires payment, whereby each charging
+            station incurs $49.99 per month or $495 per year subscriptions. Once
+            you create your admin account, you'll see the EVUp Admin Dashboard -
+            which is only available on web.
+          </div>
+          <Image
+            src="/assets/evup/subdashboard.png"
+            width={550}
+            height={100}
+            quality={100}
+            alt=""
+            className="bg-white border-2 border-black mx-auto rounded-lg"
+          />
+          <div>
+            From here you can navigate to Locations and create as many locations
+            as you purchased, as well as connect your charger to our servers by
+            navigating to Devices and going through the enrolment process. In
+            this process you point your device to a specified websocket url,
+            then match it with a device preset made by EVUp (visible in
+            Presets). After adding it to your location, you've successfully
+            setup your EVUp charging station.
+          </div>
+          <div>
+            In order to utilise our paidcharging service, navigating to Tariffs
+            will enable you to create tariffs you can apply to your devices back
+            at the Devices page. We also include some neat graphics about the
+            charging sessions that have occurred under your tenancy, under
+            Paidcharging, which uses the data from the Sessions page. Most of
+            what else is included in these pages is fairly self-explanatory, or
+            are purchasable extensions on top of the software (like{' '}
+            <SiteLink href="https://www.evup.com.au/ev-charging-station-load-management">
+              DLB
+            </SiteLink>
+            ). While I won't show all the pages here, I can showcase the
+            paidcharging dashboard for reference.
+          </div>
+          <Image
+            src="/assets/evup/paidchargingdashboard.png"
+            width={550}
+            height={100}
+            quality={100}
+            alt=""
+            className="bg-white border-2 border-black mx-auto rounded-lg"
+          />
+          <h1 className="mt-2 text-2xl underline text-secondary">
+            The Future of EVUp
+          </h1>
+          <div>
+            EVUp is currently in version 2.0.0 and still growing everyday.
+            Planned additions coming soon include:
+            <ul className="list-disc ml-6">
               <li>
-                The addition of all globally registered charging locations.
+                The addition of all globally registered charging locations, by
+                integrating with 3rd party services like Plugshare
               </li>
               <li>
                 A My Vehicles page in the menu, where you can add your vehicle
                 and the software will infer what charger type you need, then
-                direct you to the nearest available port of that type.
+                direct you to the nearest available port of that type
               </li>
-              <li>A My RFID page, improving support of RFID use for drivers</li>
+              <li>RFID support for drivers</li>
+              <li>
+                Integration of the Tesla API, enabling interaction between your
+                charging session in EVUp and your car in the Tesla app
+              </li>
             </ul>
+          </div>
+          <div>
             These changes intend to come together to offer a conclusive and
             comprehensive app that, in amalgamation with the factilies offered
-            by EVUp for Chargers (Admin Portal), provides an all-in-one package
-            of features for electric vehicle charging.
+            by EVUp for Charger Owners (Admin Portal), intend to provide an
+            all-in-one package of features for electric vehicle charging.
           </div>
         </div>
       </PostSummary>

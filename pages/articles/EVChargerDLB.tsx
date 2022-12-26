@@ -1,7 +1,7 @@
 import PostSummary from '../components/PostSummary'
-import Link from 'next/link'
 import Image from 'next/image'
 import { EditThis } from '../components/SectionToEdit'
+import { SiteLink } from '../components/SiteLink'
 
 export const EVChargerDLB = () => {
   return (
@@ -23,24 +23,13 @@ export const EVChargerDLB = () => {
               be infrastructure, batteries, the capacities of chargers, is often
               cited as the biggest problem holding back electric vehicles from
               reaching the{' '}
-              <Link
-                className="text-secondary"
-                target="_blank"
-                href="https://www.energymonitor.ai/sectors/automotive/electric-vehicle-tipping-point"
-              >
+              <SiteLink href="https://www.energymonitor.ai/sectors/automotive/electric-vehicle-tipping-point">
                 'tipping point'
-              </Link>{' '}
+              </SiteLink>{' '}
               in regards to mass adoption. A great resource that adequately
               describes the current problem surrounding electric vehicle
               charging infrastructure can be found{' '}
-              <Link
-                className="text-secondary"
-                target="_blank"
-                href="youtube.com/watch?v=pLcqJ2DclEg"
-              >
-                here
-              </Link>
-              .
+              <SiteLink href="youtube.com/watch?v=pLcqJ2DclEg">here</SiteLink>.
             </div>
             <Image
               src="/assets/dlb/charging-station.jpg"
@@ -52,33 +41,21 @@ export const EVChargerDLB = () => {
             <div>
               My current place of work, EVUp, aims at providing solutions to
               these problems, in particular via{' '}
-              <Link
-                className="text-secondary"
-                target="_blank"
-                href="https://charge.evup.com.au/ecommerce/"
-              >
+              <SiteLink href="https://charge.evup.com.au/ecommerce/">
                 EVUp Charge
-              </Link>
+              </SiteLink>
               . EVUp Charge is a software I've contributed to since Feb 2022 and
               led since Oct 2022, that provides deep functionality for{' '}
-              <Link
-                className="text-secondary"
-                target="_blank"
-                href="https://www.openchargealliance.org/protocols/ocpp-16/"
-              >
+              <SiteLink href="https://www.openchargealliance.org/protocols/ocpp-16/">
                 OCPP
-              </Link>{' '}
+              </SiteLink>{' '}
               electric vehicle chargers, while also connecting drivers to their
               nearest charger. For those who own chargers, the software enables
               monetisation, authorisation and various monitoring features for
               each charger. It also offers{' '}
-              <Link
-                className="text-secondary"
-                target="_blank"
-                href="https://www.evup.com.au/ev-charging-station-load-management"
-              >
+              <SiteLink href="https://www.evup.com.au/ev-charging-station-load-management">
                 dynamic load management
-              </Link>{' '}
+              </SiteLink>{' '}
               (I'll elaborate on the details of what that is soon) for charging
               stations, which is what brought me to this problem.
             </div>
@@ -108,36 +85,24 @@ export const EVChargerDLB = () => {
               I (and many) often find it easier to think of a circuit as water
               flowing through pipework, instead of electrons flowing through
               wires, known usefully as the{' '}
-              <Link
-                className="text-secondary"
-                target="_blank"
-                href="https://en.wikipedia.org/wiki/Hydraulic_analogy"
-              >
+              <SiteLink href="https://en.wikipedia.org/wiki/Hydraulic_analogy">
                 Hydraulic Analogy
-              </Link>
+              </SiteLink>
               . I'm going to describe these concepts solely using the analogy,
               as it will be sufficient for what we're doing, and ends up being
               incredibly powerful in terms of conceptualising a solution.
             </div>
             <div>
               Firstly,{' '}
-              <Link
-                className="text-secondary"
-                target="_blank"
-                href="https://en.wikipedia.org/wiki/Ampere"
-              >
+              <SiteLink href="https://en.wikipedia.org/wiki/Ampere">
                 amperage
-              </Link>{' '}
+              </SiteLink>{' '}
               is the unit which describes the rate at which electrical charge
               (or electrons) flow through a circuit. We can think of this as the
               volume of water flowing though some pipework. Meanwhile,{' '}
-              <Link
-                className="text-secondary"
-                target="_blank"
-                href="https://en.wikipedia.org/wiki/Voltage"
-              >
+              <SiteLink href="https://en.wikipedia.org/wiki/Voltage">
                 voltage
-              </Link>{' '}
+              </SiteLink>{' '}
               we can think of as the difference in water pressure between two
               points of the pipework. What this actually corresponds to is the
               difference in electrical potential (energy required to move
@@ -153,13 +118,9 @@ export const EVChargerDLB = () => {
             />
             <div>
               Finally,{' '}
-              <Link
-                className="text-secondary"
-                target="_blank"
-                href="https://en.wikipedia.org/wiki/Watt"
-              >
+              <SiteLink href="https://en.wikipedia.org/wiki/Watt">
                 wattage
-              </Link>
+              </SiteLink>
               , or power, is simply the result of multiplying amperage and
               voltage. In the context of the Hydraulic Analogy, I like to think
               of it as the volume of water multiplied by the rate of flow,
@@ -193,13 +154,9 @@ export const EVChargerDLB = () => {
               significantly faster than DC (so much so that it is used in all
               industrial grids), and this change in direction is often so fast
               it does not matter. See{' '}
-              <Link
-                className="text-secondary"
-                target="_blank"
-                href="https://www.nde-ed.org/Physics/Electricity/alternatingcurrent.xhtml"
-              >
+              <SiteLink href="https://www.nde-ed.org/Physics/Electricity/alternatingcurrent.xhtml">
                 this resource here
-              </Link>{' '}
+              </SiteLink>{' '}
               for a great short explanation.
             </div>
             <Image
@@ -212,13 +169,9 @@ export const EVChargerDLB = () => {
             <div>
               One final but important concept worth noting is that circuits
               which use AC power may use{' '}
-              <Link
-                className="text-secondary"
-                target="_blank"
-                href="https://www.fluke.com/en-us/learn/blog/power-quality/single-phase-vs-three-phase-power"
-              >
+              <SiteLink href="https://www.fluke.com/en-us/learn/blog/power-quality/single-phase-vs-three-phase-power">
                 Single Phase or Three Phase power
-              </Link>
+              </SiteLink>
               . Single phase electricity is the delivery of simple AC power as
               we know it so far, so it alternates direction and as a result,
               voltage follows a single sine wave as the "high pressure" points
@@ -246,14 +199,10 @@ export const EVChargerDLB = () => {
               device draws power from all 3 phases and overall needs 100 watts,
               does it draw 100 watts from each or 33.3 watts from each? As it
               happens, a{' '}
-              <Link
-                className="text-secondary"
-                target="_blank"
-                href="https://www.quora.com/A-3-phase-machine-takes-a-100-ampere-current-Each-phase-takes-how-much-ampere"
-              >
+              <SiteLink href="https://www.quora.com/A-3-phase-machine-takes-a-100-ampere-current-Each-phase-takes-how-much-ampere">
                 3 phase device looking to draw 100 watts will draw a maximum of
                 100 watts from each L1, L2 and L3
-              </Link>
+              </SiteLink>
               . This is because of how the phases are evenly spaced out to have
               the least overlap possible (as seen in the graph above), never
               delivering more than 100 watts to the device if 100 watts is
@@ -275,13 +224,9 @@ export const EVChargerDLB = () => {
             <div>
               For those wondering, we can actually set the amperage drawn by
               each connector from the grid. We do this using{' '}
-              <Link
-                className="text-secondary"
-                target="_blank"
-                href="https://www.openchargealliance.org/protocols/ocpp-16/"
-              >
+              <SiteLink href="https://www.openchargealliance.org/protocols/ocpp-16/">
                 OCPP
-              </Link>
+              </SiteLink>
               , the standard which many EV smart charger communications abide
               by. However, a disclaimer that whatever amperage we set with OCPP
               will result the charger in drawing that amount from all connected
@@ -303,13 +248,9 @@ export const EVChargerDLB = () => {
             <div>
               One of the key problems faced in the process of expanding EV
               charging infrastructure, is the power strain on{' '}
-              <Link
-                href="https://en.wikipedia.org/wiki/Electrical_grid"
-                className="text-secondary"
-                target="_blank"
-              >
+              <SiteLink href="https://en.wikipedia.org/wiki/Electrical_grid">
                 the electical grid
-              </Link>{' '}
+              </SiteLink>{' '}
               and your the local property in doing so. With our constantly
               growing dependence on electricity, the stability of the grid is
               important for just about everything you can think of. As a result,
@@ -321,12 +262,9 @@ export const EVChargerDLB = () => {
               electric vehicle chargers frequently cause power outages (when the
               load drawn by the property exceeds what it is allocated, tripping
               the local{' '}
-              <Link
-                href="https://en.wikipedia.org/wiki/Circuit_breaker"
-                className="text-secondary"
-              >
+              <SiteLink href="https://en.wikipedia.org/wiki/Circuit_breaker">
                 circuit breaker
-              </Link>{' '}
+              </SiteLink>{' '}
               - which I'm sure we've all experienced before) which can be
               obviously problematic for a variety of reasons.
             </div>
@@ -393,13 +331,9 @@ export const EVChargerDLB = () => {
               water analogy, this was like splitting the pipework in many
               directions. In such a case, the volume (amperage) will split, but
               the pressure (voltage) would stay the same, therefore{' '}
-              <Link
-                className="text-secondary"
-                target="_blank"
-                href="https://www.allaboutcircuits.com/textbook/direct-current/chpt-5/simple-parallel-circuits/"
-              >
+              <SiteLink href="https://www.allaboutcircuits.com/textbook/direct-current/chpt-5/simple-parallel-circuits/">
                 we may assume that the devices have the same voltage (V)
-              </Link>{' '}
+              </SiteLink>{' '}
               since they are connected in parallel. Hence at the device level,
               all we really need to think about is how we distribute amperage -
               since all we would need to do afterwards is multiply them all by

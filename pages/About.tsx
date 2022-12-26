@@ -14,25 +14,24 @@ const About = () => {
       >
         <div className="flex flex-col gap-y-4">
           <div>
-            This site is an effort to share the some of the fascinating ideas
-            and problems I've encountered at a level of detail I wish to make
+            This site is an effort to share the some of the fascinating problems
+            and ideas I've encountered at a level of detail I wish to make
             accessible to all, generally pertaining (but not limited) to
             Software Engineering and Abstract Math. It includes articles
-            regarding ideas I've found intriguing or remarkable and wish to
+            pertaining to novel problems I've dedicated thought to and wish to
             share, as well as overviews of projects I've engaged in - with
             explanations of how they all work.
           </div>
           <div>
-            I sincerely hope to show through these articles that clever
-            solutions to real problems can be achieved by anyone, by breaking
-            down the thinking steps involved and providing thorough
-            explanations - to convey the more abstract notion I subscribe to that
-            we are all are far less cognitively limited than we often might
-            concede.
+            I sincerely hope to show through this website that clever solutions
+            to real problems can be achieved by anyone, by breaking down the
+            thinking steps involved and providing thorough explanations - to
+            convey the more abstract notion I subscribe to that we are all are
+            far less cognitively limited than we often might concede.
           </div>
           <div>
             I am currently employed as the lead developer at{' '}
-            <Link href="/projects/EVUpCharge" className="text-secondary">
+            <Link href="/projects/EVUpCharge" className="link-styling">
               EVUp Charge
             </Link>
             , an Australian company targetted at facilitating a variety of
@@ -42,7 +41,7 @@ const About = () => {
             of Melbourne, with the intention of doing a Masters degree at ETH
             Zurich.
           </div>
-          <div>Contact: eth.husband@gmail.com</div>
+          <div className="text-secondary">Contact: eth.husband@gmail.com</div>
         </div>
       </PostSummary>
     </div>

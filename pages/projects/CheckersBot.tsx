@@ -1,7 +1,7 @@
-import Link from 'next/link'
 import PostSummary from '../components/PostSummary'
 import Image from 'next/image'
 import { CopyBlock } from 'react-code-blocks'
+import { SiteLink } from '../components/SiteLink'
 
 export const CheckersBot = () => {
   return (
@@ -13,13 +13,9 @@ export const CheckersBot = () => {
       >
         <div className="flex flex-col justify-center gap-y-4">
           <div>
-            <Link
-              className="text-secondary"
-              target="_blank"
-              href="https://github.com/ethanhusband/checkers-bot"
-            >
+            <SiteLink href="https://github.com/ethanhusband/checkers-bot">
               This is a simple AI written in C, designed to play checkers
-            </Link>
+            </SiteLink>
             . It accepts an input file detailing what pieces have moved where,
             and computes the best move from there using a recursive minimax
             decision tree.
@@ -58,22 +54,14 @@ export const CheckersBot = () => {
           <div>
             But how do bots like this, and also those for games like Chess and
             Go, actually calculate these moves? For those unfamiliar, a{' '}
-            <Link
-              href="https://en.wikipedia.org/wiki/Minimax"
-              className="text-secondary"
-              target="_blank"
-            >
+            <SiteLink href="https://en.wikipedia.org/wiki/Minimax">
               minimax decision tree
-            </Link>{' '}
+            </SiteLink>{' '}
             is a model often employed by programs which involve some sort of
             strategic decision making, especially in{' '}
-            <Link
-              href="https://en.wikipedia.org/wiki/Zero-sum_game"
-              className="text-secondary"
-              target="_blank"
-            >
+            <SiteLink href="https://en.wikipedia.org/wiki/Zero-sum_game">
               zero-sum games
-            </Link>{' '}
+            </SiteLink>{' '}
             - it is a concept initially arising from game theory which has had
             widespread applications to a large proportion of AI involved in
             decision making - particularly in almost all zero-sum game
@@ -179,13 +167,9 @@ export const CheckersBot = () => {
             That covers the basic details of how the bot works, and in fact, how
             most engines for zero-sum strategy games work. The project was to be
             submitted as a single file, so the source code at{' '}
-            <Link
-              className="text-secondary"
-              target="_blank"
-              href="https://github.com/ethanhusband/checkers-bot/blob/main/checkersbot.c"
-            >
+            <SiteLink href="https://github.com/ethanhusband/checkers-bot/blob/main/checkersbot.c">
               this github repository
-            </Link>{' '}
+            </SiteLink>{' '}
             simply contains one large file with it's header declarations
             included. Once cloned, it can be run in a terminal (with the gcc
             C-compiler installed) with the following commands. You can also
@@ -194,12 +178,12 @@ export const CheckersBot = () => {
           <CopyBlock
             text="gcc -Wall -ansi -o runme checkersbot.c"
             language="powershell"
-            theme="github"
+            theme="a11yDark"
           />
           <CopyBlock
             text="./runme < moves.txt"
             language="powershell"
-            theme="github"
+            theme="a11yDark"
           />
           <div>
             This was the first project I ever truly worked on and had to "figure

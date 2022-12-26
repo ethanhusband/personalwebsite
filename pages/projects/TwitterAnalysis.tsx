@@ -1,6 +1,6 @@
 import PostSummary from '../components/PostSummary'
-import Link from 'next/link'
 import Image from 'next/image'
+import { SiteLink } from '../components/SiteLink'
 
 export const TwitterAnalysis = (context: any) => {
   return (
@@ -14,16 +14,10 @@ export const TwitterAnalysis = (context: any) => {
           <div>
             This is a group project I led involving a Python based data analysis
             report, using the libraries{' '}
-            <Link href="https://pandas.pydata.org/" className="text-secondary">
-              Pandas
-            </Link>{' '}
-            and{' '}
-            <Link
-              href="https://scikit-learn.org/stable/"
-              className="text-secondary"
-            >
+            <SiteLink href="https://pandas.pydata.org/">Pandas</SiteLink> and{' '}
+            <SiteLink href="https://scikit-learn.org/stable/">
               Scikit-Learn
-            </Link>
+            </SiteLink>
             . The report analyses the popularity (number of followers) of a user
             in contrast to features such as user interactivity, coherence and
             other language features from a derived dataset of roughly 5000
@@ -116,13 +110,9 @@ export const TwitterAnalysis = (context: any) => {
           <div>
             The report, as well as the abstract pipeline which generates the
             data used in the report, can be found here at{' '}
-            <Link
-              className="text-secondary"
-              target="_blank"
-              href="https://github.com/ethanhusband/follower-analysis.git"
-            >
+            <SiteLink href="https://github.com/ethanhusband/follower-analysis.git">
               https://github.com/ethanhusband/follower-analysis.git
-            </Link>
+            </SiteLink>
           </div>
         </div>
       </PostSummary>

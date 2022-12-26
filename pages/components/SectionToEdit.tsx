@@ -1,6 +1,6 @@
 export const EditThis = ({ children }: any) => {
   return (
-    <div className="text-red">
+    <div className="text-red-500">
       <p>
         {'<'}-------------------- EDIT THIS -------------------------{'>'}
       </p>

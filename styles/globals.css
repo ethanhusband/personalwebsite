@@ -53,6 +53,14 @@ a {
   filter: drop-shadow(0 0 0.15rem rgb(228 228 231));
 }
 
+.link-styling {
+  color: #2fdce1;
+}
+
+.link-styling:hover {
+  text-decoration: underline;
+}
+
 .post-shadow:hover {
   filter: drop-shadow(0 0 0.2rem #2fdce1);
 }
