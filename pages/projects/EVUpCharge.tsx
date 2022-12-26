@@ -208,7 +208,7 @@ export const EVUpCharge = () => {
               className="bg-white border-2 border-black rounded-lg"
             />
             <Image
-              src="/assets/evup/parkingsession.png"
+              src="/assets/evup/sessionhistory.png"
               width={200}
               height={100}
               quality={100}
@@ -243,13 +243,13 @@ export const EVUpCharge = () => {
             className="bg-white border-2 border-black mx-auto rounded-lg"
           />
           <div>
-            From here you can navigate to Locations and create as many locations
-            as you purchased, as well as connect your charger to our servers by
-            navigating to Devices and going through the enrolment process. In
-            this process you point your device to a specified websocket url,
-            then match it with a device preset made by EVUp (visible in
-            Presets). After adding it to your location, you've successfully
-            setup your EVUp charging station.
+            From here you can navigate to Locations and create and upload
+            metadata to as many locations as you purchased. After that, you can
+            connect your charger to our servers by navigating to Devices and
+            going through the enrolment process. In this process you point your
+            device to a specified websocket url, then match it with a device
+            preset made by EVUp (visible in Presets). After adding it to your
+            location, you've successfully setup your EVUp charging station.
           </div>
           <div>
             In order to utilise our paidcharging service, navigating to Tariffs
