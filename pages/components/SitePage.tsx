@@ -39,9 +39,9 @@ export const NavBar = () => {
       <Link href="/About" className={buttonClass}>
         <li>About</li>
       </Link>
-      <Link href="/" className={buttonClass}>
+      {/* <Link href="/" className={buttonClass}>
         <li>CV</li>
-      </Link>
+  </Link> */}
     </ul>
   )
 

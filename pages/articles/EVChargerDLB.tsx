@@ -1,17 +1,37 @@
 import PostSummary from '../components/PostSummary'
 import Image from 'next/image'
-import { EditThis } from '../components/SectionToEdit'
+import Link from 'next/link'
 import { SiteLink } from '../components/SiteLink'
 
 export const EVChargerDLB = () => {
   return (
     <div className="flex flex-col ">
       <PostSummary
-        title="Dynamic Load Balancing for EV Chargers"
+        title="Load Balancing for EV Charging Stations"
         link="/articles/EVChargerDLB"
         desc="Ethan Husband - DD/MM/YY"
       >
         <div className="flex flex-col gap-y-4">
+          <h1 className="text-2xl text-secondary underline">Summary</h1>
+          <div>
+            In this article, I will be demonstrating (at a level of detail
+            understandable for everyone) my algorithm for electric vehicle
+            charging stations, which determines an load management allocation
+            which is safe, and distributes current optimally in proportion to
+            the power of devices. In a seperate article, I'll also provide an
+            alternative algorithm which allocates amperage in a manner which is
+            safe and instead distributes current to devices such that each
+            charger delivers as equal an amount of power as possible. Note this
+            solves a single iteration of dynamic load management. If you don't
+            know what any of that means, all will be explained.
+          </div>
+          <div>
+            For software developers who understand the problem, the{' '}
+            <SiteLink href="https://github.com/ethanhusband/personalwebsite/blob/main/pages/notes/DLBArticle">
+              source code of this algorithm can be found here
+            </SiteLink>
+            .
+          </div>
           <h1 className="text-2xl underline text-secondary ">
             Context: The Charging Problem
           </h1>
@@ -54,7 +74,7 @@ export const EVChargerDLB = () => {
               monetisation, authorisation and various monitoring features for
               each charger. It also offers{' '}
               <SiteLink href="https://www.evup.com.au/ev-charging-station-load-management">
-                dynamic load management
+                dynamic load balancing
               </SiteLink>{' '}
               (I'll elaborate on the details of what that is soon) for charging
               stations, which is what brought me to this problem.
@@ -64,22 +84,24 @@ export const EVChargerDLB = () => {
 
           <div className="flex flex-col gap-y-4">
             <div>
-              To elaborate further on the problem, there are a few concepts I
-              have to explain first. I intend for these articles to be as
-              educational as they are informative, so these preliminary concepts
-              as well as the rest of the article are intended to be accessible
-              at any level of background knowledge.
+              To elaborate further on load balancing, and why it is so
+              important, there are a few concepts I have to explain first.
+              Unless specified otherwise, I aim to make the majority of the
+              articles on this website accessible to everyone, in terms of
+              prerequisite knowledge - this is one of them! This preliminary
+              concepts section should quickly explain from a beginner level some
+              core background ideas I myself actually had to learn to understand
+              dynamic load balancing.
             </div>
             <h1 className="text-lg underline text-secondary">
               Electricity and Circuits
             </h1>
             <div>
               Firstly, some entry-level details about electricity and circuits I
-              had to teach myself (and hopefully, I can teach you) to understand
-              the problem are necessary. What I will explain here are the short
-              and simple concepts - hopefully I've made the level accessible for
-              those unfamiliar, as I had to do so for myself. For those
-              familiar, skip this section.{' '}
+              had to teach myself (and hopefully, I can teach you) to grasp the
+              problem are necessary. What I will explain here are the short and
+              simple concepts - hopefully I've made the level of detail
+              accessible for those unfamiliar, as I had to do so for myself.
             </div>
             <div>
               I (and many) often find it easier to think of a circuit as water
@@ -97,9 +119,10 @@ export const EVChargerDLB = () => {
               <SiteLink href="https://en.wikipedia.org/wiki/Ampere">
                 amperage
               </SiteLink>{' '}
-              is the unit which describes the rate at which electrical charge
-              (or electrons) flow through a circuit. We can think of this as the
-              volume of water flowing though some pipework. Meanwhile,{' '}
+              , also known as current, is the unit which describes the rate at
+              which electrical charge (lots of electrons) flow through a
+              circuit. We can think of this as the volume of water flowing
+              though some pipework. Meanwhile,{' '}
               <SiteLink href="https://en.wikipedia.org/wiki/Voltage">
                 voltage
               </SiteLink>{' '}
@@ -132,10 +155,11 @@ export const EVChargerDLB = () => {
             </div>
             <div>
               There are two more key terms to introduce regarding circuits which
-              are series and parellel. A circuit connected in series can be
-              thought of as pipework consisting of a single pipe, while circuits
-              running in parallel can be thought of as a pipe which splits off
-              into different branches at some point.
+              are <span className="underline">series</span> and{' '}
+              <span className="underline">parallel</span>. A circuit connected
+              in series can be thought of as pipework consisting of a single
+              pipe, while circuits running in parallel can be thought of as a
+              pipe which splits off into different branches at any point.
             </div>
             <Image
               src="/assets/dlb/series-parallel.png"
@@ -144,6 +168,25 @@ export const EVChargerDLB = () => {
               height={200}
               className="mx-auto border-2 border-black rounded"
             />
+            <div id="kirchhoff">
+              One thing worth noting which continues our analogy, is that for
+              any circuit which runs in parallel, splitting the 'pipework' into
+              multiple different branches would mean the volume of water in each
+              branch will a portion of what it was before splitting - it has to
+              be right? But the pressure in those branches would stay the same -
+              we are still pumping through water at the same rate. Similarly, in
+              a parallel circuit, when the circuit splits into multiple
+              directions, the amperage too splits across those branches - while
+              the voltage stays the same. This is known as Kirchhoff's Law.
+            </div>
+            <Image
+              src="/assets/dlb/kirchhoff.webp"
+              alt=""
+              width={500}
+              height={200}
+              className="mx-auto border-2 border-black rounded"
+            />
+            <h1 className="text-lg underline text-secondary">Power Delivery</h1>
             <div>
               With this, there are also two forms that power can be delivered
               in, AC or DC. AC power is equivalent to water quickly oscillating
@@ -166,7 +209,7 @@ export const EVChargerDLB = () => {
               height={200}
               className="mx-auto border-2 border-black rounded"
             />
-            <div>
+            <div id="3phasesection">
               One final but important concept worth noting is that circuits
               which use AC power may use{' '}
               <SiteLink href="https://www.fluke.com/en-us/learn/blog/power-quality/single-phase-vs-three-phase-power">
@@ -208,18 +251,20 @@ export const EVChargerDLB = () => {
               delivering more than 100 watts to the device if 100 watts is
               delivered at the peak of each phase.
             </div>
+
             <h1 className="text-lg underline text-secondary">
               Electric Vehicle Chargers
             </h1>
             <div>
               As for electric vehicle chargers themselves, all you really need
-              to know is that they are an outlet often with many ports to charge
-              from (exactly like an plug in your wall, really). Some chargers
-              use AC power, some use DC power. Since electrical power supplied
-              from the grid is delivered in AC (as mentioned), DC power chargers
-              will convert the AC power they receive into DC power inside them.
-              I don't claim to know how - it fortunately won't be relevant. AC
-              chargers can use a single phase or all 3 phases.
+              to know is that they are an outlet, often with many ports to
+              charge from (exactly like an plug in your wall really). Some
+              chargers use AC power, some use DC power. Since electrical power
+              supplied from the grid is delivered in AC (as mentioned), DC power
+              chargers will convert the AC power they receive into DC power
+              inside them. I don't claim to know how - fortunately that won't be
+              relevant. AC chargers can make use of a single phase or all 3
+              phases.
             </div>
             <div>
               For those wondering, we can actually set the amperage drawn by
@@ -229,20 +274,21 @@ export const EVChargerDLB = () => {
               </SiteLink>
               , the standard which many EV smart charger communications abide
               by. However, a disclaimer that whatever amperage we set with OCPP
-              will result the charger in drawing that amount from all connected
-              phases.
+              will result the charger in drawing that amount from{' '}
+              <span className="underline">all</span> connected phases.
             </div>
             <div>
               For those unfamiliar with all these concepts, it can be a lot to
-              take in, coming from someone who didn't really know any of this
-              before confronting the problem. It might be worth a reread or
-              checking out the associated links if anything is still unclear,
-              but any further nitpicking details regarding electricity shouldn't
-              be necessary to know, just the general overview provided.
+              take in, particularly coming from someone who didn't properly know
+              any of this before confronting the problem. It might be worth a
+              reread or checking out the associated links if anything is still
+              unclear, but any further nitpicking details regarding electricity
+              shouldn't be necessary to know, just the general overview
+              provided.
             </div>
           </div>
           <h1 className="text-2xl underline text-secondary">
-            What is Load Management/Balancing?
+            What is Load Balancing/Management?
           </h1>
           <div className="flex flex-col gap-y-4">
             <div>
@@ -272,31 +318,51 @@ export const EVChargerDLB = () => {
               This is particularly relevant for properties which intend on
               having chargers installed, but don't have their electrical
               infrastructure primed to be a charging station, which is the case
-              for many places looking at installing many chargers - apartments,
-              parking lots, city councils etc. Dynamic Load Management, also
-              known as Dynamic Load Balancing, DLB or DLM, is the localised
-              solution to this problem. It connects a group of chargers to a
-              software which ensures they won't exceed the allocated{' '}
-              <span className="underline">amperage</span> of the property, as to
-              be safe. Meanwhile, also ensuring each charger is fairly allocated
-              the most evenly distributed amount of{' '}
-              <span className="underline">wattage</span> possible, as to
-              guarantee they all provide a fairly equal amount of power to those
-              charging. When a charger starts or stops being used, it will
-              dynamically set each charger to draw an ideal amount of power
-              based on their use and activity.
+              for many places currently looking at installing multiple chargers
+              - city councils, apartments, parking lots etc. Dynamic Load
+              Balancing (DLB), also known as Dynamic Load Management (DLM), is
+              the localised solution to this problem. It connects a group of
+              chargers to a software which ensures they won't exceed the
+              allocated <span className="underline">amperage</span> of the
+              property, as to be safe. The "dynamic" part of DLB refers to
+              whenever a charger starts or stops being used, or the allocated
+              amperage changes, the software will recalculate what amount of
+              amperage each charger is allocated, or rather, can safely draw
+              from the home circuit. Fortunately this part is easy, as that just
+              ultimately involves sending the updates to a computer, and the
+              computer sending them back to the chargers. The "load management"
+              part refers to how we actually calculate this, and is more
+              involved - figuring out how this should work will be the main
+              focus of this article.
+            </div>
+            <div>
+              One thing I should mention is that this article will focus on
+              finding a load management algorithm which distributes power in a
+              manner which is <span>safe</span> and{' '}
+              <span>uses as much amperage as possible</span>. In the next
+              article, this will be taken a step further and we will aim to find
+              an algorithm which, on top of those two things, ensures the load
+              management system finds the{' '}
+              <span className="underline">
+                most evenly distributed amount of wattage
+              </span>{' '}
+              possible, as to guarantee each charger provides the most closely
+              equal amount of power possible to those charging - granting
+              fairness. But for now forget about that, we just want something
+              that is safe and makes the most of the limited amperage the power
+              company has given us.
             </div>
             <div>
               A lot of people (including myself at first glance, being formerly
               unfamiliar with the workings of circuits) initially assume the
-              solution is as straight forward as taking the property amperage,
-              dividing it by the number of active chargers, assigning that to
-              each charger, and moving on. Basic division, yielding an evenly
-              distributed allocation. However{' '}
-              <span className="underline">3 major limitations</span> are faced
-              that convolute the problem significantly. Believe it or not,
-              considering these limitations makes the solution much more
-              complicated than mere division.
+              solution could be as straight forward as taking the amperage of
+              the circuit breaker, dividing it by the number of active chargers,
+              setting each charger to draw that amount, and moving on. Basic
+              division, even yielding an evenly distributed allocation. However{' '}
+              <span className="underline">2 major limitations</span> are faced
+              that convolute the problem. Believe it or not, considering these
+              limitations makes the solution much more complicated than mere
+              division.
             </div>
             <h1 className="text-lg underline text-secondary">Problem 1</h1>
             <div>
@@ -305,61 +371,44 @@ export const EVChargerDLB = () => {
               amperage to devices, we have to consider whether the allocation
               exceeds capacity of <span className="underline">any</span> of the
               3 phases, rather than a single source. This is only a problem when
-              have single phase chargers on 3 phase power, otherwise it becomes
-              the same thing as a single source (can you think of why?).
+              putting single phase chargers on 3 phase property circuits,
+              because if you look at the{' '}
+              <Link
+                href="/articles/EVChargerDLB#3phasesection"
+                className="text-secondary hover:underline"
+              >
+                3 phase graph again
+              </Link>
+              , one of these peaks will be imbalanced with the others when we
+              have an additional device connected to it. If we have just 3 phase
+              devices or just single phase devices, this wouldn't be an issue
+              because we wouldnt have to consider each phase seperately - we
+              could effectively ignore two of them.
             </div>
 
             <h1 className="text-lg underline text-secondary">Problem 2</h1>
             <div>
-              Another limitation emerges when considering devices and ports.
-              Often, each charger will have a couple of ports, which get
-              allocated some amperage. The ports themselves have a maximum
-              amperage they can safely use to charge a car, and on top of that,
-              the devices themselves usually have a maximum circuit amperage
-              which too must not be exceeded. We see a solution to this is more
-              involved than mere division, as we need to respect all involved
+              Another limitation emerges when considering the circuits of the
+              devices and ports themselves. Often, each charger will have a
+              couple of ports, which get allocated some share of the amperage
+              given to the charger. The ports themselves have a maximum amperage
+              they can safely use to charge a car, and on top of that, the
+              devices themselves usually have a maximum circuit amperage which
+              too must not be exceeded. We see now that on top of respecting the
+              phase capacities, as we need to respect also the devices' circuit
               capacities.
-            </div>
-            <h1 className="text-lg underline text-secondary">Problem 3</h1>
-            <div>
-              The final limitation to consider is that we are trying to get
-              balanced distribution of wattage, not amperage, such that everyone
-              charging has the most similar charge rate achievable, thus being
-              fair. Remember wattage is amperage times voltage. The good thing
-              is that in local property circuits, almost always devices are
-              connected in parallel. Now if we think about this in terms of our
-              water analogy, this was like splitting the pipework in many
-              directions. In such a case, the volume (amperage) will split, but
-              the pressure (voltage) would stay the same, therefore{' '}
-              <SiteLink href="https://www.allaboutcircuits.com/textbook/direct-current/chpt-5/simple-parallel-circuits/">
-                we may assume that the devices have the same voltage (V)
-              </SiteLink>{' '}
-              since they are connected in parallel. Hence at the device level,
-              all we really need to think about is how we distribute amperage -
-              since all we would need to do afterwards is multiply them all by
-              the same number.
-            </div>
-            <div>
-              However, within the devices themselves things get more
-              complicated. Electric vehicle chargers can be AC or DC, and DC
-              devices will convert the AC power they are given. In this process,
-              DC fast chargers (or superchargers, as you might have heard of
-              them) often apply a very large voltage in order to provide more
-              power to the car. So we need to account for the voltage they apply
-              in terms of balancing the wattage of active connectors.
             </div>
 
             <div>
-              So.. we have a lot to think about. Whenever I get faced with a
+              So we have a bit to think about. Whenever I get faced with a
               problem like this, the first thing I like to think is what
               information do we need? To even consider solving these load
-              management problems we will always definitely need: the maximum
+              management problems we will always definitely need the maximum
               amperage to allocate to all the chargers (for example, the limit
-              set circuit breaker), the voltage of the local/home circuit and
-              the devices at the location - including what phases they are
-              attached to, what their maximum amperage is as well as their
-              connectors and connector maximum amperages. If the device is DC,
-              we also need to know what voltage it applies.
+              set by the circuit breaker), as well the devices at the station -
+              including what phases they are attached to, what their maximum
+              amperage is, what connectors they have and what the maximum
+              amperage of their connectors.
             </div>
           </div>
           <h1 className="text-2xl underline text-secondary">
@@ -367,75 +416,83 @@ export const EVChargerDLB = () => {
           </h1>
           <div className="flex flex-col gap-y-4">
             <div>
-              Personally, I think even with it listed out there's still far too
-              much to think about at the moment in terms of approaching this, we
-              need to break it down into something more digestible. Firstly, we
-              should list out our set of aims, and also a set of
-              restrictions/assumptions for this problem, so the outline of what
-              we're trying to do can all be in one place.
+              Personally, I think we still need to break this whole thing down
+              into something more digestible. How this will be solved is still
+              fairly out of sight right now, in my opinion. Maybe for the sake
+              of thinking about it a bit more before jumping in, we should list
+              out a set of aims, and also a set of restrictions/assumptions for
+              this problem, so the outline of what we're trying to do can all be
+              in one place.
             </div>
             <h1 className="text-lg underline text-secondary">Assumptions</h1>
             <div>
               We aim to:
-              <ul className=" ml-6">
+              <ul className="ml-2">
                 <li>
-                  a) Allocate each active charging port the most evenly
-                  distributed amount of power
-                </li>
-                <li>
-                  b) Allocate each active charging port a maximal amount of
+                  a) Allocate each active charging port a maximal amount of
                   power
                 </li>
-                <li>c) Respect all amperage capacities</li>
+                <li>b) Respect all amperage capacities</li>
               </ul>
             </div>
             <div>
               Then the restrictions/assumptions we have are:
-              <ul className="ml-6">
-                <li>i) Devices are connected in parallel</li>
-                <li>ii) Each device has a maximal circuit amperage</li>
+              <ul className="ml-6 list-disc">
                 <li>
-                  iii) Each port of a device also has a seperate maximal
-                  amperage
+                  Devices are connected in parallel, therefore{' '}
+                  <Link
+                    href="/articles/EVChargerDLB#kirchhoff"
+                    className="text-secondary hover:underline"
+                  >
+                    Kirchhoff's Law
+                  </Link>{' '}
+                  applies
                 </li>
                 <li>
-                  iv) Each AC phase from the grid supplies an equal amperage to
-                  the location
+                  Hence, the devices connected to a phase can't draw more
+                  current than the phase supplies
                 </li>
                 <li>
-                  v) There can be any number of devices. A device can have any
+                  Each device has a maximal circuit amperage to be respected
+                </li>
+                <li>
+                  Each port of a device also has a seperate maximal amperage to
+                  respectected
+                </li>
+                <li>
+                  Each AC phase from the grid supplies the same amount amperage
+                  to the station
+                </li>
+                <li>
+                  There can be any number of devices. A device can have any
                   number of ports
                 </li>
-                <li>
-                  vi) Every port can readily have it's maximum amperage set
-                </li>
-                <li>
-                  vii) Every property is delivered a charge of 240 volts, which
-                  is standard in most buildings. If this is not the case, you
-                  can very easily make a substitution.
-                </li>
+                <li>Every port can readily have it's maximum amperage set</li>
               </ul>
             </div>
             <div>
-              Certainly, this is still a lot to consider, and could not easily
-              be figured out by simply sitting and thinking about it long
-              enough. Thinking about each phase, device, connector and
-              constraint at the same time is most likely too straining on
-              short-term memory for most to make any real progress trying to
-              solve. With this, my immediate idea is that we must find a way to
-              represent a given DLB setup, for the sake of getting a better
-              intuition and interpretation of the problem. The obvious initial
-              choice is to represent this as a tree, since it does appear we
-              have these 'layers' of dependency (the allocation of a port
-              depends on the allocation of a device, devices depend on phases,
-              vise versa).
+              One more step I always think is absolutely necessary (especially
+              in the context of creating algorithms) is to find a visual
+              representation for any possible instance of the problem, in this
+              case an 'instance of the problem' referring to a station. We want
+              to represent a given station setup, which includes all the
+              necessary information. A lot of people claim to be visual learners
+              - you can benefit a lot from creating your own visual instead of
+              struggling to find one, like so;
             </div>
             <h1 className="text-lg underline text-secondary">
               Example: Location A
             </h1>
             <div>
-              As an example, consider a Location A which has 60 amps supplied by
-              the grid and 3 chargers which are:
+              The obvious initial choice is to represent this as a tree, since
+              it does appear we have these 'layers' of dependency - in the sense
+              that a device has multiple "child" ports which is distributes its
+              amperage to, and phases have multiple "child" devices with the
+              same relationship.
+            </div>
+            <div>
+              As an example, we consider a Location A which has 60 amps supplied
+              by the grid and 3 chargers which are:
               <ul className="list-disc ml-6">
                 <li>
                   A 3 phase device with max amperage 32A. One active port with
@@ -457,11 +514,16 @@ export const EVChargerDLB = () => {
               will have ports with different max amperages (in fact, they
               usually have the same max as the device). But we need to extend
               our model to all cases to ensure it will generalise well in the
-              caprice of the real world. Nonetheless, describing Location A in
-              the way we just have is in itself an example of why we need to
-              represent this somehow else, writing it out is clearly verbose. We
-              can instead model that example easily by representing it with the
-              following diagram:
+              caprice of the real world. That being said, with my basic
+              understanding of circuits there may be factors I haven't
+              considered - my goal here though is to create a model of the
+              situation, and find a solution to that.
+            </div>
+            <div>
+              Nonetheless, describing Location A in the way we just have is in
+              itself an example of why we need to represent this somehow else,
+              writing it out is clearly verbose. We can instead model that
+              example easily by representing it with the following diagram:
             </div>
             <Image
               src="/assets/dlb/locationA-1.png"
@@ -472,13 +534,16 @@ export const EVChargerDLB = () => {
             />
             <div>
               Note that this representation{' '}
-              <span className="underline">does not</span> intend to or
-              adequately represent the circuitry of the system, but rather the
+              <span className="underline">does not</span> intend to (or
+              adequately) represent the circuitry of the system, but rather the
               dependencies and restrictions on amperage in allocating a safe
-              amount - essentially all the pieces relevant to the DLM problem.
-              With this method of representing a location, therefore granting a
-              data structure (the tree) for a location, we can finally move on
-              to solving the problem.
+              amount - essentially all the pieces relevant to the safe DLM
+              problem. With this way of representing a location, therefore
+              granting a data structure (the tree) for a location, we can
+              finally move on to solving the problem. In a way it's given us an
+              entry point, because now we realise we just need to think about
+              how devices and phases should safely distribute their amperage as
+              independent object - breaking it down one more step.
             </div>
           </div>
           <h1 className="text-2xl underline text-secondary">
@@ -487,204 +552,108 @@ export const EVChargerDLB = () => {
           <div className="flex flex-col gap-y-4">
             <div>
               We now need to use this tree structure to figure out what the
-              optimal allocation is, or rather, an algorithm that does so.
+              optimal safe allocation is, or rather, an algorithm that does so.
             </div>
             <div>
               As a starting point, the algorithm we derive should obviously
               involve allocating 0 amps to innactive chargers, but then
-              allocating the most evenly distributed and maximal amount of power
-              to every other charger. The first approach I will show is somewhat
-              of a loose, brute force approach that happens to be decently
-              efficient for a most scenarios, but has a fatal security risk. The
-              other is an optimised approach which I find rather beautiful, and
-              frankly, is the reason I decided to write this article.
-            </div>
-            <div>
-              A quick disclaimer that both the solutions I will provide will
-              grant the most even distribution of{' '}
-              <span className="underline">amperage</span>, then at the end I
-              will reveal a subtle trick we can tack on to make it even out on
-              the basis of power.
+              allocating the rest of the power such that the proportion given to
+              devices which require more power is more than those which need
+              less. There needs to also be no remaining current to allocate,
+              such as what would happen for example if we just set every
+              connector to draw 1A, a probably-safe but inefficient amount.
             </div>
             <h1 className="text-lg underline text-secondary">
-              The Quick and Dirty Fix
+              The "I Gotta Ask My Dad" Algorithm
             </h1>
             <div>
-              Surprisingly, there is a fairly primitive solution that works
-              exceptionally well <span className="underline">exclusively</span>{' '}
-              for locations where devices have large circuit capacities in
-              proportion to the grid allocation. It simply is as follows:
+              While this algorithm for proportional load balancing can be
+              explained quite easily to programmers or computer scientists, like
+              much of this article I want to explain it in a way that
+              demonstrates the discrete thinking involved in coming up with such
+              a method, as to be accessible to all - so I found an analogy we're
+              all familiar with.
             </div>
             <div>
-              <ol className="list-decimal ml-5">
+              For those with siblings, or even cousins, we've all been in a
+              position where you both want a certain amount of something, let's
+              say it's cake, but there's only so much to go around. One sibling
+              says "I want 2 slices of cake", and the other says "I want 4
+              slices of cake". Their parents then distribute what's available,
+              in proportion to how much each sibling wants. If there's 3 slices
+              of cake available, the parent would give 1 slice to sibling 1, and
+              2 slices to sibling 2 - distributing in proportion, exactly like
+              what we want to do with our amperage.
+            </div>
+            <div>
+              This algorithm uses the exact same idea. Each active
+              connector/port wants to draw as much amperage as possible, but
+              before it does, it has to ask the parent node in dependency tree,
+              then can use what it's given by that node. The steps involved are:
+            </div>
+            <div>
+              <ol className="list-disc ml-8">
                 <li>
-                  Find the phase with the most active connectors attached to it
-                  - count how many there are
+                  For each device, make a list of what amperage each of it's
+                  connectors will maximally draw (set to 0 if the connector is
+                  not being used) - equivalent to "how much cake the sibling
+                  wants"
                 </li>
                 <li>
-                  Divide the grid amperage by that number of active connectors
+                  Calculate the total amperage all the sibling connectors are
+                  asking for. For each number in that list, multiply it by (the
+                  devices maximum amperage / the total amperage you just
+                  calculate) - now each connector's proportional share is
+                  determines. But wait, it shouldn't tell the connectors yet,
+                  now the device has to "ask it's dad" whether it can draw the
+                  device maximum.
                 </li>
                 <li>
-                  Set each active connector to the minimum of {'{'} that
-                  division result, it's port capacity, it's device capacity{' '}
-                  {'}'}.
+                  For each phase, make a list of the amperage requested by every
+                  attached device. The amperage requested should be the sum of
+                  the device's allocation list - the amount it needs to give to
+                  it's children (charging ports)
+                </li>
+                <li>
+                  Again, calculate the sum of that list. For each number in that
+                  list, multiply it by (the grid amperage / the sum of the list)
+                  - giving the proportion each device can receive.
+                </li>
+                <li>
+                  Now for each phase, tell the device what it is allocated, but{' '}
+                  <span className="underline">only</span> if it is less than
+                  what it was asking for. This way we end up ensuring we take
+                  the <span className="underline">minimum</span> allocation
+                  decided by the phases.
+                </li>
+                <li>
+                  For each device, recalculate it's connector proportions, with
+                  what the device was just allocated by it's phases. By this, I
+                  mean repeat the process of multiplying each connector
+                  allocation in our old list by (the amount we were told we can
+                  use by the phase / the previous sum of the list)
+                </li>
+                <li>
+                  Tell each connector what it is allocated - finally give the
+                  siblings the proportion of what they asked for
                 </li>
               </ol>
             </div>
-            <EditThis>Include animation gif of algo on Location A</EditThis>
-            <EditThis>
-              <div>
-                This works because if we target the phase with the most active
-                connectors (and each phase provides the same amperage), dividing
-                the supplied amperage by the number of active connectors will
-                certainly set out to allocate a safe amperage to each connector.
-              </div>
-              <div>
-                But because that phase has the most active connections, it
-                certainly won't exceed the others too. So immediately, this
-                algorithm respects the grid capacity. Since we minimum of that
-                and the capacities of the branch a connector is on, we respect
-                the capacities of everything.
-              </div>
-            </EditThis>
             <div>
-              However, the problem with this approach arises in the following
-              case. For example, consider the following location:
-            </div>
-            <EditThis>Include location diagram</EditThis>
-            <div>
-              From the initial step where we divide the phase supply, we will
-              try to allocate 30A to the three active connectors. But two of
-              those connectors can only be set to 22A, the other to 40A, we have
-              this leftover unusued 16A to give to the other active connector.
-              Ideally we would set them to draw 16A, 16A and 40A, and this
-              wouldn't exceed any capacities. However, going through our
-              algorithm, what we would end up setting it to is 16A, 16A and 30A
-              - not ideal as we are not delivering as much as we can to that 40A
-              connector. So we have to do some sort of 'extra pass' to donate
-              this.
-            </div>
-            <div>
-              But what if in this extra pass, we again allocate past some
-              capacity and have leftover? Remember we assumed that the location
-              could have any amount of devices and connectors. A location could
-              very easily be constructed such that this algorithm ends up in
-              this loop where we don't necessarily know at what step it would
-              terminate. For example, the following abstract location would
-              cause our algorithm to run for an arbitrarily long amount of time,
-              at least in theory. If you've got the time, try applying the steps
-              described to the following location to better see what the problem
-              is.
-            </div>
-            <EditThis>Include abstract infinite runtime location</EditThis>
-            <div>
-              The reason we shouldn't use this algorithm is because it poses a
-              security risk, as someone could easily submit this edge-case
-              location to be processed and get our server stuck in an infinite
-              loop. We could potentially include a verification step to ensure
-              that they haven't submitted this kind of location, but at that
-              point it's starting to look like this solution just isn't very
-              elegant - particularly in contrast to what comes next. Ideally we
-              want to gaurantee that the balanced load can be calculated in a
-              deterministic amount of time - especially in the professional
-              setting of software.
-            </div>
-            <h1 className="text-lg underline text-secondary">
-              The Trickling Algorithm
-            </h1>
-            <div>
-              While this algorithm can be explained quite easily to programmers
-              or computer scientists, like much of this article I want to
-              explain it in a way that demonstrates the discrete thinking
-              involved in coming up with such a method, as to be accessible to
-              all. One of my main goals of this website is to illustrate that
-              complex solutions to problems can be arrived at by anybody - just
-              by thinking about the problem in a simpler way with more
-              digestible steps, rather than trying to solve it by sitting and
-              waiting for some absurd stroke of brilliance.
-            </div>
-            <div>
-              For the sake of those uninterested in the thought required to
-              derive this algorithm, I'll first explain the steps, then explain
-              afterwards how such a conclusion can be arrived at.
-            </div>
-            <ol className="list-decimal ml-5">
-              <li>
-                For each device, make a list of what amperage each of it's
-                connectors will maximally draw (set to 0 if the connector is not
-                being used)
-              </li>
-              <li>
-                Calculate the sum of that list. For each number in that list,
-                multiply it by (the devices max amperage / the sum of the list)
-              </li>
-              <li>
-                For each phase, make a list of each connected device's list sum
-              </li>
-              <li>
-                Again, calculate the sum of that list. For each number in that
-                list, multiply it by (the grid amperage / the sum of the list)
-              </li>
-              <li>For each phase, and each device it has </li>
-            </ol>
-            <div>
-              When I first started to understand truly what was involved in this
-              problem, one of first things on my mind was where a "perfectly
-              even" distribution would occur in nature, to get an intuition for
-              such a thing. I think when understanding any algorithm, proof, or
-              anything rigorous, it is imperative to first gain an intuition for
-              what you are trying to do or prove before you actually turn it
-              into something concrete - kind of like understanding circuits via
-              the Hydraulic Analogy. My immediate idea was that water has this
-              behaviour of being "perfectly even" in distribution (or at least,
-              is close enough to convey the illusion of such) when trickling
-              from the top of a perfectly round object. Perhaps you've seen
-            </div>
-            <div>
-              connector were a bucket, with it's volume equal to the maximum
-              amperage it can safely receive, then pouring water from the top
-              would evenly distribute across these buckets - that is naturally
-              what it does assuming the slope is the same in all directions.
-              Furthermore, if sibling connectors
-            </div>
-            <div>ANIMATION</div>
-            <div>
-              We have the intuition of a solution, we just have to formalise it
-              now, so that it is programmable. Our program will need to know In
-              nature a tree will propagate water from it's roots, and have water
-              pour down evenly from it's canopy. The reason I call this tree
-              tipping is because in the first pass, we will traverse from the
-              connectors to the phases to determine allocations, things are
-              naturally flowing towards the top - the propagation step. After
-              that all we have to do is let the water (amperage) be 'tipped'
-              into the top and flow eventually into the connectors, determining
-              their safely optimal allocation.
-            </div>
-            <div>
-              What this step requires is that for each device, we create a
-              vector of what amperage each connector is asking for. We then
-              normalise it to have a sum equal to the device's max amperage.
-              This way we find an allocation which does not exceed the capacity
-              of the parent node, and is in perfect proportion to what amperage
-              each connector is asking for.
-            </div>
-            <div>ANIMATION</div>
-            <div>
-              Now what's perfect about this is that connectors bear the same
-              relationship to devices as devices do to the phase nodes, so we
-              can just repeat that step recursively, for the whole tree. That
-              is, after creating our device vector, we propagate to each phase
-              the amperage each device is asking for, and normalise the sum to
-              be equal to the grid amperage. See the whole propagation step
-              visually below.
+              For location A, the following gif summarises the entire process
+              visually as a nice final product:
             </div>
             <div>IMAGE</div>
-            <div>
-              After this we simply let the tree do it's work, 'tipping' the
-              amperage from the phases through the tree, having the water flow
-              from the canopy (to continue our analogy) through to the bottom
-              layer. Since each phase was passed a 0
-            </div>
+          </div>
+          <h1 className="text-lg underline text-secondary">Conclusion</h1>
+          <div>
+            While this algorithm could be considered simple and repetitive, this
+            article sets the groundwork for the more involved computer-sciency
+            algorithm in the next article, which achieves the more final goal of
+            finding the allocation which instead distributes <span>power</span>{' '}
+            as evenly as possible - ensuring every person charging is getting as
+            fair a share of the station's electricity as the next. Hopefully
+            this was instructive, if anything was unclear feel free to comment.
           </div>
         </div>
       </PostSummary>
@@ -695,11 +664,11 @@ export const EVChargerDLB = () => {
 export const EVChargerDLBSummary = () => {
   return (
     <PostSummary
-      title="Dynamic Load Balancing for EV Chargers"
+      title="Load Balancing for EV Charging Stations"
       isPageHeader={false}
       children={undefined}
       link="articles/EVChargerDLB"
-      desc="A generalisable model to balance amperage distribution across a set of electric vehicle chargers, without exceeding a given grid capacity."
+      desc="A generalisable model to safely distribute amperage across a set of electric vehicle chargers, without exceeding circuit capacities."
     />
   )
 }

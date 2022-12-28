@@ -17,10 +17,11 @@ const About = () => {
             This site is an effort to share the some of the fascinating problems
             and ideas I've encountered at a level of detail I wish to make
             accessible to all, generally pertaining (but not limited) to
-            Software Engineering and Abstract Math. It includes articles
-            pertaining to novel problems I've dedicated thought to and wish to
-            share, as well as overviews of projects I've engaged in - with
-            explanations of how they all work.
+            Software Engineering or Abstract Math. The Blog section includes
+            articles pertaining to theoretical problems I've dedicated thought
+            or novel solutions to and wish to share. The Projects section
+            includes overviews of projects I've engaged in creating or
+            developing - with explanations of how they all work.
           </div>
           <div>
             I sincerely hope to show through this website that clever solutions

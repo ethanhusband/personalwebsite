@@ -1,9 +1,13 @@
-import { DLBGroup, DLBDevice, DLBPhase, Phases, PowerType } from "./DLBTypes"
+import { DLBGroup, DLBPhase, Phases } from "./DLBTypes"
+import { testGroup } from "./TestCase"
 
 /*        PROPORTIONALLY ALLOCATED DLM         */
 
+// Note: This is designed such that with small modifications, it can be easily abstracted to ANY problem involving layers of dependency
+// If I think of another problem like that, I'll be bothered to make the types abstract too.
+
 /**
- * Apply the trickling algorithm to a given DLB group, where the distribution of amperage is proportional to device power
+ * Apply the "I Gotta Ask My Dad" algorithm to a given DLB group, where the distribution of amperage is proportional to device power
  * @param group 
  * @returns The DLB group with it's allocation set 
  */
@@ -13,7 +17,7 @@ const BalanceGroup = (group: DLBGroup): DLBGroup => {
 
     // Now that the device and phase nodes know what they are being asked for, they can readjust
     // They will allocate each child node a proportional share of what they were asked for, adjusted to not exceed what they can provide
-    TrickleAmperage(group)
+    DistributeAmperage(group)
 
     // Please note if you wish to set connector amperage their allocated amount via OCPP's setChargingProfile command,
     // Then for it to be safe in practice, you need to do so in the order: inactive ascending & start_date_time ascending.
@@ -38,21 +42,10 @@ const ConstructTree = (group: DLBGroup) => {
 }
 
 /**
- * Modify the distribution of phases to allocate the most even amount possible to each connector
- * @param group 
- */
-const DistributeFairly = (group: DLBGroup) => {
-    group.phases.forEach((value: DLBPhase, key: Phases, map: Map<Phases, DLBPhase>) => {
-        var active = ActiveConnectorDistribution(value)
-        
-    })
-}
-
-/**
  * From the top down, set the new distribution vector of a device according to it's phase, then allocate to each of its ports.
  * @param group
  */
-const TrickleAmperage = (group: DLBGroup) => {
+const DistributeAmperage = (group: DLBGroup) => {
     // The distributions have been constructed, we just need to allocate everything now
     group.phases.forEach((value: DLBPhase, key: Phases, map: Map<Phases, DLBPhase>) => {
         // For each device, set it's distribution vectors sum to the allocation decided by the phase
@@ -100,18 +93,6 @@ const ConstructDistribution = (distribution: number[], children: any[], capacity
     
 }
 
-const ActiveConnectorDistribution = (phase: DLBPhase): number[] => {
-    var active = []
-    for (var device of phase.children) {
-        var count = 0;
-        for (var connector of device.children) {
-            if (!connector.inactive) count++
-        }
-        active.push(count)
-    }
-    return active
-}
-
 /**
  * Multiply each element by a ratio such that the sum of 'vector' becomes 'length',
  * While stil maintaining the relative proportion of elements.
@@ -136,106 +117,8 @@ const Sum = (array: number[]): number => {
       }, 0); 
 }
 
-var testDevice1: DLBDevice = {
-  id: "HELLOWORLD",
-  max_amperage: 50,
-  allocated_amperage: 0,
-  distribution: [],
-  children: [
-    {
-      id: 1,
-      inactive: false,
-      max_amperage: 32,
-      max_voltage: 500,
-      allocated_amperage: 0,
-      power_type: PowerType.DC,
-    },
-    {
-      id: 2,
-      inactive: true,
-      max_amperage: 32,
-      max_voltage: 500,
-      allocated_amperage: 0,
-      power_type: PowerType.DC,
-    },
-  ],
-};
-
-var testDevice2: DLBDevice = {
-  id: "HELLOWORLD2",
-  max_amperage: 50,
-  allocated_amperage: 0,
-  distribution: [],
-  children: [
-    {
-      id: 1,
-      inactive: true,
-      max_amperage: 32,
-      max_voltage: 240,
-      allocated_amperage: 0,
-      power_type: PowerType.AC_1_PHASE,
-    },
-    {
-      id: 2,
-      inactive: false,
-      max_amperage: 32,
-      max_voltage: 240,
-      allocated_amperage: 0,
-      power_type: PowerType.AC_1_PHASE,
-    },
-  ],
-};
-
-var testDevice3: DLBDevice = {
-  id: "HELLOWORLD3",
-  max_amperage: 20,
-  allocated_amperage: 0,
-  distribution: [],
-  children: [
-    {
-      id: 1,
-      inactive: false,
-      max_amperage: 32,
-      max_voltage: 240,
-      allocated_amperage: 0,
-      power_type: PowerType.AC_3_PHASE,
-    },
-    {
-      id: 2,
-      inactive: false,
-      max_amperage: 32,
-      max_voltage: 240,
-      allocated_amperage: 0,
-      power_type: PowerType.AC_3_PHASE,
-    },
-  ],
-};
-
-const testGroup: DLBGroup = {
-  grid_amperage: 50,
-  grid_voltage: 240,
-  phases: new Map<Phases, DLBPhase>([
-        [1, {
-            id: 1,
-            distribution: [],
-            children: [testDevice1, testDevice2]
-            }
-        ],
-        [2, {
-            id: 1,
-            distribution: [],
-            children: [testDevice1, testDevice2, testDevice3]
-            }
-        ],
-        [3, {
-            id: 1,
-            distribution: [],
-            children: [testDevice1, testDevice2]
-            }
-        ],
-    ]),
-}
-
-console.log("Group balanced:", BalanceGroup(testGroup).phases.get(2))
+// See the result for each phase here
+const BalancedGroup = BalanceGroup(testGroup)
+console.log("Group balanced:", BalancedGroup.phases.get(1), BalancedGroup.phases.get(2), BalancedGroup.phases.get(3))
 
 export {}

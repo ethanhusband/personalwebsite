@@ -1,4 +1,7 @@
-import { DLBGroup, DLBDevice, DLBPhase, Phases, PowerType } from "./DLBTypes"
+import { DLBGroup, DLBDevice, DLBPhase, Phases, PowerType } from "../DLBArticle/DLBTypes"
+
+// INCOMPLETE
+
 
 /*        EVENLY ALLOCATED DLM         */
 

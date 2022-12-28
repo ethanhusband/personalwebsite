@@ -1,18 +1,9 @@
 import { NextPage } from 'next'
 import { EVChargerDLBSummary } from './articles/EVChargerDLB'
-import PostSummary from './components/PostSummary'
-import { SitePage } from './components/SitePage'
 
 export const BlogMenu: NextPage = () => {
   return (
     <div className="gap-y-6 flex flex-col">
-      <PostSummary
-        title="How Group Theory Can Speed Up Hashing Algorithms"
-        link=""
-        desc=""
-        children={undefined}
-        isPageHeader={false}
-      />
       <EVChargerDLBSummary />
       {/** 
               <li>How Quantum Computers Mark Solutions</li>
