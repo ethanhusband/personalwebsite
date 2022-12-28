@@ -1,4 +1,5 @@
 import PostSummary from '../components/PostSummary'
+import Comments from '../components/Comments'
 import Image from 'next/image'
 import Link from 'next/link'
 import { SiteLink } from '../components/SiteLink'
@@ -16,7 +17,7 @@ export const EVChargerDLB = () => {
           <div>
             In this article, I will be demonstrating (at a level of detail
             understandable for everyone) my algorithm for electric vehicle
-            charging stations, which determines an load management allocation
+            charging stations, which determines a load management allocation
             which is safe, and distributes current optimally in proportion to
             the power of devices. In a seperate article, I'll also provide an
             alternative algorithm which allocates amperage in a manner which is
@@ -657,6 +658,7 @@ export const EVChargerDLB = () => {
           </div>
         </div>
       </PostSummary>
+      <Comments />
     </div>
   )
 }
