@@ -15,8 +15,12 @@ const useScript = (params: any) => {
         setStatus("idle");
         return;
       }
-
+      if (document.getElementById("comments")) {
+        return
+      }
+      
       let script = document.createElement("script");
+      script.id = "comments"
       script.src = url;
       script.async = true;
       script.crossOrigin = "anonymous";

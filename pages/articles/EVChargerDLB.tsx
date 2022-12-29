@@ -1,5 +1,4 @@
 import PostSummary from '../components/PostSummary'
-import Comments from '../components/Comments'
 import Image from 'next/image'
 import Link from 'next/link'
 import { SiteLink } from '../components/SiteLink'
@@ -550,115 +549,149 @@ export const EVChargerDLB = () => {
           <h1 className="text-2xl underline text-secondary">
             Solving The Model
           </h1>
-          <div className="flex flex-col gap-y-4">
-            <div>
-              We now need to use this tree structure to figure out what the
-              optimal safe allocation is, or rather, an algorithm that does so.
-            </div>
-            <div>
-              As a starting point, the algorithm we derive should obviously
-              involve allocating 0 amps to innactive chargers, but then
-              allocating the rest of the power such that the proportion given to
-              devices which require more power is more than those which need
-              less. There needs to also be no remaining current to allocate,
-              such as what would happen for example if we just set every
-              connector to draw 1A, a probably-safe but inefficient amount.
-            </div>
-            <h1 className="text-lg underline text-secondary">
-              The "I Gotta Ask My Dad" Algorithm
-            </h1>
-            <div>
-              While this algorithm for proportional load balancing can be
-              explained quite easily to programmers or computer scientists, like
-              much of this article I want to explain it in a way that
-              demonstrates the discrete thinking involved in coming up with such
-              a method, as to be accessible to all - so I found an analogy we're
-              all familiar with.
-            </div>
-            <div>
-              For those with siblings, or even cousins, we've all been in a
-              position where you both want a certain amount of something, let's
-              say it's cake, but there's only so much to go around. One sibling
-              says "I want 2 slices of cake", and the other says "I want 4
-              slices of cake". Their parents then distribute what's available,
-              in proportion to how much each sibling wants. If there's 3 slices
-              of cake available, the parent would give 1 slice to sibling 1, and
-              2 slices to sibling 2 - distributing in proportion, exactly like
-              what we want to do with our amperage.
-            </div>
-            <div>
-              This algorithm uses the exact same idea. Each active
-              connector/port wants to draw as much amperage as possible, but
-              before it does, it has to ask the parent node in dependency tree,
-              then can use what it's given by that node. The steps involved are:
-            </div>
-            <div>
-              <ol className="list-disc ml-8">
-                <li>
-                  For each device, make a list of what amperage each of it's
-                  connectors will maximally draw (set to 0 if the connector is
-                  not being used) - equivalent to "how much cake the sibling
-                  wants"
-                </li>
-                <li>
-                  Calculate the total amperage all the sibling connectors are
-                  asking for. For each number in that list, multiply it by (the
-                  devices maximum amperage / the total amperage you just
-                  calculate) - now each connector's proportional share is
-                  determines. But wait, it shouldn't tell the connectors yet,
-                  now the device has to "ask it's dad" whether it can draw the
-                  device maximum.
-                </li>
-                <li>
-                  For each phase, make a list of the amperage requested by every
-                  attached device. The amperage requested should be the sum of
-                  the device's allocation list - the amount it needs to give to
-                  it's children (charging ports)
-                </li>
-                <li>
-                  Again, calculate the sum of that list. For each number in that
-                  list, multiply it by (the grid amperage / the sum of the list)
-                  - giving the proportion each device can receive.
-                </li>
-                <li>
-                  Now for each phase, tell the device what it is allocated, but{' '}
-                  <span className="underline">only</span> if it is less than
-                  what it was asking for. This way we end up ensuring we take
-                  the <span className="underline">minimum</span> allocation
-                  decided by the phases.
-                </li>
-                <li>
-                  For each device, recalculate it's connector proportions, with
-                  what the device was just allocated by it's phases. By this, I
-                  mean repeat the process of multiplying each connector
-                  allocation in our old list by (the amount we were told we can
-                  use by the phase / the previous sum of the list)
-                </li>
-                <li>
-                  Tell each connector what it is allocated - finally give the
-                  siblings the proportion of what they asked for
-                </li>
-              </ol>
-            </div>
-            <div>
-              For location A, the following gif summarises the entire process
-              visually as a nice final product:
-            </div>
-            <div>IMAGE</div>
+          <div>
+            We now need to use this tree structure to figure out what the
+            optimal safe allocation is, or rather, an algorithm that does so.
+          </div>
+          <div>
+            As a starting point, the algorithm we derive should obviously
+            involve allocating 0 amps to innactive chargers, but then allocating
+            the rest of the power such that the proportion given to devices
+            which require more power is more than those which need less. There
+            needs to also be no remaining current to allocate, such as what
+            would happen for example if we just set every connector to draw 1A,
+            a probably-safe but inefficient amount.
+          </div>
+          <h1 className="text-lg underline text-secondary">
+            The "I Gotta Ask My Dad" Algorithm
+          </h1>
+          <div>
+            While this algorithm for proportional load balancing can be
+            explained quite easily to programmers or computer scientists, like
+            much of this article I want to explain it in a way that demonstrates
+            the discrete thinking involved in coming up with such a method, as
+            to be accessible to all - so I found an analogy we're all familiar
+            with.
+          </div>
+          <div>
+            For those with siblings, or even cousins, we've all been in a
+            position where you both want a certain amount of something, let's
+            say it's cake, but there's only so much to go around. One sibling
+            says "I want 2 slices of cake", and the other says "I want 4 slices
+            of cake". Their parents then distribute what's available, in
+            proportion to how much each sibling wants. If there's 3 slices of
+            cake available, the parent would give 1 slice to sibling 1, and 2
+            slices to sibling 2 - distributing in proportion, exactly like what
+            we want to do with our amperage.
+          </div>
+          <div>
+            This algorithm uses the exact same idea. Each active connector/port
+            wants to draw as much amperage as possible, but before it does, it
+            has to ask the parent node in dependency tree, then can use what
+            it's given by that node. The steps involved are:
+          </div>
+          <ol className="list-disc ml-8">
+            <li>
+              Each active connector wants to use as much amperage as possible,
+              but first it has to "ask it's dad". For each device, make a list
+              of what amperage each of it's connectors will maximally draw, for
+              a connector not being used, add 0 to the list - equivalent to "how
+              much cake the sibling wants"
+            </li>
+            <li>
+              Dad needs to figure out what proportion each child should get.
+              Calculate the total amperage all the sibling connectors are asking
+              for. If this is more than the devices maximum amperage, then for
+              each number in that list, multiply it by (the devices maximum
+              amperage / the total amperage you just calculated) - now each
+              connector's proportional share is determined. But wait, it
+              shouldn't tell the connectors yet, now the device has to "ask it's
+              dad" whether it can draw the amount it needs to give to it's
+              children.
+            </li>
+            <li>
+              Now the phases (grandparents) have the hard task of figuring out
+              what to give each device. They'll need to communicate about
+              whether they're setting a limit on any attached devices - due to
+              too much strain.
+            </li>
+            <li>
+              The devices should send to all their attached phases two things.
+              The first being the amperage they request - the sum of their
+              distribution list. The second being a check whether they are
+              connected to a phase which has reached it's limit. These should
+              all initially be false, because the phases haven't calculated
+              anything yet.
+            </li>
+            <li>
+              Now for each phase, tell the device what it is allocated, but{' '}
+              <span className="underline">only</span> if it is less than what it
+              was asking for. This way we end up ensuring we take the{' '}
+              <span className="underline">minimum</span> allocation decided by
+              the phases.
+            </li>
+            <li>
+              For each device, recalculate it's connector proportions, with what
+              the device was just allocated by it's phases. By this, I mean
+              repeat the process of multiplying each connector allocation in our
+              old list by (the amount we were told we can use by the phase / the
+              previous sum of the list)
+            </li>
+            <li>
+              Tell each connector what it is allocated - finally give the
+              siblings the proportion of what they asked for
+            </li>
+          </ol>
+          <div>
+            For location A, the following gif summarises the entire process
+            visually as a nice final product:
+          </div>
+          <div>IMAGE</div>
+          <div>
+            For any computer scientists concerned, with a basic operation of
+            adjusting the amperage allocation of a node, this algorithm with m
+            devices and n ports has time complexity O(n+m), which also must be
+            the theoretical minimal as this could not be possibly solved without
+            checking the amperage of each node once. A short proof by
+            contradiction that O(n+m) is the minimal runtime complexity:
+            <ul className="list-disc ml-6 my-1">
+              <li>Suppose the model is solvable in less than O(n+m)</li>
+              <li>
+                Then with n+m nodes with restraints, you must have not checked a
+                restraint
+              </li>
+              <li>
+                Therefore if a restraint was not checked, the allocation is not
+                certainly safe, violating the aim, so there can be no solution
+                faster than O(n+m). QED - Quite Easily Done
+              </li>
+            </ul>
+            Note in practice it may be able to be sped up, as the number of
+            basic operations is actually 2n+3m (n when "asking the device", 3m
+            at most when "asking the phases", n when readjusting the connectors
+            based on what the phase gave the device)
           </div>
           <h1 className="text-lg underline text-secondary">Conclusion</h1>
           <div>
+            I was motivated to share this algorithm (as well as the upcoming
+            one) as I was unable to find any EV load management algorithms
+            online so created these from scratch myself, essentially looking to
+            solve that problem for others of not being able to find a solution.
+            Hopefully this was instructive, if anything was unclear feel free to
+            comment.
+          </div>
+
+          <div>
             While this algorithm could be considered simple and repetitive, this
-            article sets the groundwork for the more involved computer-sciency
-            algorithm in the next article, which achieves the more final goal of
-            finding the allocation which instead distributes <span>power</span>{' '}
-            as evenly as possible - ensuring every person charging is getting as
-            fair a share of the station's electricity as the next. Hopefully
-            this was instructive, if anything was unclear feel free to comment.
+            article sets the groundwork for the slightly more involved
+            computer-sciency algorithm in the next article, which achieves the
+            more final goal of finding the allocation which instead distributes{' '}
+            <span>power</span> as evenly as possible - ensuring every person
+            charging is getting as fair a share of the station's electricity as
+            the next.
           </div>
         </div>
       </PostSummary>
-      <Comments />
     </div>
   )
 }

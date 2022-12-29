@@ -82,14 +82,14 @@ export const EVUpCharge = () => {
             />
           </div>
           <div>
-            <span className="text-secondary">Disclaimer:</span> For the rest of
-            the driver section, I'll be using the app interface for reference.
-            The functionality of EVUp for drivers is exactly the same on the app
-            as it is on the website, except that currently on the website
-            charging is <span className="underline">prepaid</span> and on the
-            app charging is <span className="underline">postpaid</span>. While
-            it was not my decision, this is because prepaid charging is quicker
-            and likely to be less confusing for one time users on the web app.
+            <span className="text-secondary">Note:</span> For the rest of the
+            driver section, I'll be using the app interface for reference. The
+            functionality of EVUp for drivers is exactly the same on the app as
+            it is on the website, except that currently on the website charging
+            is <span className="underline">prepaid</span> and on the app
+            charging is <span className="underline">postpaid</span>. While not
+            my decision, this is because prepaid charging is quicker and likely
+            to be less confusing for one time users on the web app.
           </div>
           <div>
             Moving on, from the ChargeMap one can navigate to a nearby location

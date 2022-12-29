@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { useMediaQuery } from '@mui/material'
 import { Tooltip } from '@nextui-org/react'
 import { useState } from 'react'
+import Comments from './Comments'
 
 // This component is used as a summary for each page, but is reused as the header and background for the corresponding page
 // If using as a summary, must specify children = {undefined} AND isPageHeader = {false}
@@ -39,6 +40,8 @@ export const PostSummary = ({
         <div className="p-4 font-arial text-zinc-300 text-base tracking-wide">
           {children}
         </div>
+        <hr className="my-4 mx-3 border-black border" />
+        <Comments url={`${title}`} />
       </div>
     )
     angleButton = (

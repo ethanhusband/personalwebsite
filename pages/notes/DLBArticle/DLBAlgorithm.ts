@@ -32,10 +32,10 @@ const ConstructTree = (group: DLBGroup) => {
     group.phases.forEach((value: DLBPhase, key: Phases, map: Map<Phases, DLBPhase>) => {
         // Construct the distribution for each device in the phase
         for (var child of value.children) {
-            ConstructDistribution(child.distribution, child.children, child.max_amperage, group.grid_voltage)
+            ConstructDistribution(child.distribution, child.children, child.max_amperage)
         }
         // Construct the distribution for the phase itself
-        ConstructDistribution(value.distribution, value.children, group.grid_amperage, group.grid_voltage)
+        ConstructDistribution(value.distribution, value.children, group.grid_amperage, false)
     })
     // Now all the distribution vectors in the group will be set appropriately
     console.log("Constructed initial distribution:", group.phases)
@@ -51,7 +51,6 @@ const DistributeAmperage = (group: DLBGroup) => {
         // For each device, set it's distribution vectors sum to the allocation decided by the phase
         for (var i in value.children) {
             var device = value.children[i]
-            console.log("PHASE", value.distribution)
             if (value.distribution[i] < Sum(device.distribution)) {
               device.allocated_amperage = value.distribution[i]
               SetVectorLength(device.distribution, device.allocated_amperage)
@@ -72,7 +71,7 @@ const DistributeAmperage = (group: DLBGroup) => {
  * @param children 
  * @param capacity 
  */
-const ConstructDistribution = (distribution: number[], children: any[], capacity: number, voltage: number) => {
+const ConstructDistribution = (distribution: number[], children: any[], capacity: number, isDevice: boolean = true) => {
     // To start, the distribution vector will contain what amperage each child node is asking for.
     // Only calculate the distribution vector once, as overlapping devices will cause multiple recalculations
     if (distribution.length === children.length) return;
@@ -80,16 +79,13 @@ const ConstructDistribution = (distribution: number[], children: any[], capacity
         // For a device, set this to the sum of the distribution array, for a connector, set this to it's max_amperage
         var amperage_requested = child.children ? Sum(child.distribution) : child.max_amperage;
         // Set 0 for inactive connectors - will be null and continue if child is a device
-        if (child.inactive) amperage_requested = 0; 
-        // Adjust by voltage proportion so power is what's being evenly distributed - when DC devices are included
-        if (child.voltage && child.voltage !== voltage) amperage_requested *= voltage / child.voltage 
+        if (child.inactive) amperage_requested = 0;  
         
         distribution.push(amperage_requested)
     }
-    // Then, we need to normalise the distribution such that it's sum is equal to the max_amperage of the parent node
-    // This is such that what we allocate to the child nodes is safe according to the parent node
-    console.log("Distribution before length adjustment:", distribution, capacity)
-    SetVectorLength(distribution, capacity)
+    // Then, we need to normalise the distribution such that it's sum is less than or equal to the max_amperage of the parent node.
+    // If a device has its sum less than its capacity, only ask for the sum
+    isDevice ? Sum(distribution) > capacity && SetVectorLength(distribution, capacity) : SetVectorLength(distribution, capacity)
     
 }
 
