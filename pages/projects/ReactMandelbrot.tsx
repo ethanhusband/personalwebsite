@@ -1,4 +1,4 @@
-import PostSummary from '../components/PostSummary'
+import PostSummary from '../../components/PostSummary'
 
 export const ReactMandelbrot = () => {
   return (

@@ -1,7 +1,7 @@
-import PostSummary from '../components/PostSummary'
+import PostSummary from '../../components/PostSummary'
 import Image from 'next/image'
 import { CopyBlock } from 'react-code-blocks'
-import { SiteLink } from '../components/SiteLink'
+import { SiteLink } from '../../components/SiteLink'
 
 export const CheckersBot = () => {
   return (

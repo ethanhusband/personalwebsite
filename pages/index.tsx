@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import SitePage, { NavBar } from './components/SitePage'
+import SitePage, { NavBar } from '../components/SitePage'
 import React, { useRef, useEffect } from 'react'
 import Link from 'next/link'
 

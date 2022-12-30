@@ -1,6 +1,6 @@
 import Image from 'next/image'
-import PostSummary from '../components/PostSummary'
-import { SiteLink } from '../components/SiteLink'
+import PostSummary from '../../components/PostSummary'
+import { SiteLink } from '../../components/SiteLink'
 
 export const EVUpCharge = () => {
   return (

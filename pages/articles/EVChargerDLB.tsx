@@ -1,7 +1,7 @@
-import PostSummary from '../components/PostSummary'
+import PostSummary from '../../components/PostSummary'
 import Image from 'next/image'
 import Link from 'next/link'
-import { SiteLink } from '../components/SiteLink'
+import { SiteLink } from '../../components/SiteLink'
 
 export const EVChargerDLB = () => {
   return (
@@ -27,10 +27,11 @@ export const EVChargerDLB = () => {
           </div>
           <div>
             For software developers who understand the problem, the{' '}
-            <SiteLink href="https://github.com/ethanhusband/personalwebsite/blob/main/pages/notes/DLBArticle">
+            <SiteLink href="https://www.typescriptlang.org/play?#code/PTAEBUAsEsGdTqALpApqAhgGwOYHsAnaFAW1ADNDk0LoDYlQARAGQCFMCloBjLdPADtQkJEgAOsAFwhUKDIMgBXWACMFAE2AYuvfrABQIUAElGGaCXhI8oDXCRFVSpOhToeSggVSDz54QBRADVQHkgdHGhBHFAGDG4hOIxyVCwATwAaUDxxbhJsDMxBDQRhcQJcwkThGztUADdedAYfGJQAOgMjACpQfoH+8ABNAAVAgGVB6Z7gbuMAQVVWjB5GJHTxdEoCeqaeVHhNUHEI2EPQAHcYcNACwQwcNxp7VuhnGpzyalQ6MJgsKVBHgNIcuhstswHE4XBhVPwADzgAB8oAAvKAAN4GQbhaCAtpSCAAbQAugYAL7zMBLFZrZCbNy2DDiLYlZC2PDuXYQi6wJS3eTrNDpEQYBroBSmJhfH5WNIS2AdUyCPhKUHwJGo-mCiLCxA8KWqSXCXxKEjgxmgCZpcgAJVQqTa3GwWvRWJxA2gGiJ4Ep1NAtMcq3WVp2e2aR3ZPCEglQa0I8GuvEgYSNLTkxUwJC2BEe6FUovcf3EOl8jGBoMtkIWWCweENSDh-Hd2MGBQAHgB9DA51B5p5EwTm40EADcoGMUHQncs5uzufzadLPGIorw33cYTwOaE5c9-UWdYbCVQpV7i6eCCjOVUACt44wdamhVcPFKVOhiJgjic8NFXAIZUoEQS58SwUAcDzPw4mgHBBGgcheAURhHSQ1dfB4UUsFPICD0wY9GzPHs+wHVAhxHfsJynGgL37JdDRXNd6lXUFSkLH4TjLGCN04mNdzjPx8J8ABHJRDlcDQSMvcjQGHEhRzHf0jDAac7ASDAGUhT9SjqVAOwqQ5f1YDgoLwJRxAMXlmHYABxSoLNbfCoO9aT6MHOTKPHSdVNo0il35VksGgM9QA4wpIKIUpTgwc5rFsLczMcgBaZISG2KgIpiuKAEJnKirsGjwLAmw8+TFPw7LDiJABZFkEVGM5DmyEzGti1BkWo3z0CS8QTia2BsgKUUIglHIJQIHC+uiZB+ysWVQX2C4PmoRBEDwABrDBRWOADfDYrp+gpJT+hUiAXg0rSmVAfTDNgeBUFWVMqtlTSTMi8zxGVKyrVapr3SYaF3lheFUAREymEaZpUQAMmtW0HSdctoFdNq4uRAM1I0S7rJ0jkboMnx7swCMDjKEn3t6n7IQhqGyYxWt60bZt0DhwG3g+FnwfYABhWNH0IWH4awe1HX7ZHXTeGIhbbP9Ln7LteSJUY8HlghwEZZSaPQbGmyu0A8b0wmjJJmNBDjBNdhmt72A+izlRtEXEfFvwUYgz94HK-t8Z8J0fcOLY1mgMazYtmxdi9ghqfQEy+fNgXdgZwiNNB0A4cd0Wkdd11I5l-DohDYPZNUPBisewQusDZPXFAAAGfGC6DkP+ctwx2wwbsipK-MKIUqifPO9Au9KyUgpC9i5Hl3w+IiAgnl2Y5DQIbJfm5OJMw4xKotAAAKFQlEKUUACYABZa+CABKHJdnC5gedJ1B8JoxBYEgczATCk1TAmAB5OJHGiDgbIxw4xnnip-E4RNywIE3DQcQ1Rrz-EiIA-C4RkExC7PELgitLCoAAPxEiljgE6oBjoBhVvdd4LZ4FqyuvAPGHFFqRlAKlJAlxbAvTQXPfs8ANBCAAOSMB8IfAmDhyYVELgcM6al4GUNUPiZivFygDSuOBCBGANAaCJucUo1tQA4UApwbgfB0AACIABiXg15BjzEHIQ8BwzswAR8aASRRiVFBlYUxBgzRkBVmrDWkJZb9AmCYAAcrZFggQuyjAABILAmIETI+FwCxLtIEaJcSElJK1mAChsAqHoCqr+JhZMSBwVEHYPMlw5be3IJUEgPj5KgDRhcYJoAWAAEZkmDBYEfHpAwWAAGYtZ9GmOMiZ4BJjgFADzbJEyFn9FmN0BoOhZoMEhktTpRJaZLScv0b0RJ+GxMCCwFgP8ADqP87QsCYPwgZnY3JkSJAAVlrgMwoJ5JJPJ7nXAZolxIMGInRZ5fzPQ0IVkrFpqt+yBNQB0VJ6TMnxMSQMvEBJfBEmJPhdpByfSgG6fhA5Dwm6yXINgc4Az27dhBb8oZ-SiV3A7oVYqI9Xm13eYyz5REpK0o8vSqlAwAUSWBf5flDLBgUkFbihA+KJXTEbtwCURJyVYEpYyx5fLZICo1cy4evy3mcvGdy08vKxXavlYMYVQKzUySJDqyVAzSTJKpAYVZPIJKbOaEfHZ7AvX0w9Hio5JyzmXOubco+9zPSavNUSTp8qTXfK1USI1oBrVJtjWC-oEKCCK0ZMrGF6tGQdFCREqJMSUU5P6OirRmLQDYsGDKw5BLBXEsLsq5ABBxKtqZTSzNDrpiPP1R5U+qbBiJtFXarN0x02TvcrJMdpDpWMubZar0JKlVkopagHtMap0DupSy7uI6z49onba+d9q139FnRe0FB6l2emdcpd16ykD+tQEM31bAP37NlcG055yrk3KYEMqN-Q92XtAEfBN1c52gtTben5HlU05rzVsAtATi2lsici7JaKAS1sEFinFK78WEvGYqouKrt27uZcm0AD6IN6tZb80dZ64N3rpdetNqAxIiq4+Knt+EpWkco3KntVGO2qvVeMyD96eNDtYyexd-Rz3IYtT2pDDGH2if6M+11xgaogkQkWGAg1r6cVKc1H2ShhCaVcAwNM5wRAwomqAdI5krjv1KMFDaj83VrMc0geyn1v2hcchiWWLlBOyVPZ6GLR62XQfi9mgaQ5UA1LquIBqA0WrsFaciHeDaBglcGBR6YMqg0tsZdWwjhJ63BY-Z0594y9MDFa6VxlPGqv-ugz2ur+IiNYqa3TVA3S30fqPp1x1+EZv1sZUMntvXm1Ldq-8IbDXiSja2dkHbzQhnzaOoKzrpIL4uu6L0BZow7Q-1GNc8AJgf5hIWGc4YgZQ1zKmTKVgNVFnLLOmErkskQLwEQBqOCcZSjPmoAkVRKA4gFDrHcEz6EEiuMEBZ78hphDGhurFfEO1ljBjWKFOoCwwnvYqHgTxZQu5NBiPo7aPCFqoDZKCVU6QzomG+CYVaggNqvWBGvantO-PPASNkEw-Dkd45LtyMntgCj+c4ryI4xPbHrFLl0XoPQcR9AWEFMzZi+e2S5HrBYsBBc1VFEwDRpiCL4CIKQfGmkogSmEJTBy4hsjXHFlZoGLiki8S1Yg6n8DdBCGwPjaztSo6gD6AAAVLHmMgvVQD69AInnwSAvCY8HjZUy3v4epmIPwo41cMfr0YPruYZsnNsGwAoA4EW+oYh3r1cL3uL5d8+uiVE7TjAXO2HQJzoDdK2A2sCGp1w4ePVuLH8fDiGkICQPAYp2QOL18cAKbgjO341O-GBZHrxnEuA8F4Z0Dc1-bnjq3Q6Aw46tF3w6fjDBYAd+790QYxggcz-QOPjHmkMhK4EUKCIBOUnGFcHqPjgvmNmmMIKNDumFKKNvl2kHIzi9KfjCDUG3AMJDBAdEKgK0ozF8hjh-r1BfN-gML-qrLDsKDrPAccC9JWBcFPnQbPgwTtD4J-IAj+P5qUDsHtiKAgbxhoneCoEgE-N1KKMfhBBOrAamDWnJCCJKJAlUJHg8BBK-GWLKJwT8LIf7rFAIRQIQMAhoBITavjMLgTAcKFPoe4KgVKNTk0KCPhE4jgagAsOap-p9FQdIS0vwO1CoTXIhB5l5mBK-PjOcIwKHAnAuPOj8H8OetmOZDBE0JpD-DzKMKMOXtXjzLPFEDEO4huPiB4DuPcBoIKtrMIOGN+HUHjrACkF+OUJrs0NkJ5koHJKgIrnYLYLALYDNFuIQKCAQESFJpKLAAcCUHwXDFgkgF2LrKgDgulD+NMfYDEA-jenIHnnbJZIZj0HrgnrMvYjvvSFuNgcDJ8BKJbK9CfvAawWDrUDQCZK3p2j0ZnsnjoL2HsbXgYNvicZjmcUgK-oCjfu3p3oXq3lfGiAPvhK+tZvABiHGFlvVEQvlj+mNkVv4T-mALZJmBFBcWNk8STAUjEC2MFAwPlJ9B0MUh0DsIEE9DvDvFVN+q0tkP5ukMrHlkyuILVPVK0hZn9O1MiDCXCQsuGDvAifAbxFVB0DWm0FfL1gct8DvDlIiR0E8EgDvNZh0N6BfEqetoMBqTETqWNnqVUQ-FQYsqQutlSJKjiTQWAE-sCQHhzC4FXuGPPqmLHkMXAk1PhJKdKXsrxAsN4NtPSQ0maUtEqKslgICjvAaYaQsq+nEa3KCQJu6LXOtkGWsmmeHKzktPKfVr4MmYsvmYmBmVYQANQYgVlATabmp2nraLAWGSHQFw6OGiFIEwIGH8GK5K4CiQDrZhE7z1mwBVmSSgCoi6nyb5hlkLILBtkMAFFDYlER64HRnNDFmba+DZCzn0bmqTi35hyVl8ZglnjWmLK6mNkyTugHl9oyR2k3RqroDKkPwdC3mJF1ktzhwTnnkCbNkLLGDmJUBbhNEq68QqB8Fbg1QzTkB2Z2LCAGL9jZAxGrR4HjK6nqah4Yg3kAU2oabrb15lwdD1g4A7ymIfqmL7nmnejZCmJyG8YiQJFkQ0UflflkRXlHSjJHF9AsCZhbjFIsTejoAH59mvw+Z2CB7n5JELxHl1BEkxksIIA5gZB8H6HekPyiFaIYCXCfEp4-FUwJ516nHMByBzREEkGV72Lui+EWS94WRimBpOmgDmKj5IAZC+7oCXAoRAGEFQFbhSjRDEBuxphYCeAGJV7Ji3BMXu7oAqCmz9hNjWw2W1FUBDL9TBEanuEWUECQGfrWVMzo72L2XiCOmHhgB-6r70Q1woAOQ4CpiPAWCCDCH+7lKNWMCNE7gtCALUL-SIlviiEKEkCEAX7eDQI2DVFgATDRBkz1U9FZUuaDVMVNgq5biQFzhkC8T6GIDigWA4SgxbHmUBXjZFVkGlWUG8WZ42ioRPQnnxF1Bamr7wA6E8G8RaWDUpFaoGXfFp7e5-EAkeFXFeFHkQne6OXlX94uWVUF6XFB7549nGjTxoG75njeWgCWEVg9ET4ETFU1yND9jpAoB8HT7wlrKDXImZagDZYIjomF4frYnUGw34nmDI5KXMJ6Jkk4AUkODUn2x0kMlMkslNRslNQcmoBcktI8kFB8k00Ck8nCnnCinQ29a5m7Cx6ylNQ7kYqCALkTKjnqnEmalyBbkHAWkGkw3XnG2mm6n0VWlGm2kLL2kDAUgVUDys18S-lUDppHA4AtXFCCEFx1iijxVyhyVxCzwCCwKMHKXfVNmDDq3aWhnhnpCRk7hm1ghxkJlJlW39CpmX7liTmhQYjZnjJJ31mFnbkKmll50DCeATV+DF2lC1kPWWyfkEUZpPltaMpLlY2rmAjrnVDkGZ061Ea0VFk4VHlgAN3OjN3cW2kHF8UnWWVQGaUTSiiZVYHwGSVKAfy6WXCb5FgYAbQwU0CbUkDzjY5ShrXR3fBaVym-Wp6-EmX-FmUEGr2FVNSkGNjkF2WQmvHd6q381fSC2ECMnhDMmsmF7smgCcncntQWay38k5aCkYmFbOW9bGB8x2aMAOEvDwF7VW58FCFiHLmMDfhhFl7xSDnhDrbBmRjN1ZkkLl1UBSkU0ynfByk116113GnElMOt34Vv5d3zpAUTLPzwBY2YBrDgLoWEkEN7KJqekhSAiYXTB92SED0aBD2aEf7cMlmtUEoL24mBjkMdlcHdnihfgx07RW4Dl3BDkjmqmIlMOoi9SakFRar62LnkPaO6ObkGO7lGMeOJah5gCuOd2XniPjIkX8BkV4AUWmIunoFTnw0elJA7DsVyn22mKxTZPa08MdCy3MkdjOUdgdBT0yQGkiZUFL2Z4-x5CWBwDPA6wyWfDhQ8Axi4MkNgU0A+AFAhWM6h51ATq+43Cl6-hEx72MC8SZ5b0DXEnIAn1n2-C7AX3zjKNCDKi2RFycQDMtV8Gh65hLXXQKCijc39XZXG2fHGXLJA15UFWdLnW-22Xg1hZQlAOwkuUeNgMEAQOQBQOi0wPi1wOS0INxRDQsgoO5aIPoNNQq3fOYgZ7jIMMHCwDgB4AmCqjCIuYYhkiMqMrGCxLWMkwHPRCjGpG4P4xh2KX+mIMErJTb0xloVKCqAk576xC7XWAn3TwcQLPXMxnHX51rLkslDewYihNePmosMDCvo2BNhYBMOl2MpJ2a1cOFOGM+NeguPmlobWRoiGvQpYZbAIppIZIVrZLatWqoCDPiu7DJR4XmlVPzqyuSovkubvmImYvYs8C4vwriAqCAvWYmPTDGBMAJTmZxC2DyyiGficSaMrmEYBN-0IWqg1DZBchoAECRGtM00zSGgezXj8hgiO3YWcYab3nmmcX5iO0KvYCCNOtFk1tPDPmMou2mPA0fAS5CK2stWUvh7D1R4h2u6CCihit8GXNFKLPKWvg44QJzX+saArq6sxk+s4uPTnBkW+A4AI6oi1zWtmP93JuVAbkj3etYsbvtTZBiuUtgD1tKtRMaChsdsDCMpxPwrkWUUOio2k6lDpOfBZPZA5OWl5OwAFPtRj1tDFMsilPlOVMVveML1u3XXHE1QzPQDiBFBaVpC2vQK3x5iJBxBDn0GcT8jbXfD8I3Hhz8Kfz8QXAy47soDgZ9AXIAgtDcAQR2spUISM5bg+BRVjSDuaGyi4fpR+BKhP0-HUdUBSdkD8DtDDmv0AmJtID+OntDv57t48NEg-0pz8BkhDQYdYchRjGeR9wECYOBlsOpmEayg8OHs1oIf43wZLgYhwWCBjmEYd0iOudXh9CX0lSYfBSoUbaAjOdfJ+eoDIfKQAl1T+Z6dNigyBAGSPh1Qdh2U6dVz40sxkhWew3D59EYWmE8g0AQXR0Gzc2cQecUCIU1CegV12e8QOdW1OcutkTuhOdzmts8X1PHETDzhbhiflgklSg6B5jrjfCRxtxJ6GVkDjfbSBip3RHmifE5557wBqTkeyhBWp2A1mUDdkDt4LdS2Je5dna9yjjAM2u54ED2ap0d0aACioDMmrCeCBcJBmFhCF1+D5cTLrd3cyPvd72ffjjtvZAHsTiod9AOi3fPEzghWX0UfIDsLmejgzdZ5zfmedJyfmdHz7dAn5vCDt7yTbJo+hfyQ+rk+WfXe9k7yk-Tl49XwA-CCU+ehpAuYs-Y+5Lwx5vTMlQleKGnMiDixv2E+N44SqhnhvEYgS-N6oCt47zBbQli8DHxNfumJvHqCS8HA+jsVy9S8aCt60kDQm3amdLnagAG+6-G90lak7xHyW-W-S-e4m+INm87xDI1PdBAA">
               source code of this algorithm can be found here
             </SiteLink>
-            .
+            . Feel free to play around with the parameters of the case to see
+            the result of what it does.
           </div>
           <h1 className="text-2xl underline text-secondary ">
             Context: The Charging Problem
@@ -590,7 +591,7 @@ export const EVChargerDLB = () => {
             has to ask the parent node in dependency tree, then can use what
             it's given by that node. The steps involved are:
           </div>
-          <ol className="list-disc ml-8">
+          <ol className="list-disc ml-8 flex flex-col gap-y-2">
             <li>
               Each active connector wants to use as much amperage as possible,
               but first it has to "ask it's dad". For each device, make a list
@@ -612,30 +613,31 @@ export const EVChargerDLB = () => {
             <li>
               Now the phases (grandparents) have the hard task of figuring out
               what to give each device. They'll need to communicate about
-              whether they're setting a limit on any attached devices - due to
-              too much strain.
+              whether they're setting a limit due to too much strain on any
+              attached devices, since some of them share a device. It doesn't
+              work quite the same as previously because the device is asking{' '}
+              <span className="underline">multiple</span> parents what it may
+              draw. This part might be difficult to understand, but I'll do my
+              best.
             </li>
             <li>
-              The devices should send to all their attached phases two things.
-              The first being the amperage they request - the sum of their
-              distribution list. The second being a check whether they are
-              connected to a phase which has reached it's limit. These should
-              all initially be false, because the phases haven't calculated
-              anything yet.
+              To start, the devices should send to all their attached phases two
+              things, which the phases will make a list of. The first being the
+              amperage they request - the sum of their distribution list. The
+              second being a check whether they are connected to a phase which
+              has reached it's limit. These should all initially be false,
+              because the phases haven't calculated anything yet.
             </li>
             <li>
-              Now for each phase, tell the device what it is allocated, but{' '}
-              <span className="underline">only</span> if it is less than what it
-              was asking for. This way we end up ensuring we take the{' '}
-              <span className="underline">minimum</span> allocation decided by
-              the phases.
+              Now for each phase, what we need to do is the following. Take it's
+              maximum current, and for every attached device, subtract its
+              allocated amperage if it is checked as reaching its limit. Now,
+              get the sum
             </li>
             <li>
-              For each device, recalculate it's connector proportions, with what
-              the device was just allocated by it's phases. By this, I mean
-              repeat the process of multiplying each connector allocation in our
-              old list by (the amount we were told we can use by the phase / the
-              previous sum of the list)
+              Now that that's done, for each phase we want to do the following.
+              Take the phase amperage, and subtract the currently decided
+              amperage for every device which has been "limited"
             </li>
             <li>
               Tell each connector what it is allocated - finally give the

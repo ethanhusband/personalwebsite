@@ -1,6 +1,6 @@
-import PostSummary from '../components/PostSummary'
+import PostSummary from '../../components/PostSummary'
 import Image from 'next/image'
-import { SiteLink } from '../components/SiteLink'
+import { SiteLink } from '../../components/SiteLink'
 
 export const TwitterAnalysis = (context: any) => {
   return (

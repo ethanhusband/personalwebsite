@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import PostSummary from '../components/PostSummary'
+import PostSummary from '../../components/PostSummary'
 
 export const Py2048Bot = () => {
   return (

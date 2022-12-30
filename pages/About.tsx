@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import PostSummary from './components/PostSummary'
+import PostSummary from '../components/PostSummary'
 
 const About = () => {
   // For some reason, passing that outer div (with flex col) abstractly to all props doesn't apply the style correctly

@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 
 import useScript from '../hooks/UseScript'
 
-const Comments = (title: any) => {
+const Comments = ({ title }: any) => {
   const comment = useRef(null)
 
   const status = useScript({

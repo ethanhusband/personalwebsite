@@ -1,8 +1,8 @@
-import PostSummary from '../components/PostSummary'
+import PostSummary from '../../components/PostSummary'
 import Image from 'next/image'
 import Link from 'next/link'
-import { EditThis } from '../components/SectionToEdit'
-import { SiteLink } from '../components/SiteLink'
+import { EditThis } from '../../components/SectionToEdit'
+import { SiteLink } from '../../components/SiteLink'
 
 export const FairEVChargerDLB = () => {
   return (
