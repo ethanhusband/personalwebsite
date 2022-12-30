@@ -1,6 +1,6 @@
 import PostSummary from '../../components/PostSummary'
 import Image from 'next/image'
-import { CopyBlock } from 'react-code-blocks'
+import { SiteCodeBlock } from '../../components/SiteCodeBlock'
 import { SiteLink } from '../../components/SiteLink'
 
 export const CheckersBot = () => {
@@ -175,16 +175,12 @@ export const CheckersBot = () => {
             C-compiler installed) with the following commands. You can also
             freely modify moves.txt to input any position you like.
           </div>
-          <CopyBlock
-            text="gcc -Wall -ansi -o runme checkersbot.c"
-            language="powershell"
-            theme="a11yDark"
-          />
-          <CopyBlock
-            text="./runme < moves.txt"
-            language="powershell"
-            theme="a11yDark"
-          />
+          <div>
+            <SiteCodeBlock>
+              gcc -Wall -ansi -o runme checkersbot.c
+            </SiteCodeBlock>
+            <SiteCodeBlock>./runme {'<'} moves.txt</SiteCodeBlock>
+          </div>
           <div>
             This was the first project I ever truly worked on and had to "figure
             out", and while it may not necessarily be code with a cleanliness or

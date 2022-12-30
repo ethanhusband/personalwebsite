@@ -1,6 +1,6 @@
-import Link from 'next/link'
 import Image from 'next/image'
 import PostSummary from '../../components/PostSummary'
+import { SiteLink } from '../../components/SiteLink'
 
 export const Py2048Bot = () => {
   return (
@@ -12,25 +12,17 @@ export const Py2048Bot = () => {
       >
         <div className="flex flex-col gap-y-4">
           <div>
-            <Link
-              className="text-secondary"
-              target="_blank"
-              href="https://github.com/ethanhusband/2048bot"
-            >
+            <SiteLink href="https://github.com/ethanhusband/2048bot">
               An advanced 2048 AI with a Python frontend and C++ backend
-            </Link>
+            </SiteLink>
             . Inspired by the bot created by nneonneo, it uses expectimax
             decision trees, bitboards and bitwise matrix operations to
             efficiently calculate each move leading to optimised performance,
             winning 100% of trials thus far. The GUI and game running logic uses
             tkinter and was taken from{' '}
-            <Link
-              className="text-secondary"
-              target="_blank"
-              href="https://github.com/andersqiu/python-tk-2048"
-            >
+            <SiteLink href="https://github.com/andersqiu/python-tk-2048">
               this repository
-            </Link>{' '}
+            </SiteLink>{' '}
             written by a user named andersqiu - I don't claim to fully know how
             it works, but UI is not the focus of this project so I don't care.
             Cheers to the lad.
@@ -56,26 +48,18 @@ export const Py2048Bot = () => {
           <div>
             The bot finds moves using an Expectimax decision tree, which works
             similarly to the Minimax decision trees described{' '}
-            <Link
-              className="text-secondary"
-              target="_blank"
-              href="/projects/CheckersBot"
-            >
+            <SiteLink href="/projects/CheckersBot">
               here in a previous project
-            </Link>{' '}
+            </SiteLink>{' '}
             . However, instead of every other layer being the prediction of an
             opponentsc best move, the opposing layer instead contains every
             possible outcome that could occur by chance, then taking the
             expected value of the score provided by each of those possible
             outcomes gives the score of the move. For more info on expectimax
             decision trees,{' '}
-            <Link
-              className="text-secondary"
-              target="_blank"
-              href="https://www.geeksforgeeks.org/expectimax-algorithm-in-game-theory/"
-            >
+            <SiteLink href="https://www.geeksforgeeks.org/expectimax-algorithm-in-game-theory/">
               this is a good resource
-            </Link>
+            </SiteLink>
             . If you've' read the details of my Checkers Bot project, the
             following diagram should make the small difference between the
             Minimax and Expectimax search algorithms fairly intuitive.
@@ -165,32 +149,23 @@ export const Py2048Bot = () => {
             result of a move on a board, as to be faster) and Scoring Tables
             (storing the calculated score of a board, as to be faster) which are
             explained in{' '}
-            <Link
-              className="text-secondary"
-              target="_blank"
-              href="https://github.com/ethanhusband/2048bot/blob/main/README.md"
-            >
+            <SiteLink href="https://github.com/ethanhusband/2048bot/blob/main/README.md">
               the README.md of the repository
-            </Link>
+            </SiteLink>
             . That file will also explain to you how to run the bot on your
             computer, if you know how to use Github. Further optimisations are
             summarised well by nneonneo in{' '}
-            <Link
-              className="text-secondary"
-              target="_blank"
-              href="https://stackoverflow.com/questions/22342854/what-is-the-optimal-algorithm-for-the-game-2048"
-            >
+            <SiteLink href="https://stackoverflow.com/questions/22342854/what-is-the-optimal-algorithm-for-the-game-2048">
               this Stack Overflow post
-            </Link>
-            . Even the reply on that post, however, doesn't grant as much of an
+            </SiteLink>
+            .
+          </div>
+          <div>
+            Even the reply on that post, however, doesn't grant as much of an
             appreciation for how optimised this algorithm is until you visit{' '}
-            <Link
-              className="text-secondary"
-              target="_blank"
-              href="https://github.com/ethanhusband/2048bot/blob/main/gameAi.cpp"
-            >
+            <SiteLink href="https://github.com/ethanhusband/2048bot/blob/main/gameAi.cpp">
               this file
-            </Link>
+            </SiteLink>
             . If it so intrigues you, the transpose_board function is a simple
             matrix transposition algorithm, but easily one of the most confusing
             but mind-blowing algorithms I've ever seen.
