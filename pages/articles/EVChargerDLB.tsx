@@ -162,7 +162,7 @@ export const EVChargerDLB = () => {
               pipe which splits off into different branches at any point.
             </div>
             <Image
-              src="/assets/dlb/series-parallel.png"
+              src="/assets/dlb/series-parallel.PNG"
               alt=""
               width={500}
               height={200}
