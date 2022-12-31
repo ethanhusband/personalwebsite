@@ -1,4 +1,4 @@
-import { DLBGroup, DLBDevice, DLBPhase, Phases, PowerType } from "../DLBArticle/DLBTypes"
+import { DLBGroup, DLBDevice, DLBPhase, Phases, PowerType } from "./DLBTypes"
 
 // INCOMPLETE
 
