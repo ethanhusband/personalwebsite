@@ -18,7 +18,7 @@ const About = () => {
             and ideas I've encountered, generally pertaining (but not limited)
             to Software Engineering or Abstract Math. The Blog section includes
             articles regarding theoretical problems I've dedicated thought or
-            novel solutions to and wish to share at a level of detail I intend
+            novel solutions to, and wish to share at a level of detail I intend
             to make accessible to all. Meanwhile, the Projects section includes
             overviews of projects I've engaged in creating or developing - with
             rough explanations of how they all work.

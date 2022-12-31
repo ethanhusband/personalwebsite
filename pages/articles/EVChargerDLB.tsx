@@ -9,12 +9,12 @@ export const EVChargerDLB = () => {
       <PostSummary
         title="Load Balancing for EV Charging Stations"
         link="/articles/EVChargerDLB"
-        desc="Ethan Husband - DD/MM/YY"
+        desc="Ethan Husband - 01/01/2023"
       >
         <div className="flex flex-col gap-y-4">
           <h1 className="text-2xl text-secondary underline">Summary</h1>
           <div>
-            In this article, I will be demonstrating (at a level of detail
+            In this article, I will be explaining in full detail (at a level
             understandable for everyone) my algorithm for electric vehicle
             charging stations, which determines a load management allocation
             which is safe, and distributes current optimally in proportion to
@@ -27,11 +27,11 @@ export const EVChargerDLB = () => {
           </div>
           <div>
             For software developers who understand the problem, the{' '}
-            <SiteLink href="https://www.typescriptlang.org/play?#code/PTAEBUAsEsGdTqALpApqAhgGwOYHsAnaFAW1ADNDk0LoDYlQARAGQCFMCloBjLdPADtQkJEgAOsAFwhUKDIMgBXWACMFAE2AYuvfrABQIUAElGGaCXhI8oDXCRFVSpOhToeSggVSDz54QBRADVQHkgdHGhBHFAGDG4hOIxyVCwATwAaUDxxbhJsDMxBDQRhcQJcwkThGztUADdedAYfGJQAOgMjACpQfoH+8ABNAAVAgGVB6Z7gbuMAQVVWjB5GJHTxdEoCeqaeVHhNUHEI2EPQAHcYcNACwQwcNxp7VuhnGpzyalQ6MJgsKVBHgNIcuhstswHE4XBhVPwADzgAB8oAAvKAAN4GQbhaCAtpSCAAbQAugYAL7zMBLFZrZCbNy2DDiLYlZC2PDuXYQi6wJS3eTrNDpEQYBroBSmJhfH5WNIS2AdUyCPhKUHwJGo-mCiLCxA8KWqSXCXxKEjgxmgCZpcgAJVQqTa3GwWvRWJxA2gGiJ4Ep1NAtMcq3WVp2e2aR3ZPCEglQa0I8GuvEgYSNLTkxUwJC2BEe6FUovcf3EOl8jGBoMtkIWWCweENSDh-Hd2MGBQAHgB9DA51B5p5EwTm40EADcoGMUHQncs5uzufzadLPGIorw33cYTwOaE5c9-UWdYbCVQpV7i6eCCjOVUACt44wdamhVcPFKVOhiJgjic8NFXAIZUoEQS58SwUAcDzPw4mgHBBGgcheAURhHSQ1dfB4UUsFPICD0wY9GzPHs+wHVAhxHfsJynGgL37JdDRXNd6lXUFSkLH4TjLGCN04mNdzjPx8J8ABHJRDlcDQSMvcjQGHEhRzHf0jDAac7ASDAGUhT9SjqVAOwqQ5f1YDgoLwJRxAMXlmHYABxSoLNbfCoO9aT6MHOTKPHSdVNo0il35VksGgM9QA4wpIKIUpTgwc5rFsLczMcgBaZISG2KgIpiuKAEJnKirsGjwLAmw8+TFPw7LDiJABZFkEVGM5DmyEzGti1BkWo3z0CS8QTia2BsgKUUIglHIJQIHC+uiZB+ysWVQX2C4PmoRBEDwABrDBRWOADfDYrp+gpJT+hUiAXg0rSmVAfTDNgeBUFWVMqtlTSTMi8zxGVKyrVapr3SYaF3lheFUAREymEaZpUQAMmtW0HSdctoFdNq4uRAM1I0S7rJ0jkboMnx7swCMDjKEn3t6n7IQhqGyYxWt60bZt0DhwG3g+FnwfYABhWNH0IWH4awe1HX7ZHXTeGIhbbP9Ln7LteSJUY8HlghwEZZSaPQbGmyu0A8b0wmjJJmNBDjBNdhmt72A+izlRtEXEfFvwUYgz94HK-t8Z8J0fcOLY1mgMazYtmxdi9ghqfQEy+fNgXdgZwiNNB0A4cd0Wkdd11I5l-DohDYPZNUPBisewQusDZPXFAAAGfGC6DkP+ctwx2wwbsipK-MKIUqifPO9Au9KyUgpC9i5Hl3w+IiAgnl2Y5DQIbJfm5OJMw4xKotAAAKFQlEKUUACYABZa+CABKHJdnC5gedJ1B8JoxBYEgczATCk1TAmAB5OJHGiDgbIxw4xnnip-E4RNywIE3DQcQ1Rrz-EiIA-C4RkExC7PELgitLCoAAPxEiljgE6oBjoBhVvdd4LZ4FqyuvAPGHFFqRlAKlJAlxbAvTQXPfs8ANBCAAOSMB8IfAmDhyYVELgcM6al4GUNUPiZivFygDSuOBCBGANAaCJucUo1tQA4UApwbgfB0AACIABiXg15BjzEHIQ8BwzswAR8aASRRiVFBlYUxBgzRkBVmrDWkJZb9AmCYAAcrZFggQuyjAABILAmIETI+FwCxLtIEaJcSElJK1mAChsAqHoCqr+JhZMSBwVEHYPMlw5be3IJUEgPj5KgDRhcYJoAWAAEZkmDBYEfHpAwWAAGYtZ9GmOMiZ4BJjgFADzbJEyFn9FmN0BoOhZoMEhktTpRJaZLScv0b0RJ+GxMCCwFgP8ADqP87QsCYPwgZnY3JkSJAAVlrgMwoJ5JJPJ7nXAZolxIMGInRZ5fzPQ0IVkrFpqt+yBNQB0VJ6TMnxMSQMvEBJfBEmJPhdpByfSgG6fhA5Dwm6yXINgc4Az27dhBb8oZ-SiV3A7oVYqI9Xm13eYyz5REpK0o8vSqlAwAUSWBf5flDLBgUkFbihA+KJXTEbtwCURJyVYEpYyx5fLZICo1cy4evy3mcvGdy08vKxXavlYMYVQKzUySJDqyVAzSTJKpAYVZPIJKbOaEfHZ7AvX0w9Hio5JyzmXOubco+9zPSavNUSTp8qTXfK1USI1oBrVJtjWC-oEKCCK0ZMrGF6tGQdFCREqJMSUU5P6OirRmLQDYsGDKw5BLBXEsLsq5ABBxKtqZTSzNDrpiPP1R5U+qbBiJtFXarN0x02TvcrJMdpDpWMubZar0JKlVkopagHtMap0DupSy7uI6z49onba+d9q139FnRe0FB6l2emdcpd16ykD+tQEM31bAP37NlcG055yrk3KYEMqN-Q92XtAEfBN1c52gtTben5HlU05rzVsAtATi2lsici7JaKAS1sEFinFK78WEvGYqouKrt27uZcm0AD6IN6tZb80dZ64N3rpdetNqAxIiq4+Knt+EpWkco3KntVGO2qvVeMyD96eNDtYyexd-Rz3IYtT2pDDGH2if6M+11xgaogkQkWGAg1r6cVKc1H2ShhCaVcAwNM5wRAwomqAdI5krjv1KMFDaj83VrMc0geyn1v2hcchiWWLlBOyVPZ6GLR62XQfi9mgaQ5UA1LquIBqA0WrsFaciHeDaBglcGBR6YMqg0tsZdWwjhJ63BY-Z0594y9MDFa6VxlPGqv-ugz2ur+IiNYqa3TVA3S30fqPp1x1+EZv1sZUMntvXm1Ldq-8IbDXiSja2dkHbzQhnzaOoKzrpIL4uu6L0BZow7Q-1GNc8AJgf5hIWGc4YgZQ1zKmTKVgNVFnLLOmErkskQLwEQBqOCcZSjPmoAkVRKA4gFDrHcEz6EEiuMEBZ78hphDGhurFfEO1ljBjWKFOoCwwnvYqHgTxZQu5NBiPo7aPCFqoDZKCVU6QzomG+CYVaggNqvWBGvantO-PPASNkEw-Dkd45LtyMntgCj+c4ryI4xPbHrFLl0XoPQcR9AWEFMzZi+e2S5HrBYsBBc1VFEwDRpiCL4CIKQfGmkogSmEJTBy4hsjXHFlZoGLiki8S1Yg6n8DdBCGwPjaztSo6gD6AAAVLHmMgvVQD69AInnwSAvCY8HjZUy3v4epmIPwo41cMfr0YPruYZsnNsGwAoA4EW+oYh3r1cL3uL5d8+uiVE7TjAXO2HQJzoDdK2A2sCGp1w4ePVuLH8fDiGkICQPAYp2QOL18cAKbgjO341O-GBZHrxnEuA8F4Z0Dc1-bnjq3Q6Aw46tF3w6fjDBYAd+790QYxggcz-QOPjHmkMhK4EUKCIBOUnGFcHqPjgvmNmmMIKNDumFKKNvl2kHIzi9KfjCDUG3AMJDBAdEKgK0ozF8hjh-r1BfN-gML-qrLDsKDrPAccC9JWBcFPnQbPgwTtD4J-IAj+P5qUDsHtiKAgbxhoneCoEgE-N1KKMfhBBOrAamDWnJCCJKJAlUJHg8BBK-GWLKJwT8LIf7rFAIRQIQMAhoBITavjMLgTAcKFPoe4KgVKNTk0KCPhE4jgagAsOap-p9FQdIS0vwO1CoTXIhB5l5mBK-PjOcIwKHAnAuPOj8H8OetmOZDBE0JpD-DzKMKMOXtXjzLPFEDEO4huPiB4DuPcBoIKtrMIOGN+HUHjrACkF+OUJrs0NkJ5koHJKgIrnYLYLALYDNFuIQKCAQESFJpKLAAcCUHwXDFgkgF2LrKgDgulD+NMfYDEA-jenIHnnbJZIZj0HrgnrMvYjvvSFuNgcDJ8BKJbK9CfvAawWDrUDQCZK3p2j0ZnsnjoL2HsbXgYNvicZjmcUgK-oCjfu3p3oXq3lfGiAPvhK+tZvABiHGFlvVEQvlj+mNkVv4T-mALZJmBFBcWNk8STAUjEC2MFAwPlJ9B0MUh0DsIEE9DvDvFVN+q0tkP5ukMrHlkyuILVPVK0hZn9O1MiDCXCQsuGDvAifAbxFVB0DWm0FfL1gct8DvDlIiR0E8EgDvNZh0N6BfEqetoMBqTETqWNnqVUQ-FQYsqQutlSJKjiTQWAE-sCQHhzC4FXuGPPqmLHkMXAk1PhJKdKXsrxAsN4NtPSQ0maUtEqKslgICjvAaYaQsq+nEa3KCQJu6LXOtkGWsmmeHKzktPKfVr4MmYsvmYmBmVYQANQYgVlATabmp2nraLAWGSHQFw6OGiFIEwIGH8GK5K4CiQDrZhE7z1mwBVmSSgCoi6nyb5hlkLILBtkMAFFDYlER64HRnNDFmba+DZCzn0bmqTi35hyVl8ZglnjWmLK6mNkyTugHl9oyR2k3RqroDKkPwdC3mJF1ktzhwTnnkCbNkLLGDmJUBbhNEq68QqB8Fbg1QzTkB2Z2LCAGL9jZAxGrR4HjK6nqah4Yg3kAU2oabrb15lwdD1g4A7ymIfqmL7nmnejZCmJyG8YiQJFkQ0UflflkRXlHSjJHF9AsCZhbjFIsTejoAH59mvw+Z2CB7n5JELxHl1BEkxksIIA5gZB8H6HekPyiFaIYCXCfEp4-FUwJ516nHMByBzREEkGV72Lui+EWS94WRimBpOmgDmKj5IAZC+7oCXAoRAGEFQFbhSjRDEBuxphYCeAGJV7Ji3BMXu7oAqCmz9hNjWw2W1FUBDL9TBEanuEWUECQGfrWVMzo72L2XiCOmHhgB-6r70Q1woAOQ4CpiPAWCCDCH+7lKNWMCNE7gtCALUL-SIlviiEKEkCEAX7eDQI2DVFgATDRBkz1U9FZUuaDVMVNgq5biQFzhkC8T6GIDigWA4SgxbHmUBXjZFVkGlWUG8WZ42ioRPQnnxF1Bamr7wA6E8G8RaWDUpFaoGXfFp7e5-EAkeFXFeFHkQne6OXlX94uWVUF6XFB7549nGjTxoG75njeWgCWEVg9ET4ETFU1yND9jpAoB8HT7wlrKDXImZagDZYIjomF4frYnUGw34nmDI5KXMJ6Jkk4AUkODUn2x0kMlMkslNRslNQcmoBcktI8kFB8k00Ck8nCnnCinQ29a5m7Cx6ylNQ7kYqCALkTKjnqnEmalyBbkHAWkGkw3XnG2mm6n0VWlGm2kLL2kDAUgVUDys18S-lUDppHA4AtXFCCEFx1iijxVyhyVxCzwCCwKMHKXfVNmDDq3aWhnhnpCRk7hm1ghxkJlJlW39CpmX7liTmhQYjZnjJJ31mFnbkKmll50DCeATV+DF2lC1kPWWyfkEUZpPltaMpLlY2rmAjrnVDkGZ061Ea0VFk4VHlgAN3OjN3cW2kHF8UnWWVQGaUTSiiZVYHwGSVKAfy6WXCb5FgYAbQwU0CbUkDzjY5ShrXR3fBaVym-Wp6-EmX-FmUEGr2FVNSkGNjkF2WQmvHd6q381fSC2ECMnhDMmsmF7smgCcncntQWay38k5aCkYmFbOW9bGB8x2aMAOEvDwF7VW58FCFiHLmMDfhhFl7xSDnhDrbBmRjN1ZkkLl1UBSkU0ynfByk116113GnElMOt34Vv5d3zpAUTLPzwBY2YBrDgLoWEkEN7KJqekhSAiYXTB92SED0aBD2aEf7cMlmtUEoL24mBjkMdlcHdnihfgx07RW4Dl3BDkjmqmIlMOoi9SakFRar62LnkPaO6ObkGO7lGMeOJah5gCuOd2XniPjIkX8BkV4AUWmIunoFTnw0elJA7DsVyn22mKxTZPa08MdCy3MkdjOUdgdBT0yQGkiZUFL2Z4-x5CWBwDPA6wyWfDhQ8Axi4MkNgU0A+AFAhWM6h51ATq+43Cl6-hEx72MC8SZ5b0DXEnIAn1n2-C7AX3zjKNCDKi2RFycQDMtV8Gh65hLXXQKCijc39XZXG2fHGXLJA15UFWdLnW-22Xg1hZQlAOwkuUeNgMEAQOQBQOi0wPi1wOS0INxRDQsgoO5aIPoNNQq3fOYgZ7jIMMHCwDgB4AmCqjCIuYYhkiMqMrGCxLWMkwHPRCjGpG4P4xh2KX+mIMErJTb0xloVKCqAk576xC7XWAn3TwcQLPXMxnHX51rLkslDewYihNePmosMDCvo2BNhYBMOl2MpJ2a1cOFOGM+NeguPmlobWRoiGvQpYZbAIppIZIVrZLatWqoCDPiu7DJR4XmlVPzqyuSovkubvmImYvYs8C4vwriAqCAvWYmPTDGBMAJTmZxC2DyyiGficSaMrmEYBN-0IWqg1DZBchoAECRGtM00zSGgezXj8hgiO3YWcYab3nmmcX5iO0KvYCCNOtFk1tPDPmMou2mPA0fAS5CK2stWUvh7D1R4h2u6CCihit8GXNFKLPKWvg44QJzX+saArq6sxk+s4uPTnBkW+A4AI6oi1zWtmP93JuVAbkj3etYsbvtTZBiuUtgD1tKtRMaChsdsDCMpxPwrkWUUOio2k6lDpOfBZPZA5OWl5OwAFPtRj1tDFMsilPlOVMVveML1u3XXHE1QzPQDiBFBaVpC2vQK3x5iJBxBDn0GcT8jbXfD8I3Hhz8Kfz8QXAy47soDgZ9AXIAgtDcAQR2spUISM5bg+BRVjSDuaGyi4fpR+BKhP0-HUdUBSdkD8DtDDmv0AmJtID+OntDv57t48NEg-0pz8BkhDQYdYchRjGeR9wECYOBlsOpmEayg8OHs1oIf43wZLgYhwWCBjmEYd0iOudXh9CX0lSYfBSoUbaAjOdfJ+eoDIfKQAl1T+Z6dNigyBAGSPh1Qdh2U6dVz40sxkhWew3D59EYWmE8g0AQXR0Gzc2cQecUCIU1CegV12e8QOdW1OcutkTuhOdzmts8X1PHETDzhbhiflgklSg6B5jrjfCRxtxJ6GVkDjfbSBip3RHmifE5557wBqTkeyhBWp2A1mUDdkDt4LdS2Je5dna9yjjAM2u54ED2ap0d0aACioDMmrCeCBcJBmFhCF1+D5cTLrd3cyPvd72ffjjtvZAHsTiod9AOi3fPEzghWX0UfIDsLmejgzdZ5zfmedJyfmdHz7dAn5vCDt7yTbJo+hfyQ+rk+WfXe9k7yk-Tl49XwA-CCU+ehpAuYs-Y+5Lwx5vTMlQleKGnMiDixv2E+N44SqhnhvEYgS-N6oCt47zBbQli8DHxNfumJvHqCS8HA+jsVy9S8aCt60kDQm3amdLnagAG+6-G90lak7xHyW-W-S-e4m+INm87xDI1PdBAA">
+            <SiteLink href="https://www.typescriptlang.org/play?#code/PTAEBUAsEsGdTqALpApqAhgGwOYHsAnaFAW1ADNDk0LoDYlQARAGQCFMCloBjLdPADtQkJEgAOsAFwhUKDIMgBXWACMFAE2AYuvfrABQIUAElGGaCXhI8oDXCRFVSpOhToeSggVSDz54QBRADVQHkgdHGhBHFAGDG4hOIxyVCwATwAaUDxxbhJsDMxBDQRhcQJcwkThGztUADdedAYfGJQAOgMjACpQfoH+8ABNAAVAgGVB6Z7gbuMAQVVWjB5GJHTxdEoCeqaeVHhNUHEI2EPQAHcYcNACwQwcNxp7VuhnGpzyalQ6MJgsKVBHgNIcuhstswHE4XBhVPwADzgAB8oAAvKAAN4GQbhaCAtpSCAAbQAugYAL7zMBLFZrZCbNy2DDiLYlZC2PDuXYQi6wJS3eTrNDpEQYBroBSmJhfH5WNIS2AdUyCPhKUHwJGo-mCiLCxA8KWqSXCXxKEjgxmgCZpcgAJVQqTa3GwWvRWJxA2gGiJ4Ep1NAtMcq3WVp2e2aR3ZPCEglQa0I8GuvEgYSNLTkxUwJC2BEe6FUovcf3EOl8jGBoMtkIWWCweENSDh-Hd2MGBQAHgB9DA51B5p5EwTm40EADcoGMUHQncs5uzufzadLPGIorw33cYTwOaE5c9-UWdYbCVQpV7i6eCCjOVUACt44wdamhVcPFKVOhiJgjic8NFXAIZUoEQS58SwUAcDzPw4mgHBBGgcheAURhHSQ1dfB4UUsFPICD0wY9GzPHs+wHVAhxHfsJynGgL37JdDRXNd6lXUFSkLH4TjLGCN04mNdzjPx8J8ABHJRDlcDQSMvcjQGHEhRzHf0jDAac7ASDAGUhT9SjqVAOwqQ5f1YDgoLwJRxAMXlmHYABxSoLNbfCoO9aT6MHOTKPHSdVNo0il35VksGgM9QA4wpIKIUpTgwc5rFsLczMcgBaZISG2KgIpiuKAEJnKirsGjwLAmw8+TFPw7LDiJABZFkEVGM5DmyEzGti1BkWo3z0CS8QTia2BsgKUUIglHIJQIHC+uiZB+ysWVQX2C4PmoRBEDwABrDBRWOADfDYrp+gpJT+hUiAXg0rSmVAfTDNgeBUFWVMqtlTSTMi8zxGVKyrVapr3SYaF3lheFUAREymEaZpUQAMmtW0HSdctoFdNq4uRAM1I0S7rJ0jkboMnx7swCMDjKEn3t6n7IQhqGyYxWt60bZt0DhwG3g+FnwfYABhWNH0IWH4awe1HX7ZHXTeGIhbbP9Ln7LteSJUY8HlghwEZZSaPQbGmyu0A8b0wmjJJmNBDjBNdhmt72A+izlRtEXEfFvwUYgz94HK-t8Z8J0fcOLY1mgMazYtmxdi9ghqfQEy+fNgXdgZwiNNB0A4cd0Wkdd11I5l-DohDYPZNUPBisewQusDZPXFAAAGfGC6DkP+ctwx2wwbsipK-MKIUqifPO9Au9KyUgpC9i5Hl3w+IiAgnl2Y5DQIbJfm5OJMw4xKotAAAKFQlEKUUACYABZa+CABKHJdnC5gedJ1B8JoxBYEgczATCk1TAmAB5OJHGiDgbIxw4xnnip-E4RNywIE3DQcQ1Rrz-EiIA-C4RkExC7PELgitLCoAAPxEiljgE6oBjoBhVvdd4LZ4FqyuvAPGHFFqRlAKlJAlxbAvTQXPfs8ANBCAAOSMB8IfAmDhyYVELgcM6al4GUNUPiZivFygDSuOBCBGANAaCJucUo1tQA4UApwbgfB0AACIABiXg15BjzEHIQ8BwzswAR8aASRRiVFBlYUxBgzRkBVmrDWkJZb9AmCYAAcrZFggQuyjAABILAmIETI+FwCxLtIEaJcSElJK1mAChsAqHoCqr+JhZMSBwVEHYPMlw5be3IJUEgPj5KgDRhcYJoAWAAEZkmDBYEfHpAwWAAGYtZ9GmOMiZ4BJjgFADzbJEyFn9FmN0BoOhZoMEhktTpRJaZLScv0b0RJ+GxMCCwFgP8ADqP87QsCYPwgZnY3JkSJAAVlrgMwoJ5JJPJ7nXAZolxIMGInRZ5fzPQ0IVkrFpqt+yBNQB0VJ6TMnxMSQMvEBJfBEmJPhdpByfSgG6fhA5Dwm6yXINgc4Az27dhBb8oZ-SiV3A7oVYqI9Xm13eYyz5REpK0o8vSqlAwAUSWBf5flDLBgUkFbihA+KJXTEbtwCURJyVYEpYyx5fLZICo1cy4evy3mcvGdy08vKxXavlYMYVQKzUySJDqyVAzSTJKpAYVZPIJKbOaEfHZ7AvX0w9Hio5JyzmXOubco+9zPSavNUSTp8qTXfK1USI1oBrVJtjWC-oEKCCK0ZMrGF6tGQdFCREqJMSUU5P6OirRmLQDYsGDKw5BLBXEsLsq5ABBxKtqZTSzNDrpiPP1R5U+qbBiJtFXarN0x02TvcrJMdpDpWMubZar0JKlVkopagHtMap0DupSy7uI6z49onba+d9q139FnRe0FB6l2emdcpd16ykD+tQEM31bAP37NlcG055yrk3KYEMqN-Q92XtAEfBN1c52gtTben5HlU05rzVsAtATi2lsici7JaKAS1sEFinFK78WEvGYqouKrt27uZcm0AD6IN6tZb80dZ64N3rpdetNqAxIiq4+Knt+EpWkco3KntVGO2qvVeMyD96eNDtYyexd-Rz3IYtT2pDDGH2if6M+11xgaogkQkWGAg1r6cVKc1H2ShhCaVcAwNM5wRAwomqAdI5krjv1KMFDaj83VrMc0geyn1v2hcchiWWLlBOyVPZ6GLR62XQfi9mgaQ5UA1LquIBqA0WrsFaciHeDaBglcGBR6YMqg0tsZdWwjhJ63BY-Z0594y9MDFa6VxlPGqv-ugz2ur+IiNYqa3TVA3S30fqPp1x1+EZv1sZUMntvXm1Ldq-8IbDXiSja2dkHbzQhnzaOoKzrpIL4uu6L0BZow7Q-1GNc8AJgf5hIWGc4YgZQ1zKmTKVgNVFnLLOmErkskQLwEQBqOCcZSjPmoAkVRKA4gFDrHcEz6EEiuMEBZ78hphDGhurFfEO1ljBjWKFOoCwwnvYqHgTxZQu5NBiPo7aPCFqoDZKCVU6QzomG+CYVaggNqvWBGvantO-PPASNkEw-Dkd45LtyMntgCj+c4ryI4xPbHrFLl0XoPQcR9AWEFMzZi+e2S5HrBYsBBc1VFEwDRpiCL4CIKQfGmkogSmEJTBy4hsjXHFlZoGLiki8S1Yg6n8DdBCGwPjaztSo6gD6AAAVLHmMgvVQD69AInnwSAvCY8HjZUy3v4epmIPwo41cMfr0YPruYZsnNsGwAoA4EW+oYh3r1cL3uL5d8+uiVE7TjAXO2HQJzoDdK2A2sCGp1w4ePVuLH8fDiGkICQPAYp2QOL18cAKbgjO341O-GBZHrxnEuA8F4Z0Dc1-bnjq3Q6Aw46tF3w6fjDBYAd+790QYxggcz-QOPjHmkMhK4EUKCIBOUnGFcHqPjgvmNmmMIKNDumFKKNvl2kHIzi9KfjCDUG3AMJDBAdEKgK0ozF8hjh-r1BfN-gML-qrLDsKDrPAccC9JWBcFPnQbPgwTtD4J-IAj+P5qUDsHtiKAgbxhoneCoEgE-N1KKMfhBBOrAamDWnJCCJKJAlUJHg8BBK-GWLKJwT8LIf7rFAIRQIQMAhoBITavjMLgTAcKFPoe4KgVKNTk0KCPhE4jgagAsOap-p9FQdIS0vwO1CoTXIhB5l5mBK-PjOcIwKHAnAuPOj8H8OetmOZDBE0JpD-DzKMKMOXtXjzLPFEDEO4huPiB4DuPcBoIKtrMIOGN+HUHjrACkF+OUJrs0NkJ5koHJKgIrnYLYLALYDNFuIQKCAQESFJpKLAAcCUHwXDFgkgF2LrKgDgulD+NMfYDEA-jenIHnnbJZIZj0HrgnrMvYjvvSFuNgcDJ8BKJbK9CfvAawWDrUDQCZK3p2j0ZnsnjoL2HsbXgYNvicZjmcUgK-oCjfu3p3oXq3lfGiAPvhK+tZvABiHGFlvVEQvlj+mNkVv4T-mALZJmBFBcWNk8STAUjEC2MFAwPlJ9B0MUh0DsIEE9DvDvFVN+q0tkP5ukMrHlkyuILVPVK0hZn9O1MiDCXCQsuGDvAifAbxFVB0DWm0FfL1gct8DvDlIiR0E8EgDvNZh0N6BfEqetoMBqTETqWNnqVUQ-FQYsqQutlSJKjiTQWAE-sCQHhzC4FXuGPPqmLHkMXAk1PhJKdKXsrxAsN4NtPSQ0maUtEqKslgICjvAaYaQsq+nEa3KCQJu6LXOtkGWsmmeHKzktPKfVr4MmYsvmYmBmVYQANQYgVlATabmp2nraLAWGSHQFw6OGiFIEwIGH8GK5K4CiQDrZhE7z1mwBVmSSgCoi6nyb5hlkLILBtkMAFFDYlER64HRnNDFmba+DZCzn0bmqTi35hyVl8ZglnjWmLK6mNkyTugHl9oyR2k3RqroDKkPwdC3mJF1ktzhwTnnkCbNkLLGDmJUBbhNEq68QqB8Fbg1QzTkB2Z2LCAGL9jZAxGrR4HjK6nqah4Yg3kAU2oabrb15lwdD1g4A7ymIfqmL7nmnejZCmJyG8YiQJFkQ0UflflkRXlHSjJHF9AsCZhbjFIsTejoAH59mvw+Z2CB7n5JELxHl1BEkxksIIA5gZB8H6HekPyiFaIYCXCfEp4-FUwJ516nHMByBzREEkGV72Lui+EWS94WRimBpOmgDmKj5IAZC+7oCXAoRAGEFQFbhSjRDEBuxphYCeAGJV7Ji3BMXu7oAqCmz9hNjWw2W1FUBDL9TBEanuEWUECQGfrWVMzo72L2XiCOmHhgB-6r70Q1woAOQ4CpiPAWCCDCH+7lKNWMCNE7gtCALUL-SIlviiEKEkCEAX7eDQI2DVFgATDRBkz1U9FZUuaDVMVNgq5biQFzhkC8T6GIDigWA4SgxbHmUBXjZFVkGlWUG8WZ42ioRPQnnxF1Bamr7wA6E8G8RaWDUpFaoGXfFp7e5-EAkeFXFeFHkQne6OXlX94uWVUF6XFB7549nGjTxoG75njeWgCWEVg9ET4ETFU1yND9jpAoB8HT7wlrKDXImZagDZYIjomF4frYnUGw34nmDI5KXMJ6Jkk4AUkODUn2x0kMlMkslNRslNQcmoBcktI8kFB8k00Ck8nCnnCinQ29a5m7Cx6ylNQ7kYqCALkTKjnqnEmalyBbkHAWkGkw3XnG2mm6n0VWlGm2kLL2kDAUgVUDys18S-lUDppHA4AtXFCCEFx1iijxVyhyVxCzwCCwKMHKXfVNmDDq3aWhnhnpCRk7hm1ghxkJlJlW39CpmX7liTmhQYjZnjJJ31mFnbkKmll50DCeATV+DF2lC1kPWWyfkEUZpPltaMpLlY2rmAjrnVDkGZ061Ea0VFk4VHlgAN3OjN3cW2kHF8UnWWVQGaUTSiiZVYHwGSVKAfy6WXCb5FgYAbQwU0CbUkDzjY5ShrXR3fBaVym-Wp6-EmX-FmUEGr2FVNSkGNjkF2WQmvHd6q381fSC2ECMnhDMmsmF7smgCcncntQWay38k5aCkYmFbOW9bGB8x2aMAOEvDwF7VW58FCFiHLmMDfhhFl7xSDnhDrbBmRjN1ZkkLl1UBSkU0ynfByk116113GnElMOt34Vv5d3zpAUTKtlY0dlcHdnihfgx07RW4Dl3BDkjmqmIlMOoi9SakFRar62LnkMD0aBD2aEf7cMlmtV7E6OuSh5gAaOd2XniPjIkX8BkV4AUWmIunoFTnw0elJA7DsVyn22mKxSBPa08MdCy3MkdjOUdgdBT0yQGkiZUFL2Z4-x5CWBwDPA6wyWfDhQ8Axi4MkNgU0A+AFAhWM6h51ATq+43Cl6-hEx72MC8SZ5b0DXEnIAn1n2-C7AX3ziJoY7Ki2RFycRlMtV8Gh65hLXXQKCijc39XZXG2fHGXLJA15UFWdLnW-22Xg1hZQlAOwkuXaNgMEAQOQBQOi0wPi1wOS0INxRDQsgoO5aIPoNNQq2HOYgZ7jIMMHCwDgB4AmCqjCIuYYhkiMqMrGCxJyMkxjPRCjGpG4P4xh2KX+mIMErJTb0xloVKCqAk576xC7XWAn3TwcRtOLMxnHX51rKwslDewYjaOJZaosMDCvo2BNhYBMOl2MpJ2a1cPhMWP6NejqPmlobWRojivQpYZbAIppIZIVrZKCtWqoDlO0u7DJR4XmkJPzrMuSovkubvmIn-OAs8DAvwriAqDnPWYL3jLGBMAJTmZxC2DyyiGficR92SFGMmO4EUCIU1DZBchoAECRHZM00zSGgezXj8hgiO3YWcYab3nmmcX5iO1svYCCMatFlJtPDPmMou24lQjul1UwE0vwvh7D1R4h2u6CCig0t8HzNFLtPKWvg44QJzWmsaArrCsxlGtAuPTnBkW+A4AI6oi1yKuBiGOEZesj2GsAu9vtTZAlvexgCpscsOMaDWtO3TCMouPwrkWUUOio2k6lC+OfABPZBBOWkhOwBhPtRj1tCRMsjROxPxNxt6ML1u3XXHE1RNPQDiBFBaVpDKvQK3x5iJBxBDn0GcT8jbXfD8I3Hhz8Kfz8QXAy6DsoDgZ9AXIAgtDcAQQqspUISM5bg+BRVjRluaGyiAfpR+BKhP0-HwdUB0dkD8DtDDmv0AnusrmTuVAbl-3t48NEg-0pz8BkhDQ-t-shRjGeR9wECYOBlsOpmEayg8Njs1ovv43wZLgYhwWCBjmEYd0iOadXh9CX0lS-vBSoUbaAjqdfJGeoDvvKQAl1T+ZCdNigyBAGSPh1Qdh2UCdVz40sxkhyew3D59EYWmE8g0AQXR0Gzc2cQ6c+uqg1CegV1Ke8QqdW1qdatkTuhqdznZs8WpPHETDzhbhUflgklSg6B5jrjfCRxtxJ6GVkDVfbSBip3RHmifE5557wBqTQeyhBWp2A1mUldkDt4tdS2ueBdna9yjjANKu54ED2ap0d0aACioDMmrCeCmcJBmFhCF1+DBcTLddLeYAFPmh727fji5vZCjsTift9AOiLfPEzghWX0wfIDsLSejgNdZ5NfSedJMfSdHzDdAmhvCDt7yTbLfeWfyQ+ow+yfze9k7xQ-TnA9XwnfCBw+ehpAuaY8A+5LwwhuNMlQReKHTMiDixv1g+N44SqhnhvEYi0-N6oCt47zBbQnU8DGuN7umJvHqB08HA+jsXM-08aCt60kDQm3amdLnagCi9C8S90lak7xHxy8K8M-e6S+IPS87xDJJPdBAA">
               source code of this algorithm can be found here
             </SiteLink>
-            . Feel free to play around with the parameters of the case to see
-            the result of what it does.
+            . Feel free to play around with the parameters of the test case to
+            see the result of what it does.
           </div>
           <h1 className="text-2xl underline text-secondary ">
             Context: The Charging Problem
@@ -112,8 +112,7 @@ export const EVChargerDLB = () => {
                 Hydraulic Analogy
               </SiteLink>
               . I'm going to describe these concepts solely using the analogy,
-              as it will be sufficient for what we're doing, and ends up being
-              incredibly powerful in terms of conceptualising a solution.
+              as it will be sufficient for what we're doing.
             </div>
             <div>
               Firstly,{' '}
@@ -171,14 +170,18 @@ export const EVChargerDLB = () => {
             />
             <div id="kirchhoff">
               One thing worth noting which continues our analogy, is that for
-              any circuit which runs in parallel, splitting the 'pipework' into
+              any circuit which runs in parallel, splitting the pipework into
               multiple different branches would mean the volume of water in each
-              branch will a portion of what it was before splitting - it has to
-              be right? But the pressure in those branches would stay the same -
-              we are still pumping through water at the same rate. Similarly, in
-              a parallel circuit, when the circuit splits into multiple
-              directions, the amperage too splits across those branches - while
-              the voltage stays the same. This is known as Kirchhoff's Law.
+              branch will be a portion of what it was before the pipework
+              branched off - it has to be right? But the pressure in those
+              branches would stay the same - we are still pumping through water
+              at the same rate. Similarly, in a parallel circuit, when the
+              circuit splits into multiple directions, the amperage too splits
+              across those branches - while the voltage stays the same. This is
+              known as Kirchhoff's Law. It might sound confusing, but it's quite
+              intuitive - think of a raging river which splits into different
+              streams, the volume in each stream is less, but they're all still
+              moving as fast.
             </div>
             <Image
               src="/assets/dlb/kirchhoff.webp"
@@ -190,10 +193,11 @@ export const EVChargerDLB = () => {
             <h1 className="text-lg underline text-secondary">Power Delivery</h1>
             <div>
               With this, there are also two forms that power can be delivered
-              in, AC or DC. AC power is equivalent to water quickly oscillating
-              back and forth in a pipe, while DC is equivalent to water being
-              constantly pushed through a pipe (more intuitively). When I first
-              heard this I thought, how are devices powered by AC power not
+              in, AC (alternating current) or DC (direct current). AC power is
+              equivalent to water quickly oscillating back and forth in a pipe,
+              while DC is equivalent to water being constantly pushed through a
+              pipe (more intuitively). When I first heard this I thought, if AC
+              power is going back and forth, how are devices powered by AC not
               constantly switching on and off then? Well AC power is
               significantly faster than DC (so much so that it is used in all
               industrial grids), and this change in direction is often so fast
@@ -238,11 +242,11 @@ export const EVChargerDLB = () => {
             />
             <div>
               As a result, many buildings will have electricity delivered in
-              across 3 phases, each phase being known as L1, L2 and L3. One
-              confusing question I first asked myself when I heard this, if a
-              device draws power from all 3 phases and overall needs 100 watts,
-              does it draw 100 watts from each or 33.3 watts from each? As it
-              happens, a{' '}
+              across 3 <span className="underline">phases</span>, each phase
+              being known as L1, L2 and L3. One confusing question I first asked
+              myself when I heard this, if a device draws power from all 3
+              phases and overall needs 100 watts, does it draw 100 watts from
+              each or 33.3 watts from each? As it happens, a{' '}
               <SiteLink href="https://www.quora.com/A-3-phase-machine-takes-a-100-ampere-current-Each-phase-takes-how-much-ampere">
                 3 phase device looking to draw 100 watts will draw a maximum of
                 100 watts from each L1, L2 and L3
@@ -264,8 +268,8 @@ export const EVChargerDLB = () => {
               supplied from the grid is delivered in AC (as mentioned), DC power
               chargers will convert the AC power they receive into DC power
               inside them. I don't claim to know how - fortunately that won't be
-              relevant. AC chargers can make use of a single phase or all 3
-              phases.
+              relevant. The charging devices themselves will either draw power
+              from 3 phases or just one.
             </div>
             <div>
               For those wondering, we can actually set the amperage drawn by
@@ -434,6 +438,10 @@ export const EVChargerDLB = () => {
                   power
                 </li>
                 <li>b) Respect all amperage capacities</li>
+                <li>
+                  c) Distribute the current proportional to how much each device
+                  requires
+                </li>
               </ul>
             </div>
             <div>
@@ -465,6 +473,10 @@ export const EVChargerDLB = () => {
                   to the station
                 </li>
                 <li>
+                  There are no "2 phase" devices, just 3 phase and single phase
+                  - this is the case in practice
+                </li>
+                <li>
                   There can be any number of devices. A device can have any
                   number of ports
                 </li>
@@ -492,12 +504,12 @@ export const EVChargerDLB = () => {
               same relationship.
             </div>
             <div>
-              As an example, we consider a Location A which has 60 amps supplied
+              As an example, we consider a Location A which has 40 amps supplied
               by the grid and 3 chargers which are:
               <ul className="list-disc ml-6">
                 <li>
-                  A 3 phase device with max amperage 32A. One active port with
-                  max amperage 20A, another active port with max amperage 32A
+                  A 3 phase device with max amperage 32A. Two active ports both
+                  with max amperage also 32A.
                 </li>
                 <li>
                   A single phase device (connected to L2) with max amperage 12A.
@@ -505,8 +517,8 @@ export const EVChargerDLB = () => {
                 </li>
                 <li>
                   A single phase device (connected to L3) with max amperage 22A,
-                  an inactive port with max amperage 15A, an active port with
-                  max amperage 12A.
+                  an inactive port with max amperage 22A, an active port with
+                  max amperage 22A.
                 </li>
               </ul>
             </div>
@@ -531,7 +543,7 @@ export const EVChargerDLB = () => {
               alt=""
               width={500}
               height={200}
-              className="mx-auto"
+              className="mx-auto mb-2"
             />
             <div>
               Note that this representation{' '}
@@ -567,16 +579,16 @@ export const EVChargerDLB = () => {
             The "I Gotta Ask My Dad" Algorithm
           </h1>
           <div>
-            While this algorithm for proportional load balancing can be
-            explained quite easily to programmers or computer scientists, like
-            much of this article I want to explain it in a way that demonstrates
-            the discrete thinking involved in coming up with such a method, as
-            to be accessible to all - so I found an analogy we're all familiar
-            with.
+            While the details of how this algorithm is implemented are only
+            really interpretable by programmers or computer scientists, like
+            much of these articles I want to explain it in a way that
+            demonstrates the discrete thinking involved in coming up with such a
+            method, as to be accessible to all - so I found an analogy we're all
+            familiar with.
           </div>
           <div>
-            For those with siblings, or even cousins, we've all been in a
-            position where you both want a certain amount of something, let's
+            For those with siblings, or even cousins perhaps, we've all been in
+            a position where you both want a certain amount of something, let's
             say it's cake, but there's only so much to go around. One sibling
             says "I want 2 slices of cake", and the other says "I want 4 slices
             of cake". Their parents then distribute what's available, in
@@ -589,7 +601,8 @@ export const EVChargerDLB = () => {
             This algorithm uses the exact same idea. Each active connector/port
             wants to draw as much amperage as possible, but before it does, it
             has to ask the parent node in dependency tree, then can use what
-            it's given by that node. The steps involved are:
+            it's given by that node. I'll give an example of the algorithm run
+            on location A, as I run through the steps, which are as follows:
           </div>
           <ol className="list-disc ml-8 flex flex-col gap-y-2">
             <li>
@@ -599,6 +612,13 @@ export const EVChargerDLB = () => {
               a connector not being used, add 0 to the list - equivalent to "how
               much cake the sibling wants"
             </li>
+            <Image
+              src="/assets/dlb/locationA-2.png"
+              alt=""
+              width={500}
+              height={200}
+              className="mx-auto mb-3"
+            />
             <li>
               Dad needs to figure out what proportion each child should get.
               Calculate the total amperage all the sibling connectors are asking
@@ -610,45 +630,123 @@ export const EVChargerDLB = () => {
               dad" whether it can draw the amount it needs to give to it's
               children.
             </li>
+            <Image
+              src="/assets/dlb/locationA-3.gif"
+              alt=""
+              width={500}
+              height={200}
+              className="mx-auto mb-3"
+            />
             <li>
               Now the phases (grandparents) have the hard task of figuring out
               what to give each device. They'll need to communicate about
-              whether they're setting a limit due to too much strain on any
-              attached devices, since some of them share a device. It doesn't
-              work quite the same as previously because the device is asking{' '}
-              <span className="underline">multiple</span> parents what it may
-              draw. This part might be difficult to understand, but I'll do my
-              best.
+              whether they're setting a limit due to too much strain caused by
+              any attached devices, since some of them share a device. It
+              doesn't work quite the same as previously because the device is
+              asking <span className="underline">multiple</span> parents what it
+              may draw instead - the relationship between the layers is
+              different so we need a new approach.
             </li>
             <li>
-              To start, the devices should send to all their attached phases two
-              things, which the phases will make a list of. The first being the
-              amperage they request - the sum of their distribution list. The
-              second being a check whether they are connected to a phase which
-              has reached it's limit. These should all initially be false,
-              because the phases haven't calculated anything yet.
+              To start, the devices should make clear what current they are
+              requesting - "asking their dad(s)" for the number of slices of
+              cake they need to give to their children. Each phase should again
+              make a list of what all their devices are asking for. What the
+              grandparent phases will first need to do is handle the 3 phase
+              devices, as they are asking all their parents for the same amount,
+              but they will need to communicate about how much they can each
+              give.
+            </li>
+            <Image
+              src="/assets/dlb/locationA-4.png"
+              alt=""
+              width={500}
+              height={200}
+              className="mx-auto mb-3"
+            />
+            <li>
+              Now the way we handle 3 phase devices first, is if any of the
+              lists exceed what the phase can offer, we should again perform the
+              task of recalculating the proportion. However, when the proportion
+              of a 3 phase device is recalculated, be sure to let the other
+              grandparents know, by updating them in the other lists with the
+              minimum of the results. Note that in phase 3, values are rounded
+              down and should stay that way
+            </li>
+            <Image
+              src="/assets/dlb/locationA-5.gif"
+              alt=""
+              width={500}
+              height={200}
+              className="mx-auto mb-3"
+            />
+            <li>
+              Now we've got a pretty reasonable allocation - it is certainly
+              safe, which is fantastic. However, the fact that 3 phase devices
+              take the minimum result means that there might be some leftover
+              current in a given phase which it can allow single phase devices
+              to take! If we don't handle this, we've violated the aim of the
+              algorithm being optimal (that is, making the most of the available
+              current).
             </li>
             <li>
-              Now for each phase, what we need to do is the following. Take it's
-              maximum current, and for every attached device, subtract its
-              allocated amperage if it is checked as reaching its limit. Now,
-              get the sum
+              What we want to do now then, is go through each phase one final
+              time. For each phase we will do the following. Firstly, set the
+              single phase devices back to the amount they requested, and make
+              note of what the single phase requests sum to. Then, take the grid
+              amperage, and subtract what we allocated to any 3 phase devices -
+              to find what is remaining to allocate. Then, again if the sum of
+              requests if larger, multiply each single phase device by (that
+              result / the sum of their requests from the previous step). For
+              our example, this will only make a difference on L2, can you see
+              why? The others are full or have no single phase devices.
             </li>
+            <Image
+              src="/assets/dlb/locationA-6.gif"
+              alt=""
+              width={500}
+              height={200}
+              className="mx-auto mb-3"
+            />
             <li>
-              Now that that's done, for each phase we want to do the following.
-              Take the phase amperage, and subtract the currently decided
-              amperage for every device which has been "limited"
+              That step is the most confusing visually. Maybe try it a few times
+              with other examples solely following the explanation, if it
+              doesn't make sense yet. Alas, we finally have an optimised and
+              proportional amperage which exceeds no limits. Now the
+              grandparents can tell the parents how much they can have. The
+              parents should then recalculate the proportions they will give
+              their children, if necessary.
             </li>
+            <Image
+              src="/assets/dlb/locationA-7.gif"
+              alt=""
+              width={500}
+              height={200}
+              className="mx-auto mb-3"
+            />
             <li>
-              Tell each connector what it is allocated - finally give the
-              siblings the proportion of what they asked for
+              Then finally the parents can give the children what they asked
+              for, finishing our big family argument.
             </li>
+            <Image
+              src="/assets/dlb/locationA-8.png"
+              alt=""
+              width={500}
+              height={200}
+              className="mx-auto mb-3"
+            />
           </ol>
           <div>
             For location A, the following gif summarises the entire process
             visually as a nice final product:
           </div>
-          <div>IMAGE</div>
+          <Image
+            src="/assets/dlb/locationA-complete.gif"
+            alt=""
+            width={500}
+            height={200}
+            className="mx-auto"
+          />
           <div>
             For any computer scientists concerned, with a basic operation of
             adjusting the amperage allocation of a node, this algorithm with m
@@ -668,10 +766,10 @@ export const EVChargerDLB = () => {
                 faster than O(n+m). QED - Quite Easily Done
               </li>
             </ul>
-            Note in practice it may be able to be sped up, as the number of
-            basic operations is actually 2n+3m (n when "asking the device", 3m
-            at most when "asking the phases", n when readjusting the connectors
-            based on what the phase gave the device)
+            Note in practice it definitely may be able to be sped up, as the
+            number of basic operations is actually 2n+6m (n when "asking the
+            device", 6m at most when "asking the phases", n when readjusting the
+            connectors based on what the phase gave the device)
           </div>
           <h1 className="text-lg underline text-secondary">Conclusion</h1>
           <div>
@@ -684,13 +782,32 @@ export const EVChargerDLB = () => {
           </div>
 
           <div>
-            While this algorithm could be considered simple and repetitive, this
-            article sets the groundwork for the slightly more involved
-            computer-sciency algorithm in the next article, which achieves the
-            more final goal of finding the allocation which instead distributes{' '}
-            <span>power</span> as evenly as possible - ensuring every person
-            charging is getting as fair a share of the station's electricity as
-            the next.
+            While this algorithm may not be considered abstract enough to handle
+            for example 2 phase devices, this is deliberate. This article
+            intends to set the concrete groundwork for the slightly more
+            involved computer-sciency algorithms in the next articles, one of
+            which achieves a more final goal of finding the allocation which
+            instead distributes <span>power</span> as evenly as possible amongst
+            connectors - ensuring every person charging is getting as fair a
+            share of the station's electricity as the next. The other of which
+            will abstract away from load management, and provide a solution to
+            all general distribution problems like in this arrangement.
+          </div>
+          <div>
+            If you intend on using this in practice, there are other
+            considerations I highly recommend you also take into account, which
+            I won't cover here but they have simple solutions. These include
+            what order to send the connector reallocations in, such that it is
+            safe. Because what if you increase one connector allocation before
+            decreasing others? The circuit breaker trips - a hint to how you
+            should handle this, there is a field in the source code DLBConnector
+            type that can be sorted. Also how to treat device disconnections
+            (what if it disconnects but starts drawing it's maximum?), you might
+            have to make some assumptions to guarantee safety. It is also
+            recommended you include some buffer on the grid amperage, for safety
+            sake. Finally, remember this is just one iteration of dynamic load
+            management - this algorithm would run every time the available grid
+            amperage updates or the connector activity changes.
           </div>
         </div>
       </PostSummary>

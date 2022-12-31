@@ -41,7 +41,7 @@ export const PostSummary = ({
           {children}
         </div>
         <hr className="my-4 mx-3 border-black border" />
-        <Comments title={title} />
+        {title !== 'About' && <Comments title={title} />}
       </div>
     )
     angleButton = (

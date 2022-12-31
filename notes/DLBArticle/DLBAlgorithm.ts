@@ -65,10 +65,11 @@ const ConstructRequests = (group: DLBGroup) => {
  */
 const DeterminePhaseAllocations = (group: DLBGroup) => {
     // Firstly, we want to determine the an initial calculation which will give us a certain allocation for 3 phase devices.
+    // The task of communicating 3 phase device maximums is simply handled by the phases storing references to the same device object.
     Determine3PhaseAllocations(group)
 
     // Now iterate through again, there might be some single phase devices we can allocate more current to,
-    // Since three phase devices will take the minimum of what is available.
+    // Since three phase devices will have taken the minimum of what is available - potentially leaving some leftover
     Determine1PhaseAllocations(group)
 }
 

@@ -2,6 +2,7 @@ import { DLBGroup, DLBDevice, DLBPhase, Phases, PowerType } from './DLBTypes'
 
 /*                   TEST CASE                 */
 
+// Note that if the device is turned on, it should start with connector requested amperage and allocated amperage set equal to max
 var testDevice1: DLBDevice = {
   id: 'HELLOWORLD',
   max_amperage: 50,
