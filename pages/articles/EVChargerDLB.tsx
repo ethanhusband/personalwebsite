@@ -767,9 +767,10 @@ export const EVChargerDLB = () => {
               </li>
             </ul>
             Note in practice it definitely may be able to be sped up, as the
-            number of basic operations is actually 2n+6m (n when "asking the
-            device", 6m at most when "asking the phases", n when readjusting the
-            connectors based on what the phase gave the device)
+            number of basic operations is actually 2n+6m in the worst case (n
+            when "asking the device", 6m at most when "asking the phases", n
+            when readjusting the connectors based on what the phase gave the
+            device)
           </div>
           <h1 className="text-lg underline text-secondary">Conclusion</h1>
           <div>

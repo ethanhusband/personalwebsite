@@ -85,7 +85,9 @@ export const PostSummary = ({
               <div className={titleStyle}>{title}</div>
               {active && <ActiveTooltip id={title} />}
             </div>
-            <div className="mt-0.5 text-base text-zinc-400">{desc}</div>
+            {useMediaQuery('(min-width:500px)') && (
+              <div className="mt-0.5 text-base text-zinc-400">{desc}</div>
+            )}
           </div>
           {angleButton}
         </div>
