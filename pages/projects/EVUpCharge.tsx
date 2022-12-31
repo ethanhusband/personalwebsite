@@ -1,3 +1,4 @@
+import { useMediaQuery } from '@mui/material'
 import Image from 'next/image'
 import PostSummary from '../../components/PostSummary'
 import { SiteLink } from '../../components/SiteLink'
@@ -64,14 +65,16 @@ export const EVUpCharge = () => {
             landing page.
           </div>
           <div className="flex flex-row">
-            <Image
-              src="/assets/evup/chargeMap.png"
-              width={650}
-              height={100}
-              quality={100}
-              alt="EVUp ChargeMap"
-              className="bg-white border border-black mx-auto rounded-lg"
-            />
+            {useMediaQuery('(min-width:1000px)') && (
+              <Image
+                src="/assets/evup/chargeMap.png"
+                width={650}
+                height={100}
+                quality={100}
+                alt="EVUp ChargeMap"
+                className="bg-white border border-black mx-auto rounded-lg"
+              />
+            )}
             <Image
               src="/assets/evup/appChargeMap.jpg"
               width={150}
@@ -109,14 +112,16 @@ export const EVUpCharge = () => {
             software for drivers.
           </div>
           <div className="flex flex-row justify-center gap-x-12">
-            <Image
-              src="/assets/evup/locationdrawer.PNG"
-              width={200}
-              height={100}
-              quality={100}
-              alt=""
-              className="bg-white border-2 border-black rounded-lg"
-            />
+            {useMediaQuery('(min-width:500px)') && (
+              <Image
+                src="/assets/evup/locationdrawer.PNG"
+                width={200}
+                height={100}
+                quality={100}
+                alt=""
+                className="bg-white border-2 border-black rounded-lg"
+              />
+            )}
             <Image
               src="/assets/evup/chargenow.PNG"
               width={200}
@@ -162,22 +167,27 @@ export const EVUpCharge = () => {
               alt=""
               className="bg-white border-2 border-black rounded-lg"
             />
-            <Image
-              src="/assets/evup/erroredsession.PNG"
-              width={200}
-              height={100}
-              quality={100}
-              alt=""
-              className="bg-white border-2 border-black rounded-lg"
-            />
-            <Image
-              src="/assets/evup/parkingsession.PNG"
-              width={200}
-              height={100}
-              quality={100}
-              alt=""
-              className="bg-white border-2 border-black rounded-lg"
-            />
+
+            {useMediaQuery('(min-width:500px)') && (
+              <Image
+                src="/assets/evup/erroredsession.PNG"
+                width={200}
+                height={100}
+                quality={100}
+                alt=""
+                className="bg-white border-2 border-black rounded-lg"
+              />
+            )}
+            {useMediaQuery('(min-width:1000px)') && (
+              <Image
+                src="/assets/evup/parkingsession.PNG"
+                width={200}
+                height={100}
+                quality={100}
+                alt=""
+                className="bg-white border-2 border-black rounded-lg"
+              />
+            )}
           </div>
           <div>
             Drivers also have access to a menu which contains their Session
@@ -199,22 +209,26 @@ export const EVUpCharge = () => {
               alt=""
               className="bg-white border-2 border-black rounded-lg"
             />
-            <Image
-              src="/assets/evup/wallet.PNG"
-              width={200}
-              height={100}
-              quality={100}
-              alt=""
-              className="bg-white border-2 border-black rounded-lg"
-            />
-            <Image
-              src="/assets/evup/sessionhistory.PNG"
-              width={200}
-              height={100}
-              quality={100}
-              alt=""
-              className="bg-white border-2 border-black rounded-lg"
-            />
+            {useMediaQuery('(min-width:500px)') && (
+              <Image
+                src="/assets/evup/wallet.PNG"
+                width={200}
+                height={100}
+                quality={100}
+                alt=""
+                className="bg-white border-2 border-black rounded-lg"
+              />
+            )}
+            {useMediaQuery('(min-width:1000px)') && (
+              <Image
+                src="/assets/evup/sessionhistory.PNG"
+                width={200}
+                height={100}
+                quality={100}
+                alt=""
+                className="bg-white border-2 border-black rounded-lg"
+              />
+            )}
           </div>
           <h1 className="mt-2 text-2xl underline text-secondary">
             EVUp for Charger Owners
