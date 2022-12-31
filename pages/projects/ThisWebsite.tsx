@@ -84,11 +84,10 @@ export const ThisWebsite = () => {
             happen for you too. Just copy mine - it's open source.
           </div>
           <div>
-            Finally, the site also injects Google Analytics, which I would also
-            recommend, and a very simple instruction to set that up can be found{' '}
-            <SiteLink href="https://mariestarck.com/add-google-analytics-to-your-next-js-application-in-5-easy-steps/#:~:text=It%20takes%20between%2024%2D48,show%20up%20in%20Google%20Analytics.">
-              here
-            </SiteLink>
+            As for tracking the site, originally I had Google Analytics
+            installed. This was until I discovered that the Vercel console even
+            tracks your analytics through Next.js, on top of everything else.
+            Meaning no code requirements were necessary for analytics.
           </div>
         </div>
       </PostSummary>
