@@ -58,7 +58,7 @@ export const TwitterAnalysis = (context: any) => {
             output factor via linear relationships.
           </div>
           <Image
-            src="/assets/twitter-analysis/regression.png"
+            src="/assets/twitter-analysis/regression.PNG"
             width={400}
             height={200}
             alt=""
@@ -93,14 +93,14 @@ export const TwitterAnalysis = (context: any) => {
           </div>
           <div className="flex flex-row mx-auto gap-x-4 my-1">
             <Image
-              src="/assets/twitter-analysis/correlationBasic.png"
+              src="/assets/twitter-analysis/correlationBasic.PNG"
               width={200}
               height={200}
               alt="Basic Features Correlation Matrix"
               className="border-2 border-black"
             />
             <Image
-              src="/assets/twitter-analysis/correlationCohere.png"
+              src="/assets/twitter-analysis/correlationCohere.PNG"
               width={300}
               height={200}
               alt="Coherence Correlation Matrix"

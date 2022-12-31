@@ -76,7 +76,7 @@ export const ReactMandelbrot = () => {
             and probably faster.
           </div>
           <Image
-            src="/assets/mandelbrot/mandelbrot5.png"
+            src="/assets/mandelbrot/mandelbrot5.PNG"
             alt=""
             quality={100}
             width={900}

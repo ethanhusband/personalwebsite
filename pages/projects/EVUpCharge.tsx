@@ -110,7 +110,7 @@ export const EVUpCharge = () => {
           </div>
           <div className="flex flex-row justify-center gap-x-12">
             <Image
-              src="/assets/evup/locationdrawer.png"
+              src="/assets/evup/locationdrawer.PNG"
               width={200}
               height={100}
               quality={100}
@@ -118,7 +118,7 @@ export const EVUpCharge = () => {
               className="bg-white border-2 border-black rounded-lg"
             />
             <Image
-              src="/assets/evup/chargenow.png"
+              src="/assets/evup/chargenow.PNG"
               width={200}
               height={100}
               quality={100}
@@ -155,7 +155,7 @@ export const EVUpCharge = () => {
           </div>
           <div className="flex flex-row justify-center gap-x-12">
             <Image
-              src="/assets/evup/session.png"
+              src="/assets/evup/session.PNG"
               width={200}
               height={100}
               quality={100}
@@ -163,7 +163,7 @@ export const EVUpCharge = () => {
               className="bg-white border-2 border-black rounded-lg"
             />
             <Image
-              src="/assets/evup/erroredsession.png"
+              src="/assets/evup/erroredsession.PNG"
               width={200}
               height={100}
               quality={100}
@@ -171,7 +171,7 @@ export const EVUpCharge = () => {
               className="bg-white border-2 border-black rounded-lg"
             />
             <Image
-              src="/assets/evup/parkingsession.png"
+              src="/assets/evup/parkingsession.PNG"
               width={200}
               height={100}
               quality={100}
@@ -192,7 +192,7 @@ export const EVUpCharge = () => {
           </div>
           <div className="flex flex-row justify-center gap-x-12">
             <Image
-              src="/assets/evup/usermenu.png"
+              src="/assets/evup/usermenu.PNG"
               width={200}
               height={100}
               quality={100}
@@ -200,7 +200,7 @@ export const EVUpCharge = () => {
               className="bg-white border-2 border-black rounded-lg"
             />
             <Image
-              src="/assets/evup/wallet.png"
+              src="/assets/evup/wallet.PNG"
               width={200}
               height={100}
               quality={100}
@@ -208,7 +208,7 @@ export const EVUpCharge = () => {
               className="bg-white border-2 border-black rounded-lg"
             />
             <Image
-              src="/assets/evup/sessionhistory.png"
+              src="/assets/evup/sessionhistory.PNG"
               width={200}
               height={100}
               quality={100}
