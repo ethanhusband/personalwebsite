@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 
-import useScript from '../hooks/UseScript'
+import useScript from '../utils/UseScript'
 
 const Comments = ({ title }: any) => {
   const comment = useRef(null)

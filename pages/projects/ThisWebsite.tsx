@@ -83,6 +83,13 @@ export const ThisWebsite = () => {
             which prevented duplicate comment sections from showing - this may
             happen for you too. Just copy mine - it's open source.
           </div>
+          <div>
+            Finally, the site also injects Google Analytics, which I would also
+            recommend, and a very simple instruction to set that up can be found{' '}
+            <SiteLink href="https://mariestarck.com/add-google-analytics-to-your-next-js-application-in-5-easy-steps/#:~:text=It%20takes%20between%2024%2D48,show%20up%20in%20Google%20Analytics.">
+              here
+            </SiteLink>
+          </div>
         </div>
       </PostSummary>
     </div>
