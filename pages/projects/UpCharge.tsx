@@ -329,7 +329,7 @@ export const EVUpChargeSummary = () => {
       active
       isPageHeader={false}
       children={undefined}
-      link="/projects/UpCharge"
+      link="projects/UpCharge"
       desc="Large scale software aimed at connecting Australia to monitored, monetisable electric vehicle chargers"
     />
   )

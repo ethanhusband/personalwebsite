@@ -35,7 +35,7 @@ const About = () => {
           </div>
           <div>
             I am currently employed as the lead developer at{' '}
-            <Link href="/projects/EVUpCharge" className="link-styling">
+            <Link href="/projects/UpCharge" className="link-styling">
               EVUp Charge
             </Link>
             , an Australian company targetted at facilitating a variety of
