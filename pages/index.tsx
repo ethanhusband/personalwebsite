@@ -11,7 +11,7 @@ const Home: NextPage = () => {
 const ExploreButton = () => {
   return (
     <div className="centered-button">
-      <Link href="/Blog">
+      <Link href="/About">
         <div className="flex flex-row justify-center px-12 py-4 explore-effects self-center rounded-lg border border-black">
           <p className="text-center text-2xl tracking-normal">Explore</p>
         </div>
