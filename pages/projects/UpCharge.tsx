@@ -8,7 +8,7 @@ export const EVUpCharge = () => {
     <div className="flex flex-col">
       <PostSummary
         title="EVUp Charge"
-        link="/projects/EVUpCharge"
+        link="/projects/UpCharge"
         desc="Occupational - Active"
       >
         <div className="flex flex-col justify-center gap-y-4">
@@ -329,7 +329,7 @@ export const EVUpChargeSummary = () => {
       active
       isPageHeader={false}
       children={undefined}
-      link="/projects/EVUpCharge"
+      link="/projects/UpCharge"
       desc="Large scale software aimed at connecting Australia to monitored, monetisable electric vehicle chargers"
     />
   )

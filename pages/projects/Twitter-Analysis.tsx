@@ -7,7 +7,7 @@ export const TwitterAnalysis = (context: any) => {
     <div className="flex flex-col ">
       <PostSummary
         title="Twitter Popularity Analysis"
-        link="/TwitterAnalysis"
+        link="/projects/Twitter-Analysis"
         desc="Assignment - 17/10/2022"
       >
         <div className="flex flex-col gap-y-4">
@@ -126,7 +126,7 @@ export const TwitterSummary = () => {
       title="Twitter Popularity Analysis"
       isPageHeader={false}
       children={undefined}
-      link="projects/TwitterAnalysis"
+      link="projects/Twitter-Analysis"
       desc="Basic Python data analysis report on Twitter Users, using Pandas and Scikit-Learn"
     />
   )

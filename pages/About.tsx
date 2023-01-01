@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import PostSummary from '../components/PostSummary'
+import { SiteLink } from '../components/SiteLink'
 
 const About = () => {
   // For some reason, passing that outer div (with flex col) abstractly to all props doesn't apply the style correctly
@@ -14,13 +15,15 @@ const About = () => {
       >
         <div className="flex flex-col gap-y-4">
           <div>
-            This site is an effort to share the some of the fascinating problems
-            and ideas I've encountered, generally pertaining (but not limited)
-            to Software Engineering or Abstract Math. The Blog section includes
-            articles regarding theoretical problems I've dedicated thought or
-            novel solutions to, and wish to share at a level of detail I intend
-            to make accessible to all. Meanwhile, the Projects section includes
-            overviews of projects I've engaged in creating or developing - with
+            This site is an effort to share, at a level of detail I intend to
+            make accessible to all, some of the fascinating problems and ideas
+            I've encountered, generally pertaining (but not limited) to Software
+            Engineering or Abstract Math. The{' '}
+            <SiteLink href="/Blog">Blog section</SiteLink> includes articles
+            regarding theoretical problems I've dedicated thought or novel
+            solutions to, and will always have full explanations. Meanwhile, the{' '}
+            <SiteLink href="/Projects">Projects section</SiteLink> includes
+            overviews of projects I've developed myself or contributed to - with
             rough explanations of how they all work.
           </div>
           <div>

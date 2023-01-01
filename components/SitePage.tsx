@@ -24,7 +24,7 @@ export const SitePage = ({ children }: any) => {
   return (
     <div className="w-screen bg-mandelbrot h-full cursor-crosshair">
       <Head>
-        <title>Ethan Husband - {lastPath(router.asPath)}</title>
+        <title>Ethan Husband - {lastPath(router.asPath) || 'Explore'}</title>
         <meta name="description" content="Personal Website for Ethan Husband" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

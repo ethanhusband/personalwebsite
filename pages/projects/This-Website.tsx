@@ -7,7 +7,7 @@ export const ThisWebsite = () => {
     <div className="flex flex-col">
       <PostSummary
         title="This Website"
-        link="/EVUpCharge"
+        link="/projects/This-Website"
         desc="Personal Project - 01/01/2023"
       >
         <div className="flex flex-col gap-y-4">
@@ -102,7 +102,7 @@ export const ThisWebsiteSummary = () => {
       active
       isPageHeader={false}
       children={undefined}
-      link="projects/ThisWebsite"
+      link="projects/This-Website"
       desc="Simple Typescript Nextjs blog site deployed with Vercel, requiring no backend"
     />
   )

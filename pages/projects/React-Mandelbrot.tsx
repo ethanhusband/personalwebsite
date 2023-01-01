@@ -7,7 +7,7 @@ export const ReactMandelbrot = () => {
     <div className="flex flex-col">
       <PostSummary
         title="React Mandelbrot Set Renderer"
-        link="projects/ReactMandelbrot"
+        link="/projects/React-Mandelbrot"
         desc="Personal Project - 02/09/22"
       >
         <div className="flex flex-col gap-y-4">
@@ -103,7 +103,7 @@ export const ReactMandelbrotSummary = () => {
       title="React Mandelbrot Set Renderer"
       isPageHeader={false}
       children={undefined}
-      link="projects/ReactMandelbrot"
+      link="projects/React-Mandelbrot"
       desc="A simple single file render of the Mandelbrot Set, done in React for accessibility sake"
     />
   )

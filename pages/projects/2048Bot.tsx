@@ -7,7 +7,7 @@ export const Py2048Bot = () => {
     <div className="flex flex-col">
       <PostSummary
         title="2048 Bot"
-        link="/Py2048Bot"
+        link="/projects/2048Bot"
         desc="Personal Project - 11/07/2022"
       >
         <div className="flex flex-col gap-y-4">
@@ -182,7 +182,7 @@ export const Py2048BotSummary = () => {
       title="2048 Bot"
       isPageHeader={false}
       children={undefined}
-      link="/projects/Py2048Bot"
+      link="/projects/2048Bot"
       desc="An advanced 2048 AI with a Python frontend and C++ backend, maintaining a 100% win rate"
     />
   )

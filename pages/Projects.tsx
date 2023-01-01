@@ -1,10 +1,10 @@
 import { NextPage } from 'next'
 import { CheckersBotSummary } from './projects/CheckersBot'
-import { EVUpChargeSummary } from './projects/EVUpCharge'
-import { Py2048BotSummary } from './projects/Py2048Bot'
-import { ReactMandelbrotSummary } from './projects/ReactMandelbrot'
-import { ThisWebsiteSummary } from './projects/ThisWebsite'
-import { TwitterSummary } from './projects/TwitterAnalysis'
+import { EVUpChargeSummary } from './projects/UpCharge'
+import { Py2048BotSummary } from './projects/2048Bot'
+import { ReactMandelbrotSummary } from './projects/React-Mandelbrot'
+import { ThisWebsiteSummary } from './projects/This-Website'
+import { TwitterSummary } from './projects/Twitter-Analysis'
 
 export const ProjectMenu: NextPage = () => {
   return (

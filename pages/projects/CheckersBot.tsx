@@ -8,7 +8,7 @@ export const CheckersBot = () => {
     <div className="flex flex-col">
       <PostSummary
         title="Checkers Bot"
-        link="/CheckersBot"
+        link="/projects/CheckersBot"
         desc="Assignment - 21/10/2021"
       >
         <div className="flex flex-col justify-center gap-y-4">
