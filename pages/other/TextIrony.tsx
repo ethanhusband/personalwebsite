@@ -37,7 +37,7 @@ export const TextIrony = () => {
       <div className="imessage mt-8 mx-auto items-end">
         <p
           style={{ backgroundColor: messageColor }}
-          className="imessage-from mt-12"
+          className="imessage-from max-w-250px mt-12 z-50"
           onClick={() => {
             updateAddIcon(!addIcon && !addClicked)
             updateAddClicked(false)
@@ -47,7 +47,7 @@ export const TextIrony = () => {
         </p>
         {addIcon && (
           <div
-            className="relative right-4 bottom-6 z-50"
+            className="relative right-40 bottom-14 z-50"
             onClick={() => {
               updateAddClicked(true)
               updateAddIcon(false)
@@ -57,9 +57,11 @@ export const TextIrony = () => {
           </div>
         )}
         {addClicked && (
-          <div className="fade-in-quick relative rounded-xl bg-gray-700 right-3 bottom-6 z-50 h-16 w-48 py-1 px-2">
-            <div className="flex flex-row">
-              <p className="text-sm text-center font-thin ml-12 text-white">Add Sarcasm</p>
+          <div className="fade-in-quick relative rounded-xl bg-gray-700 max-w-250px bottom-5 right-0.5 z-30 h-24 px-2">
+            <div className="flex flex-row mt-6">
+              <p className="text-sm text-center font-thin ml-10 mr-4 text-white">
+                Add Sarcasm
+              </p>
               <FaCheckCircle
                 size={15}
                 className="ml-auto mt-0.5 imessage-color hover:text-blue-600"
