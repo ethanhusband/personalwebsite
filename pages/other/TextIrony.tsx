@@ -59,7 +59,7 @@ export const TextIrony = () => {
         {addClicked && (
           <div className="fade-in-quick relative rounded-xl bg-gray-700 right-3 bottom-6 z-50 h-16 w-48 py-1 px-2">
             <div className="flex flex-row">
-              <p className="text-sm text-center font-thin ml-12">Add Sarcasm</p>
+              <p className="text-sm text-center font-thin ml-12 text-white">Add Sarcasm</p>
               <FaCheckCircle
                 size={15}
                 className="ml-auto mt-0.5 imessage-color hover:text-blue-600"
@@ -74,7 +74,7 @@ export const TextIrony = () => {
               className="w-full relative bottom-1 text-secondary"
               onChange={(e) => updateSarcasm(parseInt(e.target.value))}
             />
-            <div className="flex flex-row text-xs justify-between font-thin relative bottom-2.5 px-0.5">
+            <div className="flex flex-row text-xs justify-between font-thin text-white relative bottom-2.5 px-0.5">
               <p>Serious</p>
               <p>Ironic</p>
               <p>Post-Ironic</p>
