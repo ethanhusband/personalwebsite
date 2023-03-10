@@ -1,22 +1,8 @@
 import Link from 'next/link'
 import Head from 'next/head'
 import useMediaQuery from '@mui/material/useMediaQuery'
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
-import * as gtag from '../utils/gtag'
 
 export const SitePage = ({ children }: any) => {
-  const router = useRouter()
-
-  useEffect(() => {
-    const handleRouteChange = (url: URL) => {
-      gtag.pageview(url)
-    }
-    router.events.on('routeChangeComplete', handleRouteChange)
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange)
-    }
-  }, [router.events])
 
   // There is an annoying problem here that we cant apply a flex-col to the children of the element.
   // The reason it doesn't apply properly is because any time we have the children exported as a function,
@@ -24,7 +10,7 @@ export const SitePage = ({ children }: any) => {
   return (
     <div className="w-screen bg-mandelbrot h-full cursor-crosshair">
       <Head>
-        <title>Ethan Husband - {lastPath(router.asPath) || 'Explore'}</title>
+        <title>Ethan Husband</title>
         <meta name="description" content="Personal Website for Ethan Husband" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -65,10 +51,6 @@ export const NavBar = () => {
       {navbar}
     </div>
   )
-}
-
-function lastPath(string: string) {
-  return string.substr(string.lastIndexOf('/') + 1)
 }
 
 export default SitePage
