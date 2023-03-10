@@ -7,7 +7,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Arial, sans-serif;
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Arial, sans-serif, SanFransisco;
 }
 
 a {
@@ -51,6 +51,32 @@ a {
 
 .bg-dark {
   background-color: #222;
+}
+
+.imessage {
+  background-color: #fff;
+  border: 1px solid #e5e5ea;
+  border-radius: 0.25rem;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.25rem;
+  font-family: Roboto, sans-serif;
+  padding: 1.5rem 1rem;
+}
+
+.imessage-from {
+  border-radius: 1.15rem;
+  line-height: 1.25;
+  padding: 0.5rem .875rem;
+  position: relative;
+  word-wrap: break-word;
+  align-self: flex-end;
+  color: #fff; 
+}
+
+.imessage-color {
+  color: #248bf5
 }
 
 .post-shadow {
@@ -161,6 +187,10 @@ a {
   color: #2fdce1
 }
 
+.max-w-75 {
+  max-width: 75%;
+}
+
 .phaseImageContainer {
   max-width: 500px;
   max-height: 200px
@@ -192,6 +222,10 @@ a {
 .py-30 {
   padding-top: 7.5rem;
   padding-bottom: 7.5rem;
+}
+
+.fade-in-quick {
+  animation: fadeIn 0.15s ease-in-out forwards alternate;
 }
 
 @keyframes blue-luminate {
@@ -244,5 +278,14 @@ a {
     filter: drop-shadow(0 0 0.1rem #2fdce1);
     background-color: rgba(47, 220, 225, 1);
     color: black
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
