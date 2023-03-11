@@ -42,8 +42,7 @@ const About = () => {
             services for electric vehicle smart chargers across the country. I
             am also studying a Bachelor of Science (Pure Mathematics) and a
             concurrent diploma of Computer Science full time at the University
-            of Melbourne, with the intention of doing a Masters degree at ETH
-            Zurich.
+            of Melbourne.
           </div>
           <div className="text-secondary">Contact: eth.husband@gmail.com</div>
         </div>
