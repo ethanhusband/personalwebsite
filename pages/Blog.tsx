@@ -11,6 +11,9 @@ export const BlogMenu: NextPage = () => {
               <li>How Is e Irrational?</li>
               <li>The Fairness of Allocating To a Prime Number of People</li>
               
+               * Fair DLB
+               * Using AI to solve N-queens
+
                * How To Setup Prisma and PlanetScale SQL databases
                * How To Setup an independent GraphQL server
                * Understanding the Riemann Zeta conjecture (prime number proof, all zeros in [0,1] proof)
