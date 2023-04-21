@@ -6,10 +6,9 @@ export const BlogMenu: NextPage = () => {
     <div className="gap-y-6 flex flex-col">
       <EVChargerDLBSummary />
       {/** 
-              <li>How Quantum Computers Mark Solutions</li>
-              <li>Classing Holomorphic Complex Functions</li>
-              <li>How Is e Irrational?</li>
-              <li>The Fairness of Allocating To a Prime Number of People</li>
+       * Fair DLB     
+       * Automated Stripe Disbursements
+       * Classing Holomorphic Complex Functions
               
                * Fair DLB
                * Using AI to solve N-queens
@@ -18,8 +17,8 @@ export const BlogMenu: NextPage = () => {
                * How To Setup an independent GraphQL server
                * Understanding the Riemann Zeta conjecture (prime number proof, all zeros in [0,1] proof)
                * The Beauty of Complex Numbers
-               * Optical Transistors
                * Application Course (gql, react, terraform)
+               * Handshake design pattern
                */}
     </div>
   )

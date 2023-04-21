@@ -1,5 +1,4 @@
 import type { NextPage } from 'next'
-import SitePage, { NavBar } from '../components/SitePage'
 import React, { useRef, useEffect } from 'react'
 import Link from 'next/link'
 
@@ -20,7 +19,7 @@ const ExploreButton = () => {
   )
 }
 
-// This is merely used to render the images seen at index page - not in use
+// This is merely used to render the images seen at index page - NOT IN USE
 export const Mandelbrot = (props: any) => {
   const canvasRef = useRef(null)
 

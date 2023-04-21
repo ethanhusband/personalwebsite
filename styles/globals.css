@@ -179,6 +179,10 @@ a {
   color: #25f8ff
 }
 
+.pdf-capsule {
+  height: 200vh
+}
+
 .post-title {
   color: rgb(243 244 246)
 }

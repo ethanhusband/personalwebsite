@@ -15,7 +15,7 @@ const useScript = (params: any) => {
         setStatus("idle");
         return;
       }
-      if (document.getElementById("comments")) {
+      if (document.getElementById("comments")) { 
         return
       }
       
@@ -53,7 +53,6 @@ const useScript = (params: any) => {
                 timeStamp: 276483.5
                 type: "load"
             }
-
             based on the type property we will get know whether script is ready or errored out
             */
 
