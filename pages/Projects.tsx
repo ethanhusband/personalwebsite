@@ -15,6 +15,10 @@ export const ProjectMenu: NextPage = () => {
       <TwitterSummary />
       <Py2048BotSummary />
       <CheckersBotSummary />
+
+      {
+        /* BoulderMate */
+      }
     </div>
   )
 }
