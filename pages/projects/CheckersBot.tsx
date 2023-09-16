@@ -17,11 +17,21 @@ export const CheckersBot = () => {
               This is a simple AI written in C, designed to play checkers
             </SiteLink>
             . It accepts an input file detailing what pieces have moved where,
-            and computes the best move from there using a recursive minimax
-            decision tree.
+            and computes the best move from there using something called a{' '}
+            <em>recursive minimax decision tree</em>. I'll explain here how it
+            all works, and even how you can run it if you so wish. By the end,
+            you'll be able to understand this image, and why it grants such a
+            powerful technique.
           </div>
+          <Image
+            src="/assets/checkersbot/minimax-def.jpg"
+            width={400}
+            height={200}
+            alt="Board Cost Example"
+            className="mx-auto border-2 border-black rounded"
+          />
           <div>
-            What the program does first is it receives a position via an input
+            What this program does first is it receives a position via an input
             file titled moves.txt, which contains on each line the source square
             and target square of each move sequentially. The program will decide
             whether each move is legal - rejecting the input if not. The
