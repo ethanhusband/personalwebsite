@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useMediaQuery } from '@mui/material'
 import Image from 'next/image'
 import PostSummary from '../../components/PostSummary'
@@ -9,7 +10,7 @@ export const EVUpCharge = () => {
       <PostSummary
         title="EVUp Charge"
         link="/projects/UpCharge"
-        desc="Occupational - Active"
+        desc="Occupational"
       >
         <div className="flex flex-col justify-center gap-y-4">
           <div>
@@ -326,8 +327,8 @@ export const EVUpChargeSummary = () => {
   return (
     <PostSummary
       title="EVUp Charge"
-      active
       isPageHeader={false}
+      // eslint-disable-next-line react/no-children-prop
       children={undefined}
       link="projects/UpCharge"
       desc="Large scale software aimed at connecting Australia to monitored, monetisable electric vehicle chargers"

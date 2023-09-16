@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import PostSummary from '../../components/PostSummary'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -821,6 +822,7 @@ export const EVChargerDLBSummary = () => {
     <PostSummary
       title="Load Balancing for EV Charging Stations"
       isPageHeader={false}
+      type="Article"
       children={undefined}
       link="articles/EVChargerDLB"
       desc="A generalisable model to safely distribute amperage across a set of electric vehicle chargers, without exceeding circuit capacities."

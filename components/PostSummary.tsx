@@ -14,6 +14,7 @@ export const PostSummary = ({
   title,
   link,
   desc,
+  type = null,
   isPageHeader = true,
   active = false,
   children,
@@ -82,6 +83,7 @@ export const PostSummary = ({
         <div className="flex flex-row ">
           <div className="ml-4 flex flex-col justify-center w-full mr-2">
             <div className="flex flex-row">
+              {type && <Badge text={type} />}
               <div className={titleStyle}>{title}</div>
               {active && <ActiveTooltip id={title} />}
             </div>
@@ -105,6 +107,14 @@ export const ActiveTooltip = ({ size = 22 }: any) => {
     >
       <FaBolt color="white" size={size} />
     </Tooltip>
+  )
+}
+
+export const Badge = ({ text, size = 22 }: any) => {
+  return (
+    <div className="border-1 border-white px-2 py-1 rounded-lg my-auto bg-gray-900 mr-2">
+      {text}
+    </div>
   )
 }
 

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import Link from 'next/link'
 import PostSummary from '../components/PostSummary'
 import { SiteLink } from '../components/SiteLink'
@@ -18,13 +19,7 @@ const About = () => {
             This site is an effort to share, at a level of detail I intend to
             make accessible to all, some of the fascinating problems and ideas
             I've encountered, generally pertaining (but not limited) to Software
-            Engineering or Abstract Math. The{' '}
-            <SiteLink href="/Blog">Blog section</SiteLink> includes articles
-            regarding theoretical problems I've dedicated thought or novel
-            solutions to, and will always have full explanations. Meanwhile, the{' '}
-            <SiteLink href="/Projects">Projects section</SiteLink> includes
-            overviews of projects I've developed myself or contributed to - with
-            rough explanations of how they all work.
+            Engineering or Abstract Math.
           </div>
           <div>
             I sincerely hope to show through this website that clever solutions
@@ -34,15 +29,21 @@ const About = () => {
             far less cognitively limited than we often might concede.
           </div>
           <div>
-            I am currently employed as the lead developer at{' '}
-            <Link href="/projects/UpCharge" className="link-styling">
-              EVUp Charge
+            The <SiteLink href="/Blog">Blog section</SiteLink> includes articles
+            regarding problems I've dedicated thought or novel solutions to, and
+            will always have full explanations. It also features projects I've
+            developed myself or contributed to - with rough explanations of how
+            they all work.
+          </div>
+
+          <div>
+            I am currently employed part-time as a Software Engineer at{' '}
+            <Link href="https://www.energetiq.com.au/" className="link-styling">
+              Energetiq
             </Link>
-            , an Australian company targetted at facilitating a variety of
-            services for electric vehicle smart chargers across the country. I
-            am also studying a Bachelor of Science (Pure Mathematics) and a
-            concurrent diploma of Computer Science full time at the University
-            of Melbourne.
+            , an Australian company delivering reconciliation software to the
+            country's major energy firms. I am also studying a Bachelor of
+            Science majoring in Pure Mathematics at the University of Melbourne
           </div>
           <div className="text-secondary">Contact: eth.husband@gmail.com</div>
         </div>

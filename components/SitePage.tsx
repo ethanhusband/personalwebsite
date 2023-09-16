@@ -36,9 +36,6 @@ export const NavBar = () => {
       <Link href="/Blog" className={buttonClass}>
         <li>Blog</li>
       </Link>
-      <Link href="/Projects" className={buttonClass}>
-        <li>Projects</li>
-      </Link>
       <Link href="/About" className={buttonClass}>
         <li>About</li>
       </Link>
