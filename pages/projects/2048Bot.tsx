@@ -183,7 +183,7 @@ export const Py2048BotSummary = () => {
       isPageHeader={false}
       children={undefined}
       link="projects/2048Bot"
-      desc="An advanced 2048 AI with a Python frontend and C++ backend, maintaining a 100% win rate"
+      desc="State of the art 2048 AI with a Python frontend and C++ backend, maintaining a 100% win rate"
     />
   )
 }

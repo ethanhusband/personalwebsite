@@ -21,11 +21,11 @@ export const CheckersBot = () => {
             decision tree.
           </div>
           <div>
-            What the program does is first it receives a position via an input
-            file, usually titled moves.txt, which contains on each line the
-            source square and target square of each sequential move. The program
-            will decide whether each move is legal - rejecting the input if not.
-            The file then concludes with an A or P character followed by a
+            What the program does first is it receives a position via an input
+            file titled moves.txt, which contains on each line the source square
+            and target square of each move sequentially. The program will decide
+            whether each move is legal - rejecting the input if not. The
+            moves.txt file then concludes with an A or P character followed by a
             newline, where A instructs the program to play one move after the
             position given, P instructs playing the next best 10 moves. Here is
             an example of one of those input files.
@@ -38,11 +38,11 @@ export const CheckersBot = () => {
             className="mx-auto border-2 border-black rounded"
           />
           <div>
-            The program represents it's output by printing out the moves in the
-            input file to the terminal, using a basic ASCII graphical
-            representation. It will then print the moves it decides to play,
-            indicating the move was calculated in the UI with *** at the start.
-            For example, the starting board looks like this in the terminal:
+            As output, the moves in the input file first get printed to the
+            terminal, using a basic ASCII graphical representation - after which
+            it prints the moves it calculates (these are indicated by *
+            characters). For example, the starting board looks like this in the
+            terminal:
           </div>
           <Image
             src="/assets/checkersbot/checkersbot.png"
@@ -57,33 +57,31 @@ export const CheckersBot = () => {
             <SiteLink href="https://en.wikipedia.org/wiki/Minimax">
               minimax decision tree
             </SiteLink>{' '}
-            is a model often employed by programs which involve some sort of
-            strategic decision making, especially in{' '}
+            is the most fundamental model to any of these kinds programs which
+            involve some sort of strategic decision making, especially in{' '}
             <SiteLink href="https://en.wikipedia.org/wiki/Zero-sum_game">
-              zero-sum games
+              zero-sum games.
             </SiteLink>{' '}
-            - it is a concept initially arising from game theory which has had
-            widespread applications to a large proportion of AI involved in
-            decision making - particularly in almost all zero-sum game
-            scenarios. It is the crux of many if not all engines/AI that
-            calculate moves for two player strategic games such as Chess, Go and
-            of course Checkers.
+            Minimax trees are a concept initially arising from game theory,
+            which has had widespread applications to AI involved in decision
+            making - particularly in almost all zero-sum game scenarios.
           </div>
           <div>
-            How it works at the basic level, is it will first take some
-            strategic scenario as an input (which we can do here, via the
-            moves.txt file). It will then calculate every possible move the
-            currently moving player (let's call them, Player A) can make in the
-            provided scenario. For each of those possible moves, it then
-            calculates each possible move the opposing player might make. This
-            process repeats until it reaches some specified{' '}
-            <span className="underline">tree depth</span>, at which point it
-            stops calculating possible moves - we call the nodes at this depth{' '}
-            <span className="underline">terminal nodes</span>. The depth of the
-            search tree in this project is set as a constant and can reach about
-            6 or 7 layers before becoming too slow. For the technically
-            familiar, techniques such as branch pruning, dynamic depth limits
-            and positional evaluation metrics were not applied.
+            Let's break it down. How it works at the basic level, is it will
+            first take some strategic scenario as an input (which we can do
+            here, via the moves.txt file). From that, it will then calculate
+            every possible move the currently moving player (let's call them,
+            Player A) can make in the provided scenario. For each of those
+            possible moves, it then calculates each possible move the opposing
+            player might make. This process repeats until it reaches some
+            specified <span className="underline">tree depth</span>, at which
+            point it stops calculating possible moves - we call the nodes at
+            this depth <span className="underline">terminal nodes</span>. The
+            depth of the search tree in this project is set as a constant and
+            can reach about 6 or 7 layers before becoming too slow. For the
+            technically familiar, techniques such as branch pruning, dynamic
+            depth limits and positional evaluation metrics were not applied but
+            are expanded on <SiteLink href="./2048Bot">here</SiteLink> .
           </div>
           <Image
             src="/assets/checkersbot/minimax.png"
@@ -93,34 +91,29 @@ export const CheckersBot = () => {
             className="bg-white border-2 border-black mx-auto rounded"
           />
           <div>
-            So it has generated all these possible outcomes, what now? How does
-            it actually decide which move to select? Well when it has generated
-            all the possible outcomes at these terminal nodes, only then does
-            Minimax actually evaluate the board position. Now, how these
-            terminal nodes are evaluated is a seperate problem. Positions will
-            almost always have a number corresponding to who is winning,
-            essentially - called the{' '}
-            <span className="underline">evaluation</span>. A position that is
-            good for Player A is usually a more positive number (like +3.84),
-            and a position that is good for Player B is usually a more negative
-            number (like -3.84) - a perfectly even position therefore should
-            evaluate to 0, if your evaluation method is good. Top game engines
-            will often go about this by training AI to recognise positions as
-            good for one side or the other, and give it a number (to simplify).
+            We can see how this creates what is known as <em>the game tree</em>.
+            If we had an infinitely powerful computer (or a simple enough game),
+            we can continue this process to eventually consider every single
+            possibility of where the game might go from the current position. So
+            even if we generate all these possible outcomes, what now? How does
+            it actually decide which move to select?
           </div>
           <div>
-            For this program, we use a very simple evaluation metric known in
-            Chess as <span className="underline">material counting</span>. More
-            sophisticated evaluation techniques are not the focus of the
-            project. Firstly, I should add that in this version of checkers,
-            when a piece reaches the end of the board it becomes a "tower", and
-            can move both ways. This is distinguished in the graphical
-            representation by a capital W or B and is considered worth 3 points
-            of material - a normal piece being worth 1. So to evaluate a
-            position, we simply start at zero, +1 for each white piece, +3 for
-            each white tower, -1 for each black piece, -3 for each black tower.
-            See an example of the board cost below, where black (Player B) has
-            one more piece than white (Player A).
+            Well when it has generated all the possible outcomes at these
+            terminal nodes, only then does Minimax actually evaluate the board
+            position. Now, how these terminal nodes are evaluated is a seperate
+            problem - we need to find a way to know if a position is winning or
+            losing. Quite simply, we can just count how many pieces each player
+            has. Starting at 0, we add 1 for white, subtract 1 for black. This
+            works out nicely, as a position that is good for Player A is usually
+            a more positive number (like +3), and a position that is good for
+            Player B is usually a more negative number (like -3) - a perfectly
+            even position therefore should evaluate to 0. Note that this is a
+            very simple method of <em>evaluation</em>. The top performing game
+            engines will often go about this by training AI to recognise
+            positions as good for one side or the other, and give it a number
+            (to simplify). Note in the image below that the evaluation is
+            referred to as cost:
           </div>
           <Image
             src="/assets/checkersbot/costexample.png"
@@ -131,28 +124,46 @@ export const CheckersBot = () => {
           />
           <div>
             So this is what we use to evaluate the terminal nodes - how good a
-            position is. After the terminal nodes are evaluated, minimax enters
-            it's <span className="underline">propagation phase</span>. When a
-            minimax tree evaluates all it's terminal nodes, it then employs the
-            assumption that each player will play the best move possible - an
-            assumption fundamental to game theory which ends up being
-            particularly effective. Firstly, at each{' '}
-            <span className="underline">parent node</span> of these terminal
-            nodes, if it were white's turn at the parent node, it would set that
-            parent node's score equal to the maximum score of the terminal nodes
-            - therefore assuming white will play the best move at that point to
-            reach the next best position. Similarly if it we're black's move at
-            the parent node, it would instead pass up the minimum score of the
-            terminal nodes - assuming again they will play the best move. This
-            process repeats, "propagating" the evaluation until the top layer is
-            reached, where the move resulting in most ideal evaluation for the
-            current player will be selected.
+            position is. This brings us back to our original problem - how do we
+            use this to choose a move. One might think it would be as easy as
+            choosing whichever 'branch' has the board with the best position.
+            But that won't quite work, as the opposing player can simply choose
+            moves to avoid ever reaching that position.
           </div>
           <div>
-            This might take a bit of thinking for those not familiar with
-            computing concepts like recursion and trees, but a good example of
-            this propagation phase can be seen below. At position A, the move
-            that reaches position B will be selected.
+            What minimax trees do is they use a technique known as{' '}
+            <span className="underline">backpropagation</span>. When a minimax
+            tree evaluates all it's terminal nodes, we then employ the
+            assumption that our opponent will play the best move possible at
+            each turn (known as <em>perfect play</em>) - this is a great
+            assumption, because if it's not true, then we're in even better
+            stead because it means our opponent is playing sub-optimally.
+          </div>
+          <div>
+            To choose a move, firstly we want to choose a batch of terminal
+            nodes which come from the same node - this node they all sprout from
+            is called their <span className="underline">parent node</span>. Then
+            what we do is, if it were white's turn at the parent node, we set
+            that parent node's score equal to the maximum score of the terminal
+            nodes - <em>propagating</em> the score of white's best possible
+            move. Similarly if it we're black's move at the parent node, we
+            would instead propagate up the minimum score of the terminal nodes -
+            assuming again the player at this particular node will play their
+            best move (remember we were subtracting black's piece count in our
+            evaluation, so black want's the outcome with the lowest or most
+            negative score possible as this implies they have more pieces). This
+            is where the 'minimax' name comes from, as we end up alternating
+            between propagating the maximum and minimum scores
+          </div>
+          <div>
+            We can do this with each set of nodes, repeatedly "propagating" the
+            evaluation until the top layer is reached. At the top layer, we now
+            have all an 'evaluation' of each move - we can just pick whichever
+            is most desirable, dictating the move played.. This might take a bit
+            of thinking for those not familiar with computing concepts like
+            recursion and trees, but a good example of this propagation phase
+            can be seen below. At position A, which would be the player with the
+            white pieces, we would choose move B, can you see why?
           </div>
           <Image
             src="/assets/checkersbot/minimaxProp.png"
@@ -165,8 +176,9 @@ export const CheckersBot = () => {
           <div></div>
           <div>
             That covers the basic details of how the bot works, and in fact, how
-            most engines for zero-sum strategy games work. The project was to be
-            submitted as a single file, so the source code at{' '}
+            most engines for zero-sum strategy games work. The project I did
+            this for was to be submitted as a single file, so the unnecessarily
+            bloated source code at{' '}
             <SiteLink href="https://github.com/ethanhusband/checkers-bot/blob/main/checkersbot.c">
               this github repository
             </SiteLink>{' '}
@@ -201,7 +213,7 @@ export const CheckersBotSummary = ({ children }: any) => {
       isPageHeader={false}
       children={undefined}
       link="projects/CheckersBot"
-      desc="Decision Tree AI designed to play checkers, written in C"
+      desc="Basic Decision Tree AI designed to play checkers, written in C"
     />
   )
 }
