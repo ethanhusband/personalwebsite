@@ -12,6 +12,9 @@ export const CheckersBot = () => {
         desc="Assignment - 21/10/2021"
       >
         <div className="flex flex-col justify-center gap-y-4">
+          <h1 className="text-2xl text-secondary underline">
+            Basic AI for Strategic Games
+          </h1>
           <div>
             <SiteLink href="https://github.com/ethanhusband/checkers-bot">
               This is a simple AI written in C, designed to play checkers
