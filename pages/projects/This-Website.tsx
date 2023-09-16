@@ -37,18 +37,16 @@ export const ThisWebsite = () => {
             enough web development experience to make even a very basic website.
           </div>
           <div>
-            The reason Next.js has been so seemless for this sort of project is
-            that it addresses two major limitations of React, one being the
-            indexing of your site on Google and other search engines, the other
-            being routing. Instead of having a Routes file close to your root
-            component, Nextjs will automatically route your pages based on their
-            directory location in a "pages" folder created automatically by{' '}
+            A major reason Next.js has been so seemless for this sort of project
+            is largely attributable to how it handles page routing (as well as
+            Vercel's automatic serverless deployments). Instead of having a
+            Routes file close to your root component, Nextjs will automatically
+            route your pages based on their directory location in a "pages"
+            folder created automatically by{' '}
             <SiteCodeBlock>npx create-next-app</SiteCodeBlock>
-            The main benefit of Next.js though is that it is{' '}
-            <span className="underline">server-side rendered</span>, which means
-            that the details of your website will be easily discoverable for
-            bots and thus be indexed by Google. As a result, your website
-            appears when searched for in Google, unlike most React sites.
+            The other main benefit of Next.js though is that it is{' '}
+            <span className="underline">server-side rendered</span>, which makes
+            it far quicker than React
           </div>
 
           <div>
