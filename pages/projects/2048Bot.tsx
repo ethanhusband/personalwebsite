@@ -15,11 +15,14 @@ export const Py2048Bot = () => {
             <SiteLink href="https://github.com/ethanhusband/2048bot">
               An advanced 2048 AI with a Python frontend and C++ backend
             </SiteLink>
-            . Inspired by the bot created by nneonneo, it uses expectimax
-            decision trees, bitboards and bitwise matrix operations to
-            efficiently calculate each move leading to optimised performance,
-            winning 100% of trials thus far. The GUI and game running logic uses
-            Python tkinter and was taken from{' '}
+            . Inspired by{' '}
+            <SiteLink href="https://github.com/nneonneo/2048-ai">
+              the bot created by nneonneo
+            </SiteLink>
+            , it uses expectimax decision trees, bitboards and bitwise matrix
+            operations to efficiently calculate each move leading to optimised
+            performance, winning 100% of trials thus far. The GUI and game
+            running logic uses Python tkinter and was taken from{' '}
             <SiteLink href="https://github.com/andersqiu/python-tk-2048">
               this repository
             </SiteLink>{' '}
