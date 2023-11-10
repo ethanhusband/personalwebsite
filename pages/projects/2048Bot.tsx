@@ -146,10 +146,10 @@ export const Py2048Bot = () => {
             The bot includes many more optimisations on top of this useful data
             representation, the other main one being caching (storing previously
             calculated results) with the use of Operation Tables (storing the
-            result of a move on a board, as to be faster) and Scoring Tables
-            (storing the calculated score of a board, as to be faster) which are
-            explained in{' '}
-            <SiteLink href="https://github.com/ethanhusband/2048bot/blob/main/README.md">
+            result of a move on every possible board, such that no calculations
+            are needed) and Scoring Tables (storing the calculated score of
+            every possible board board) which are explained in{' '}
+            <SiteLink href="https://github.com/ethanhusband/2048bot#2048-bot">
               the README.md of the repository
             </SiteLink>
             . That file will also explain to you how to run the bot on your
@@ -166,9 +166,9 @@ export const Py2048Bot = () => {
             <SiteLink href="https://github.com/ethanhusband/2048bot/blob/main/gameAi.cpp">
               this file
             </SiteLink>
-            . If it so intrigues you, the transpose_board function is a simple
-            matrix transposition algorithm, but easily one of the most confusing
-            but mind-blowing algorithms I've ever seen.
+            . If you know C++, the transpose_board function is a simple matrix
+            transposition algorithm, but easily one of the most confusing but
+            mind-blowing algorithms you'll encounter.
           </div>
         </div>
       </PostSummary>
