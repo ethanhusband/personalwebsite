@@ -14,16 +14,14 @@ export const EVUpCharge = () => {
       >
         <div className="flex flex-col justify-center gap-y-4">
           <div>
-            Since February 2022 to the present day, I've been employed as a Full
-            Stack Engineer working on EVUp Charge, currently (as of September
-            2022) acting as the lead developer of the project. The largest of
-            the projects listed, EVUp Charge is a comprehensive, scalable
-            software that aims to facilitate charging facilities for the
-            electric vehicle boom. With clients all around Australia, it offers
-            reliable monitoring, monetisation, load balancing and sharing of
-            OCPP electric vehicle charging stations around the country. Since it
-            is an active project, this article will be consistently updated to
-            correspond with the current version.
+            In 2022 & 2023, I was working as a Full Stack Engineer working on
+            EVUp Charge, leading the development of the project from September
+            of 2022. The largest of the projects listed, EVUp Charge is a
+            comprehensive, scalable software that aims to facilitate charging
+            facilities for the electric vehicle boom. With clients all around
+            Australia, it offers reliable monitoring, monetisation, load
+            balancing and sharing of OCPP electric vehicle charging stations
+            around the country.
           </div>
           <div>
             The software started as a simple website built in React, then
