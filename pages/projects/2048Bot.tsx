@@ -19,13 +19,12 @@ export const Py2048Bot = () => {
             decision trees, bitboards and bitwise matrix operations to
             efficiently calculate each move leading to optimised performance,
             winning 100% of trials thus far. The GUI and game running logic uses
-            tkinter and was taken from{' '}
+            Python tkinter and was taken from{' '}
             <SiteLink href="https://github.com/andersqiu/python-tk-2048">
               this repository
             </SiteLink>{' '}
-            written by a user named andersqiu - I don't claim to fully know how
-            it works, but UI is not the focus of this project so I don't care.
-            Cheers to the lad.
+            written by a user named andersqiu - I tinkered with this to
+            integrate with the game logic in a seperate C++ file.
           </div>
           <div>
             For those unfamiliar, 2048 is a simple game involving 16 tiles,
@@ -52,7 +51,7 @@ export const Py2048Bot = () => {
               here in a previous project
             </SiteLink>{' '}
             . However, instead of every other layer being the prediction of an
-            opponentsc best move, the opposing layer instead contains every
+            opponents best move, the opposing layer instead contains every
             possible outcome that could occur by chance, then taking the
             expected value of the score provided by each of those possible
             outcomes gives the score of the move. For more info on expectimax
