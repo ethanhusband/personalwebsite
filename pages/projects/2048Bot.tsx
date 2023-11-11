@@ -62,7 +62,7 @@ export const Py2048Bot = () => {
             <SiteLink href="https://www.geeksforgeeks.org/expectimax-algorithm-in-game-theory/">
               this is a good resource
             </SiteLink>
-            . If you've' read the details of my Checkers Bot project, the
+            . If you've read the details of my Checkers Bot project, the
             following diagram should make the small difference between the
             Minimax and Expectimax search algorithms fairly intuitive.
           </div>
