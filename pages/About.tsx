@@ -19,7 +19,7 @@ const About = () => {
             This site is an effort to share, at a level of detail I intend to
             make accessible to all, some of the fascinating problems and ideas
             I've encountered, generally pertaining (but not limited) to Software
-            Engineering or Abstract Math.
+            Engineering and Abstract Math.
           </div>
           <div>
             I sincerely hope to show through this website that clever solutions
@@ -37,13 +37,13 @@ const About = () => {
           </div>
 
           <div>
-            I am currently employed part-time as a Software Engineer at{' '}
-            <Link href="https://www.energetiq.com.au/" className="link-styling">
-              Energetiq
+            I currently work full time as an Associate Software Engineer at{' '}
+            <Link href="https://www.vivi.io/" className="link-styling">
+              Vivi International
             </Link>
-            , an Australian company delivering reconciliation software to the
-            country's major energy firms. I am also studying a Bachelor of
-            Science majoring in Pure Mathematics at the University of Melbourne
+            , an Australian company delivering EdTech software to over 100,000
+            classrooms across the globe. I recently graduated from a B.Sc. Pure
+            Mathematics at the University of Melbourne
           </div>
           <div className="text-secondary">Contact: eth.husband@gmail.com</div>
         </div>
